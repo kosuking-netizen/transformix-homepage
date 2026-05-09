@@ -171,6 +171,45 @@ h2::after {
   color: var(--muted);
 }
 
+/* ミッション・ビジョン */
+#mission {
+  background: var(--navy);
+  color: #fff;
+}
+
+#mission h2::after { background: var(--accent); }
+
+.mv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.mv-box {
+  border-left: 3px solid var(--accent);
+  padding-left: 1.5rem;
+}
+
+.mv-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.mv-text {
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.6;
+  color: #fff;
+}
+
+@media (max-width: 680px) {
+  .mv-grid { grid-template-columns: 1fr; }
+}
+
 /* 会社概要テーブル */
 .about-table {
   width: 100%;
