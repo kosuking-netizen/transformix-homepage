@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Transformix — 変革トータルアドバイザリー</title>
-  <meta name="description" content="SCM・IT・DX・AIの知見で、企業の変革をリードします。京都発、Transformix。">
+  <title>Transformix — Transformation Advisory</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -18,7 +17,7 @@
       --warm: #faf9f7;
     }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Helvetica Neue','Hiragino Sans','Yu Gothic',sans-serif; color: var(--text); background: var(--bg); line-height: 1.7; }
+    body { font-family: 'Helvetica Neue', Arial, sans-serif; color: var(--text); background: var(--bg); line-height: 1.7; }
     a { color: inherit; text-decoration: none; }
 
     /* NAV */
@@ -28,8 +27,8 @@
     .nav-links { list-style:none; display:flex; gap:2rem; }
     .nav-links a { font-size:0.85rem; color:var(--muted); white-space:nowrap; transition:color 0.2s; }
     .nav-links a:hover { color:var(--text); }
-    .lang-btn { display:inline-block; background:none; border:1px solid var(--border); padding:0.3rem 0.9rem; font-size:0.8rem; cursor:pointer; white-space:nowrap; transition:border-color 0.2s; text-decoration:none; color:var(--muted); }
-    .lang-btn:hover { border-color: var(--text); color:var(--text); }
+    .lang-btn { background:none; border:1px solid var(--border); padding:0.3rem 0.9rem; font-size:0.8rem; cursor:pointer; white-space:nowrap; transition:border-color 0.2s; }
+    .lang-btn:hover { border-color: var(--text); }
 
     /* HERO */
     #hero { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:8rem 2.5rem 5rem; background:var(--warm); text-align:center; }
@@ -94,7 +93,7 @@
     .profile-skills li { border:1px solid var(--border); font-size:0.82rem; padding:0.35rem 1rem; color:var(--muted); }
     .profile-meta { border-top:1px solid var(--border); padding-top:1.5rem; display:flex; flex-direction:column; gap:0.75rem; }
     .profile-meta-item { font-size:0.88rem; color:var(--muted); display:flex; gap:1.5rem; align-items:baseline; }
-    .profile-meta-label { font-weight:700; color:var(--text); min-width:40px; white-space:nowrap; }
+    .profile-meta-label { font-weight:700; color:var(--text); min-width:80px; white-space:nowrap; }
 
     /* CONTACT */
     #contact { text-align:center; }
@@ -116,41 +115,41 @@
     <nav>
       <div class="logo">Transformix</div>
       <ul class="nav-links">
-        <li><a href="#services">サービス</a></li>
-        <li><a href="#about">会社概要</a></li>
-        <li><a href="#profile">代表</a></li>
-        <li><a href="#contact">お問い合わせ</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
-      <a href="/en/" class="lang-btn">EN</a>
+      <a href="/index.html" class="lang-btn">JA</a>
     </nav>
   </header>
 
   <section id="hero">
     <div class="hero-inner">
       <div class="hero-eyebrow">Transformation Advisory</div>
-      <h1>あなたの変革へ、最高の掛け算で。</h1>
-      <p>「何を・誰が・どうやって変えるか」の全体設計から実行まで。特定の手段に依存しない、正直なアドバイスで変革を伴走します。</p>
-      <a href="#contact" class="btn">お問い合わせ</a>
+      <h1>Your transformation.<br>Our mix.</h1>
+      <p>We design the full picture of your transformation — what to change, who leads it, and how. Honest, vendor-neutral advice. End-to-end support.</p>
+      <a href="#contact" class="btn">Get in Touch</a>
     </div>
   </section>
 
   <section id="services">
     <div class="container">
-      <h2>サービス</h2>
+      <h2>Services</h2>
       <div class="flagship-card">
         <div class="flagship-badge">Flagship</div>
-        <h3>変革トータルアドバイザリー</h3>
-        <p>「何を・誰が・どうやって変えるか」を全体設計する。AIで内製すべきか、外部を使うべきか——特定の手段に依存せず、企業側の視点から正直にアドバイスし、変革全体を伴走支援する。</p>
-        <div class="flagship-tags"><span>顧問型</span><span>スポット相談</span><span>伴走支援</span></div>
+        <h3>Transformation Total Advisory</h3>
+        <p>We design the full picture — what to change, who should lead it, and how. Whether to leverage AI internally, engage external partners, or handle it in-house, we give honest, vendor-neutral advice from the client's perspective and walk alongside you throughout the transformation.</p>
+        <div class="flagship-tags"><span>Retained Advisory</span><span>Spot Consulting</span><span>Hands-on Support</span></div>
       </div>
-      <div class="services-sub-title">専門サービス</div>
+      <div class="services-sub-title">Specialized Services</div>
       <div class="cards">
-        <div class="card"><div class="card-num">01</div><h3>SCM × 経営変革</h3><p>PSI/S&OPからワンナンバーマネジメントへ。サプライチェーンを起点に経営管理を統合する。</p></div>
-        <div class="card"><div class="card-num">02</div><h3>DX・IT変革支援</h3><p>デジタルの仕組みづくりから実行まで。経営とITをつなぐ視点で、使える仕組みを作る。</p></div>
-        <div class="card"><div class="card-num">03</div><h3>AIプロセス改革</h3><p>AIを活用したプロセス改革の戦略策定から導入・定着まで。使えるAIを現場に根付かせる。</p></div>
-        <div class="card"><div class="card-num">04</div><h3>組織・働き方デザイン</h3><p>働き方・組織設計・意思決定・会議の進め方など、変革の土台となる組織力を高める。</p></div>
-        <div class="card"><div class="card-num">05</div><h3>エグゼクティブコーチング</h3><p>経営者・リーダー向けの個別コーチング。個人の変革が組織の変革につながる。</p></div>
-        <div class="card card-kyoto"><div class="card-num">06</div><h3>京都で話しませんか。</h3><p>日常のオフィスを離れ、京都でじっくり対話する。戦略の壁打ち、大事な意思決定——カジュアルに、でも深く。</p></div>
+        <div class="card"><div class="card-num">01</div><h3>SCM-Driven Management Reform</h3><p>From PSI/S&OP to one-number management. Integrating supply chain with corporate management to sharpen decision-making.</p></div>
+        <div class="card"><div class="card-num">02</div><h3>DX & IT Transformation</h3><p>From digital process design to IT strategy and execution. Building systems that actually work by bridging management and technology.</p></div>
+        <div class="card"><div class="card-num">03</div><h3>AI Process Innovation</h3><p>End-to-end support for AI-driven process reform — from strategy to implementation and on-the-ground adoption.</p></div>
+        <div class="card"><div class="card-num">04</div><h3>Organization & Work Design</h3><p>Redesigning how work gets done — structure, decision-making, and meeting culture — to build the foundation for transformation.</p></div>
+        <div class="card"><div class="card-num">05</div><h3>Executive Coaching</h3><p>One-on-one coaching for executives and leaders. Personal transformation that drives organizational change.</p></div>
+        <div class="card card-kyoto"><div class="card-num">06</div><h3>Let's talk in Kyoto.</h3><p>Step away from the office. Come to Kyoto for a focused conversation — strategy sessions, key decisions, and deep dialogue. Casual, but meaningful.</p></div>
       </div>
     </div>
   </section>
@@ -158,45 +157,50 @@
   <section id="mission">
     <div class="container">
       <div class="mv-grid">
-        <div><div class="mv-label">Mission</div><p class="mv-text">迷いを力に、変革を現実に。</p></div>
-        <div><div class="mv-label">Vision</div><p class="mv-text">人が創造的に、楽しく働く世界を。</p></div>
+        <div>
+          <div class="mv-label">Mission</div>
+          <p class="mv-text">Doubt into drive. Vision into reality.</p>
+        </div>
+        <div>
+          <div class="mv-label">Vision</div>
+          <p class="mv-text">Where creativity and joy define the way we work.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <section id="about">
     <div class="container">
-      <h2>会社概要</h2>
+      <h2>About</h2>
       <table class="about-table">
-        <tr><th>会社名</th><td>Transformix（トランスフォーミックス）</td></tr>
-        <tr><th>設立</th><td>2026年</td></tr>
-        <tr><th>代表</th><td>井沢 晃将</td></tr>
-        <tr><th>所在地</th><td>京都</td></tr>
-        <tr><th>メール</th><td>info@transformix.jp</td></tr>
-        <tr><th>事業内容</th><td>SCM・IT・DX・AIコンサルティング</td></tr>
-        <tr><th>ウェブサイト</th><td><a href="https://transformix.jp" style="color:var(--indigo);">https://transformix.jp</a></td></tr>
+        <tr><th>Company</th><td>Transformix</td></tr>
+        <tr><th>Founded</th><td>2026</td></tr>
+        <tr><th>Representative</th><td>Kosuke Izawa</td></tr>
+        <tr><th>Location</th><td>Kyoto, Japan</td></tr>
+        <tr><th>Email</th><td>info@transformix.jp</td></tr>
+        <tr><th>Business</th><td>SCM / IT / DX / AI Consulting</td></tr>
+        <tr><th>Website</th><td><a href="https://transformix.jp" style="color:var(--indigo);">https://transformix.jp</a></td></tr>
       </table>
     </div>
   </section>
 
   <section id="profile">
     <div class="container">
-      <h2>代表プロフィール</h2>
+      <h2>Profile</h2>
       <div class="profile-box">
-        <div class="profile-name">井沢 晃将</div>
+        <div class="profile-name">Kosuke Izawa</div>
         <div class="profile-title">Founder & CEO</div>
-        <p class="profile-bio">約20年にわたりSCM・オペレーション・ITリーダーシップの領域で経験を積む。戦略・テクノロジー・実行をつなぐ経営視点での業務改革を専門とし、グローバル製造業においてSCMおよびIT両機能を統括。全社横断的なコスト最適化・プロセス再設計・デジタル推進をリードしてきた。</p>
-        <div class="profile-section-title">専門領域</div>
+        <p class="profile-bio">With over 20 years of experience spanning SCM, operations, and IT leadership, Kosuke specializes in driving business reform from a management perspective — bridging strategy, technology, and execution. He has led enterprise-wide transformation initiatives at a global manufacturing company, delivering both operational excellence and cultural change across regions.</p>
+        <div class="profile-section-title">Core Expertise</div>
         <ul class="profile-skills">
-          <li>サプライチェーン／オペレーション戦略</li>
-          <li>IT／DX戦略</li>
-          <li>グローバルコスト最適化</li>
-          <li>プロセス改革とデータ活用</li>
-          <li>チェンジマネジメント</li>
+          <li>Supply Chain & Operations Strategy</li>
+          <li>IT & Digital Transformation</li>
+          <li>Global Cost Optimization</li>
+          <li>Change Management</li>
         </ul>
         <div class="profile-meta">
-          <div class="profile-meta-item"><span class="profile-meta-label">学歴</span><span>MBA・早稲田大学ビジネススクール（2016年）／ 商学部・早稲田大学（1999年）</span></div>
-          <div class="profile-meta-item"><span class="profile-meta-label">資格</span><span>Prosci® Certified Change Practitioner（2024年）</span></div>
+          <div class="profile-meta-item"><span class="profile-meta-label">Education</span><span>MBA, Waseda Business School (2016) / B.Com., Waseda University (1999)</span></div>
+          <div class="profile-meta-item"><span class="profile-meta-label">Certification</span><span>Prosci® Certified Change Practitioner (2024)</span></div>
         </div>
       </div>
     </div>
@@ -204,12 +208,14 @@
 
   <section id="contact">
     <div class="container">
-      <h2>お問い合わせ</h2>
-      <p class="contact-lead">サービスに関するご相談はメールにてお気軽にどうぞ。</p>
+      <h2>Contact</h2>
+      <p class="contact-lead">For inquiries about our services, please feel free to reach out.</p>
       <a href="mailto:info@transformix.jp" class="btn">info@transformix.jp</a>
     </div>
   </section>
 
-  <footer><p>&copy; 2026 Transformix. All rights reserved.</p></footer>
+  <footer>
+    <p>&copy; 2026 Transformix. All rights reserved.</p>
+  </footer>
 </body>
 </html>
