@@ -63,11 +63,10 @@
 
     /* SPECIALIZED */
     .services-sub-title { font-size:0.72rem; font-weight:700; letter-spacing:0.2em; color:var(--muted); text-transform:uppercase; margin:2.5rem 0 1.5rem; }
-    .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:1px solid var(--border); border-bottom:none; }
+    .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:1px solid var(--border); }
     .card { background:#fff; padding:2rem; border-right:1px solid var(--border); border-bottom:1px solid var(--border); }
-    .card:nth-child(3n) { border-right:none; }
+    .card:nth-child(3n):not(.card-kyoto) { border-right:none; }
     .card:nth-child(4):not(.card-kyoto), .card:nth-child(5):not(.card-kyoto) { border-bottom:none; }
-    .card:nth-child(3):not(.card-kyoto) { border-bottom:none; }
     section:nth-child(even) .card { background:var(--light); }
     .card-num { font-size:0.7rem; font-weight:700; color:var(--indigo); letter-spacing:0.1em; margin-bottom:0.75rem; }
     .card h3 { font-size:0.9rem; font-weight:800; margin-bottom:0.6rem; line-height:1.4; }
