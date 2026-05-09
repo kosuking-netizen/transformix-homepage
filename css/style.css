@@ -171,6 +171,66 @@ h2::after {
   color: var(--muted);
 }
 
+/* フラッグシップカード */
+.flagship-card {
+  background: var(--navy);
+  color: #fff;
+  border-radius: 10px;
+  padding: 2.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.flagship-badge {
+  display: inline-block;
+  background: #F59E0B;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.flagship-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.flagship-card p {
+  color: rgba(255,255,255,0.8);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.flagship-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.flagship-tags span {
+  border: 1px solid rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.8);
+  font-size: 0.8rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+}
+
+.services-sub-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 2rem 0 1.25rem;
+}
+
 /* ミッション・ビジョン */
 #mission {
   background: var(--navy);
