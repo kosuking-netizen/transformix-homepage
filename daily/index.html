@@ -284,9 +284,16 @@
     document.getElementById('back-link').href = lang === 'en' ? '/en/' : '/';
   }
 
-  // URLパラメータで言語を自動設定
-  const params = new URLSearchParams(window.location.search);
-  if (params.get('lang') === 'en') setLang('en');
+  // 言語自動設定：URLパラメータ優先、次にsessionStorage
+  document.addEventListener('DOMContentLoaded', function() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('lang') === 'en') {
+      setLang('en');
+      sessionStorage.setItem('txLang', 'en');
+    } else if (sessionStorage.getItem('txLang') === 'en') {
+      setLang('en');
+    }
+  });
 </script>
 </body>
 </html>
