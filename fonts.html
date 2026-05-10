@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Font Comparison — Transformix</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;800&family=Zen+Kaku+Gothic+New:wght@400;700;900&family=M+PLUS+2:wght@400;700;800&family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --indigo: #1e3a5f;
+      --muted: #222222;
+      --border: #e0e0e0;
+      --warm: #faf9f7;
+      --light: #f7f7f7;
+    }
+    body { background: #fff; color: #111; }
+
+    .tab-bar { display: flex; border-bottom: 2px solid var(--border); background: #fff; position: sticky; top: 0; z-index: 10; }
+    .tab { padding: 1rem 2rem; font-size: 0.9rem; font-weight: 700; cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; color: #888; transition: all 0.2s; }
+    .tab.active { border-bottom-color: var(--indigo); color: var(--indigo); }
+
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    /* 共通プレビュースタイル */
+    .preview {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #111;
+    }
+    .preview-nav { background: #fff; border-bottom: 1px solid var(--border); padding: 1rem 2.5rem; display: flex; align-items: center; }
+    .preview-nav .logo { font-size: 1.25rem; font-weight: 800; letter-spacing: 0.06em; margin-right: auto; }
+    .preview-nav .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .preview-nav .nav-links a { font-size: 0.85rem; color: var(--muted); text-decoration: none; }
+
+    .preview-hero { background: var(--warm); padding: 5rem 2.5rem; text-align: center; }
+    .preview-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--indigo); margin-bottom: 1.25rem; }
+    .preview-h1 { font-size: 3rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
+    .preview-p { font-size: 1rem; color: var(--muted); margin-bottom: 2rem; line-height: 1.85; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .preview-btn { display: inline-block; background: var(--indigo); color: #fff; padding: 0.9rem 2.5rem; font-size: 0.9rem; font-weight: 600; }
+
+    .preview-section { padding: 4rem 2.5rem; background: var(--light); }
+    .preview-section-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--indigo); display: inline-block; }
+    .preview-card { background: #fff; border: 1px solid var(--border); padding: 1.75rem; max-width: 640px; }
+    .preview-hook { font-size: 1rem; font-weight: 700; color: var(--indigo); margin-bottom: 0.75rem; }
+    .preview-bio { font-size: 0.92rem; color: var(--muted); line-height: 1.85; }
+
+    /* Font A: Noto Sans JP */
+    #font-a .preview { font-family: 'Noto Sans JP', sans-serif; }
+    /* Font B: Zen Kaku Gothic New */
+    #font-b .preview { font-family: 'Zen Kaku Gothic New', sans-serif; }
+    /* Font C: M PLUS 2 */
+    #font-c .preview { font-family: 'M PLUS 2', sans-serif; }
+    /* Font D: BIZ UDPGothic */
+    #font-d .preview { font-family: 'BIZ UDPGothic', sans-serif; }
+    /* Font E: システムフォント（現状） */
+    #font-e .preview { font-family: 'Helvetica Neue','Hiragino Sans','Yu Gothic',sans-serif; }
+
+    .font-label { background: var(--indigo); color: #fff; padding: 0.5rem 1.5rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; }
+  </style>
+</head>
+<body>
+
+<div class="tab-bar">
+  <div class="tab active" onclick="show('font-a', this)">A: Noto Sans JP</div>
+  <div class="tab" onclick="show('font-b', this)">B: Zen Kaku Gothic</div>
+  <div class="tab" onclick="show('font-c', this)">C: M PLUS 2</div>
+  <div class="tab" onclick="show('font-d', this)">D: BIZ UDPGothic</div>
+  <div class="tab" onclick="show('font-e', this)">E: 現状（システム）</div>
+</div>
+
+<!-- Font A -->
+<div id="font-a" class="panel active">
+  <div class="font-label">A: Noto Sans JP — Googleフォント。日本語Webフォントの定番。クリーンで読みやすい。</div>
+  <div class="preview">
+    <div class="preview-nav">
+      <div class="logo">Transformix</div>
+      <ul class="nav-links"><li><a href="#">サービス</a></li><li><a href="#">会社概要</a></li><li><a href="#">代表</a></li></ul>
+    </div>
+    <div class="preview-hero">
+      <div class="preview-eyebrow">Management Transformation</div>
+      <div class="preview-h1">あなたの変革へ、最高の掛け算で。</div>
+      <div class="preview-p">SCM・IT・DXを経営視点で統合し、企業価値の向上を実現する。オペレーションの変革を起点に、経営そのものを変える。</div>
+      <div class="preview-btn">お問い合わせ</div>
+    </div>
+    <div class="preview-section">
+      <div class="preview-section-title">代表プロフィール</div>
+      <div class="preview-card">
+        <div style="font-size:1.25rem;font-weight:800;margin-bottom:0.25rem;">井沢 晃将</div>
+        <div style="font-size:0.85rem;color:#888;margin-bottom:0.75rem;">Founder</div>
+        <div class="preview-hook">経営変革を、事業会社の内側から動かしてきた実務家。</div>
+        <div class="preview-bio">グローバル製造業の事業会社にてSCM・IT両機能を統括。コスト構造の改革・業務プロセスの再設計・デジタル推進を通じ、経営変革を内部からリードしてきた実務経験20年以上。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Font B -->
+<div id="font-b" class="panel">
+  <div class="font-label">B: Zen Kaku Gothic New — すこしエレガントな印象。高級感がある。</div>
+  <div class="preview">
+    <div class="preview-nav">
+      <div class="logo">Transformix</div>
+      <ul class="nav-links"><li><a href="#">サービス</a></li><li><a href="#">会社概要</a></li><li><a href="#">代表</a></li></ul>
+    </div>
+    <div class="preview-hero">
+      <div class="preview-eyebrow">Management Transformation</div>
+      <div class="preview-h1">あなたの変革へ、最高の掛け算で。</div>
+      <div class="preview-p">SCM・IT・DXを経営視点で統合し、企業価値の向上を実現する。オペレーションの変革を起点に、経営そのものを変える。</div>
+      <div class="preview-btn">お問い合わせ</div>
+    </div>
+    <div class="preview-section">
+      <div class="preview-section-title">代表プロフィール</div>
+      <div class="preview-card">
+        <div style="font-size:1.25rem;font-weight:800;margin-bottom:0.25rem;">井沢 晃将</div>
+        <div style="font-size:0.85rem;color:#888;margin-bottom:0.75rem;">Founder</div>
+        <div class="preview-hook">経営変革を、事業会社の内側から動かしてきた実務家。</div>
+        <div class="preview-bio">グローバル製造業の事業会社にてSCM・IT両機能を統括。コスト構造の改革・業務プロセスの再設計・デジタル推進を通じ、経営変革を内部からリードしてきた実務経験20年以上。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Font C -->
+<div id="font-c" class="panel">
+  <div class="font-label">C: M PLUS 2 — モダンで親しみやすい。やや丸みがある。</div>
+  <div class="preview">
+    <div class="preview-nav">
+      <div class="logo">Transformix</div>
+      <ul class="nav-links"><li><a href="#">サービス</a></li><li><a href="#">会社概要</a></li><li><a href="#">代表</a></li></ul>
+    </div>
+    <div class="preview-hero">
+      <div class="preview-eyebrow">Management Transformation</div>
+      <div class="preview-h1">あなたの変革へ、最高の掛け算で。</div>
+      <div class="preview-p">SCM・IT・DXを経営視点で統合し、企業価値の向上を実現する。オペレーションの変革を起点に、経営そのものを変える。</div>
+      <div class="preview-btn">お問い合わせ</div>
+    </div>
+    <div class="preview-section">
+      <div class="preview-section-title">代表プロフィール</div>
+      <div class="preview-card">
+        <div style="font-size:1.25rem;font-weight:800;margin-bottom:0.25rem;">井沢 晃将</div>
+        <div style="font-size:0.85rem;color:#888;margin-bottom:0.75rem;">Founder</div>
+        <div class="preview-hook">経営変革を、事業会社の内側から動かしてきた実務家。</div>
+        <div class="preview-bio">グローバル製造業の事業会社にてSCM・IT両機能を統括。コスト構造の改革・業務プロセスの再設計・デジタル推進を通じ、経営変革を内部からリードしてきた実務経験20年以上。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Font D -->
+<div id="font-d" class="panel">
+  <div class="font-label">D: BIZ UDPGothic — ビジネス向け。官公庁・金融系でよく使われる。読みやすさ重視。</div>
+  <div class="preview">
+    <div class="preview-nav">
+      <div class="logo">Transformix</div>
+      <ul class="nav-links"><li><a href="#">サービス</a></li><li><a href="#">会社概要</a></li><li><a href="#">代表</a></li></ul>
+    </div>
+    <div class="preview-hero">
+      <div class="preview-eyebrow">Management Transformation</div>
+      <div class="preview-h1">あなたの変革へ、最高の掛け算で。</div>
+      <div class="preview-p">SCM・IT・DXを経営視点で統合し、企業価値の向上を実現する。オペレーションの変革を起点に、経営そのものを変える。</div>
+      <div class="preview-btn">お問い合わせ</div>
+    </div>
+    <div class="preview-section">
+      <div class="preview-section-title">代表プロフィール</div>
+      <div class="preview-card">
+        <div style="font-size:1.25rem;font-weight:800;margin-bottom:0.25rem;">井沢 晃将</div>
+        <div style="font-size:0.85rem;color:#888;margin-bottom:0.75rem;">Founder</div>
+        <div class="preview-hook">経営変革を、事業会社の内側から動かしてきた実務家。</div>
+        <div class="preview-bio">グローバル製造業の事業会社にてSCM・IT両機能を統括。コスト構造の改革・業務プロセスの再設計・デジタル推進を通じ、経営変革を内部からリードしてきた実務経験20年以上。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Font E -->
+<div id="font-e" class="panel">
+  <div class="font-label">E: 現状（Helvetica Neue / Hiragino Sans / Yu Gothic） — システムフォント。追加読み込みなし。</div>
+  <div class="preview">
+    <div class="preview-nav">
+      <div class="logo">Transformix</div>
+      <ul class="nav-links"><li><a href="#">サービス</a></li><li><a href="#">会社概要</a></li><li><a href="#">代表</a></li></ul>
+    </div>
+    <div class="preview-hero">
+      <div class="preview-eyebrow">Management Transformation</div>
+      <div class="preview-h1">あなたの変革へ、最高の掛け算で。</div>
+      <div class="preview-p">SCM・IT・DXを経営視点で統合し、企業価値の向上を実現する。オペレーションの変革を起点に、経営そのものを変える。</div>
+      <div class="preview-btn">お問い合わせ</div>
+    </div>
+    <div class="preview-section">
+      <div class="preview-section-title">代表プロフィール</div>
+      <div class="preview-card">
+        <div style="font-size:1.25rem;font-weight:800;margin-bottom:0.25rem;">井沢 晃将</div>
+        <div style="font-size:0.85rem;color:#888;margin-bottom:0.75rem;">Founder</div>
+        <div class="preview-hook">経営変革を、事業会社の内側から動かしてきた実務家。</div>
+        <div class="preview-bio">グローバル製造業の事業会社にてSCM・IT両機能を統括。コスト構造の改革・業務プロセスの再設計・デジタル推進を通じ、経営変革を内部からリードしてきた実務経験20年以上。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function show(id, tab) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  tab.classList.add('active');
+}
+</script>
+</body>
+</html>
