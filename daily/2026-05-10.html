@@ -66,7 +66,7 @@
 <header>
   <div class="header-inner">
     <div class="header-left">
-      <div class="logo">Transformix Insights</div>
+      <a id="back-link" href="/" style="font-size:0.75rem;opacity:0.6;color:#fff;text-decoration:none;display:block;margin-bottom:0.4rem;" data-ja="← トップページへ" data-en="← Back to Top">← トップページへ</a>
       <h1>📰 <span data-ja="SCM・AI/DX・Football 記事収集" data-en="SCM・AI/DX・Football Article Collection">SCM・AI/DX・Football 記事収集</span></h1>
     </div>
     <div class="header-right">
@@ -281,7 +281,12 @@
     document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
     document.getElementById('btn-en').classList.toggle('active', lang === 'en');
     document.documentElement.lang = lang;
+    document.getElementById('back-link').href = lang === 'en' ? '/en/' : '/';
   }
+
+  // URLパラメータで言語を自動設定
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('lang') === 'en') setLang('en');
 </script>
 </body>
 </html>
