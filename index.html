@@ -106,9 +106,25 @@
     /* FOOTER */
     footer { background:var(--text); color:rgba(255,255,255,0.35); text-align:center; padding:2.5rem; font-size:0.8rem; }
 
+    /* HAMBURGER */
+    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; }
+    .hamburger span { display:block; width:22px; height:2px; background:var(--text); transition:all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+    /* MOBILE MENU */
+    .mobile-menu { display:none; position:fixed; top:68px; left:0; right:0; background:rgba(255,255,255,0.98); backdrop-filter:blur(8px); border-bottom:1px solid var(--border); z-index:99; padding:1.5rem 2.5rem; flex-direction:column; gap:0; }
+    .mobile-menu.open { display:flex; }
+    .mobile-menu a { display:block; padding:0.9rem 0; font-size:1rem; color:var(--muted); border-bottom:1px solid var(--border); text-decoration:none; }
+    .mobile-menu a:last-child { border-bottom:none; }
+    .mobile-menu a.highlight { color:var(--indigo); font-weight:700; }
+
     /* RESPONSIVE */
     @media (max-width:768px) {
       .nav-links { display:none; }
+      .lang-btn { display:none; }
+      .hamburger { display:flex; }
       .cards { grid-template-columns:1fr; }
       .mv-grid { grid-template-columns:1fr; gap:2rem; }
     }
@@ -126,8 +142,20 @@
         <li><a href="#contact">お問い合わせ</a></li>
       </ul>
       <a href="/en/" class="lang-btn">EN</a>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="メニュー">
+        <span></span><span></span><span></span>
+      </button>
     </nav>
   </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" onclick="closeMenu()">サービス</a>
+    <a href="#about" onclick="closeMenu()">会社概要</a>
+    <a href="#profile" onclick="closeMenu()">代表</a>
+    <a href="/daily/" class="highlight">📰 インサイト</a>
+    <a href="#contact" onclick="closeMenu()">お問い合わせ</a>
+    <a href="/en/">EN</a>
+  </div>
 
   <section id="hero">
     <div class="hero-inner">
@@ -214,6 +242,17 @@
       <a href="mailto:info@transformix.jp" class="btn">info@transformix.jp</a>
     </div>
   </section>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('hamburger').classList.toggle('open');
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+    function closeMenu() {
+      document.getElementById('hamburger').classList.remove('open');
+      document.getElementById('mobileMenu').classList.remove('open');
+    }
+  </script>
 
   <footer>
     <p style="margin-bottom:0.75rem;">
