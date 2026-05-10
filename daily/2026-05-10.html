@@ -282,6 +282,7 @@
     document.getElementById('btn-en').classList.toggle('active', lang === 'en');
     document.documentElement.lang = lang;
     document.getElementById('back-link').href = lang === 'en' ? '/en/' : '/';
+    sessionStorage.setItem('txLang', lang);
   }
 
   // 言語自動設定：URLパラメータ優先、次にsessionStorage
