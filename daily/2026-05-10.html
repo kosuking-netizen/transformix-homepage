@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transformix 記事ビューアー</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --indigo: #1e3a5f;
+    --indigo-light: #eef2f8;
+    --text: #111;
+    --muted: #555;
+    --border: #e0e0e0;
+    --bg: #f7f8fa;
+    --white: #fff;
+    --scm: #1e3a5f;
+    --ai: #2d6a4f;
+    --football: #7b3f00;
+  }
+  body { font-family: 'Helvetica Neue', 'Hiragino Sans', 'Yu Gothic', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+
+  /* HEADER */
+  header { background: var(--indigo); color: #fff; padding: 2rem 2.5rem; }
+  .header-inner { max-width: 1100px; margin: 0 auto; }
+  .logo { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.7; margin-bottom: 0.5rem; }
+  header h1 { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.75rem; }
+  .meta { font-size: 0.85rem; opacity: 0.75; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .badge { background: rgba(255,255,255,0.15); padding: 0.25rem 0.75rem; border-radius: 2rem; font-weight: 600; }
+
+  /* TABS */
+  .tabs { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 10; }
+  .tabs-inner { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; display: flex; gap: 0; }
+  .tab { padding: 1rem 1.5rem; font-size: 0.85rem; font-weight: 600; cursor: pointer; border-bottom: 3px solid transparent; color: var(--muted); transition: all 0.2s; background: none; border-top: none; border-left: none; border-right: none; }
+  .tab:hover { color: var(--text); }
+  .tab.active { color: var(--indigo); border-bottom-color: var(--indigo); }
+  .tab.tab-ai.active { color: var(--ai); border-bottom-color: var(--ai); }
+  .tab.tab-football.active { color: var(--football); border-bottom-color: var(--football); }
+
+  /* CONTENT */
+  main { max-width: 1100px; margin: 0 auto; padding: 2rem 2.5rem; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .section-title { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+
+  /* CARDS */
+  .cards { display: grid; gap: 1rem; }
+  .card { background: var(--white); border: 1px solid var(--border); padding: 1.5rem; border-radius: 4px; border-left: 4px solid var(--indigo); }
+  .card-ai { border-left-color: var(--ai); }
+  .card-football { border-left-color: var(--football); }
+  .card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.4; }
+  .card h3 a { color: var(--indigo); text-decoration: none; }
+  .card h3 a:hover { text-decoration: underline; }
+  .card-ai h3 a { color: var(--ai); }
+  .card-football h3 a { color: var(--football); }
+  .card-source { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.75rem; }
+  .card-summary { font-size: 0.9rem; color: var(--text); line-height: 1.75; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">Transformix — 記事ビューアー</div>
+    <h1>📰 2026-05-10 収集記事</h1>
+    <div class="meta">
+      <span class="badge">SCM 13本</span>
+      <span class="badge">AI/DX 7本</span>
+      <span class="badge">Football 5本</span>
+      <span>収集日時：2026-05-10 09:00 / 14:00 JST</span>
+    </div>
+  </div>
+</header>
+
+<div class="tabs">
+  <div class="tabs-inner">
+    <button class="tab active" onclick="show('scm', this)">SCM（13本）</button>
+    <button class="tab tab-ai" onclick="show('ai', this)">AI / DX（7本）</button>
+    <button class="tab tab-football" onclick="show('football', this)">Football（5本）</button>
+  </div>
+</div>
+
+<main>
+
+  <!-- SCM -->
+  <div id="scm" class="section active">
+    <div class="section-title">SCM 計画・経営系記事</div>
+    <div class="cards">
+
+      <div class="card">
+        <h3><a href="https://link.springer.com/article/10.1007/s11846-025-00894-x" target="_blank">Adapting Sales and Operations Planning to Dynamic and Complex Supply Chains</a></h3>
+        <div class="card-source">Springer Nature / Review of Managerial Science（学術誌）/ 英語</div>
+        <div class="card-summary">伝統的なS&OPプロセスは安定した環境では効果的だが、現代のサプライチェーンは動的かつ複雑になっており、従来の手法の有効性が問われている。複雑性と不確実性が増す環境下でS&OPを適応・進化させるための戦略的フレームワークを提示。経営意思決定との連携を強化するアジャイルなS&OPモデルの必要性を論じている。</div>
+      </div>
+
+      <div class="card">
+        <h3><a href="https://www.impactanalytics.ai/blog/integrated-business-planning" target="_blank">Integrated Business Planning 2026: Complete Guide</a></h3>
+        <div class="card-source">Impact Analytics / 英語</div>
+        <div class="card-summary">IBPは、S&OPをさらに発展させ、財務・販売・マーケティング・オペレーション・製品開発を横断する統合経営計画プロセスである。AIと機械学習の活用による需要予測精度の向上と、リアルタイム計画変更への対応力強化が重点テーマ。IBPを導入した企業は、需要予測精度が平均20〜50%向上すると報告されている。</div>
+      </div>
+
+      <div class="card">
+        <h3><a href="https://www.impactanalytics.ai/blog/supply-chain-demand-planning" target="_blank">How Do Supply Chains and Demand Planning Intersect in 2026?</a></h3>
+        <div class="card-source">Impact Analytics / 英語</div>
+        <div class="card-summary">2026年の需要計画は、AIエージェントの活用により予測精度と意思決定速度を大幅に向上させている。企業は予測主導型から消費実績主導型の計画モデルへシフトしており、リアルタイム需要シグナルと財務制約を組み合わせた統合的な計画フレームワークが主流になりつつある。需要計画テクノロジー市場は2030年まで年率10%超の成長が見込まれている。</div>
+      </div>
+
+      <div class="card">
+        <h3><a href="https://www.supplychaindive.com/news/supply-chain-trends-risks-2026-retail-manufacturing/808797/" target="_blank">5 Supply Chain Management Trends to Watch in 2026</a></h3>
+        <div class="card-source">Supply Chain Dive / 英語</div>
+        <div class="card-summary">2026年のサプライチェーン管理における5大トレンドを分析。関税構造の変化・地政学リスク・気候関連の混乱が計画の長期化を困難にしており、企業はより短いサイクルでの計画見直しと柔軟な供給網再編を求められている。AIエージェントによる需要予測の自動化と在庫最適化が「勝者と敗者」を分ける鍵になると指摘している。</div>
+      </div>
+
+      <div class="card">
+        <h3><a href="https://www.scmr.com/article/beyond-the-forecast-rethinking-demand-driven-planning" target="_blank">Beyond the Forecast: Rethinking Demand-Driven Planning</a></h3>
+        <div class="card-source">Supply Chain Management Review（SCMR）/ 英語</div>
+        <div class="card-summary">従来型の予測駆動型計画の限界を超えるため、需要実績に基づくプル型計画（RtL：Response to Latency）モデルへの移行が加速している。計画精度だけでなく、市場変化に対するレスポンス速度と計画の実行可能性が重視されるようになっており、ワンナンバーの実現に向けた組織横断的な合意形成が鍵と論じている。</div>
+      </div>
+
+      <div class="card">
+        <h3><a href="https://www.michiganstateuniversityonline.com/resources/supply-chain/supply-chain-resilience-in-2026-why-disruption-is-the-new-normal-and-how-leaders-are-preparing/" target="_blank">Supply Chain Resilience 2026: Why Disruption Is the New Normal</a></h3>
+        <div class="card-source">Michigan State University Online / 英語</div>
+        <div class="card-summary">2026年、サプライチェーンのリーダーたちは「混乱のない状態」を前提とした計画から、「混乱を前提とした回復力設計」へとパラダイムシフトしている。デジタルツインとAIによるリアルタイム監視が主要な対策ツールとして普及している。</div>
+      </div>
+
+      <div class="card">
+        <h3><a href="https://www.bcg.com/publications/2026/supply-chain-planning-why-ai-alone-isnt-enough" target="_blank">Supply Chain Planning 2026: Why AI Alone Isn't Enough（BCG）</a></h3>
+        <div class="card-source">Boston Consulting Group（BCG）/ 英語</div>
+        <div class="card-summary">BCGの2026年調査によると、AIを活用している企業は88%に上るが、測定可能なEBIT向上を達成できているのは39%に過ぎない。成功企業に共通するのは「AI活用を前提とした計画ワークフローの根本的な再構築」であった。</div>
+      </div>
+
+      <div class="card">
+        <h3><a href="https://www.scmr.com/article/2026-the-age-of-the-ai-supply-chain" target="_blank">2026: The Age of the AI Supply Chain</a></h3>
+        <div class="card-source">Supply Chain Management Review（SCMR）/ 英語</div>
+        <div class="card-summary">2026年はAIサプライチェーンの「本格導入元年」と位置付けられており、AIエージェントによる自律的な補充・在庫再調整・例外管理が現実のものとなってきている。GartnerはAIエージェントが2026年末までに企業アプリケーションの40%に埋め込まれると予測している。</div>
+      </div>
+
+      <div class="card">
+        <h3><a href="https://www.deloitte.com/us/en/insights/industry/manufacturing-industrial-products/agentic-supply-chain-artificial-intelligence-manufacturing.html" target="_blank">The Agentic Supply Chain in Manufacturing（Deloitte Insights）</a></h3>
+        <div class="card-source">Deloitte Insights / 英語</div>
+        <div class="card-summary">Deloitteが提唱する「エージェンティック・サプライチェーン」は、AIエージェントが自律的に意思決定し、人間のプランナーと協調しながらエンドツーエンドの計画・実行を行うモデルである。計画の自動化率向上と意思決定サイクルの短縮がKPIとして重視されている。</div>
+      </div>
+
+      <div class="card">
+        <h3><a href="https://kpmg.com/xx/en/our-insights/operations/supply-chain-trends-2026.html" target="_blank">Key Trends Impacting Supply Chains in 2026（KPMG）</a></h3>
+        <div class="card-source">KPMG / 英語</div>
+        <div class="card-summary">KPMGが2026年のサプライチェーン変革を左右する主要トレンドを整理。地政学リスクへの対応としてのサプライヤー分散（China+1戦略）、AIによる計画精度向上、サステナビリティ規制への対応、IBPの成熟度向上が挙げられている。</div>
+      </div>
+
+      <div class="card">
+        <h3><a href="https://www.board.com/resources/the-2026-gartner-magic-quadrant-supply-chain-planning-discrete-industries" target="_blank">2026 Gartner® Magic Quadrant™ for Supply Chain Planning Solutions</a></h3>
+        <div class="card-source">Gartner / Board International / 英語</div>
+        <div class="card-summary">2026年版ガートナー「サプライチェーン計画ソリューション」のマジッククアドラントが発表。Oracle、o9 Solutions、Blue Yonder、KinaxisがリーダーポジションでAIと機械学習を用いた高度な計画自動化・シナリオ分析能力が評価の軸となっている。</div>
+      </div>
+
+      <div class="card">
+        <h3><a href="https://news.sap.com/2026/02/blueprint-for-supply-chain-resilience-in-2026/" target="_blank">AI, Sustainability, and the New Blueprint for Supply Chain Resilience in 2026（SAP News）</a></h3>
+        <div class="card-source">SAP News / 英語</div>
+        <div class="card-summary">SAPが2026年のサプライチェーンレジリエンスの新しい設計図を提示。AIによる需要・供給の統合計画、サステナビリティKPIの計画指標への組み込み、マルチティアビジビリティの三本柱が経営変革の中核とされている。</div>
+      </div>
+
+      <div class="card">
+        <h3><a href="https://promotion.itmedia.co.jp/plan/2510_07" target="_blank">サプライチェーンDXサミット 2026 ～製造・流通・物流をつなぐ次世代SCM戦略～</a></h3>
+        <div class="card-source">ITmedia / 日本語</div>
+        <div class="card-summary">製造・流通・物流の各領域をつなぐ次世代SCM戦略をテーマとしたサミットが開催。部門間のデータサイロ解消・計画プロセスの標準化・PSI管理とS&OPの統合が課題として挙げられた。経営層が主導するトップダウン型のSCM変革の重要性が強調された。</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- AI/DX -->
+  <div id="ai" class="section">
+    <div class="section-title">AI / DX 経営戦略記事</div>
+    <div class="cards">
+
+      <div class="card card-ai">
+        <h3><a href="https://newsroom.ibm.com/2026-05-04-ibm-study-ceos-are-reshaping-c-suite-roles-for-the-ai-era" target="_blank">IBM Study: CEOs are Reshaping C-suite Roles for the AI Era</a></h3>
+        <div class="card-source">IBM Newsroom / 英語</div>
+        <div class="card-summary">IBMの2026年CEO調査によると、76%の企業がチーフAIオフィサー（CAIO）を設置済みまたは検討中。79%の経営幹部がAI普及に伴う意思決定の分散化を推進しており、AI戦略はもはや技術部門の専管事項ではなく経営全体の優先事項となっている。</div>
+      </div>
+
+      <div class="card card-ai">
+        <h3><a href="https://www.bcg.com/publications/2026/as-ai-investments-surge-ceos-take-the-lead" target="_blank">As AI Investments Surge, CEOs Take the Lead（BCG）</a></h3>
+        <div class="card-source">Boston Consulting Group（BCG）/ 英語</div>
+        <div class="card-summary">BCGの2026年調査で、AI投資が急増する中、CEOがAI戦略の主導権を握る構図が鮮明に。経営幹部の43%が2026年の最優先投資領域としてAI・テクノロジーを挙げており、AI戦略が「CEOのマンデート」へと移行した。</div>
+      </div>
+
+      <div class="card card-ai">
+        <h3><a href="https://www.cio.com/article/4114010/2026-the-year-ai-roi-gets-real.html" target="_blank">2026: The Year AI ROI Gets Real（CIO）</a></h3>
+        <div class="card-source">CIO / 英語</div>
+        <div class="card-summary">2026年はAI投資のROIが「証明の年」と位置付けられており、生成AIへの投資は平均3.7倍のリターンを生んでいるが、その成果は複数事業領域に横断展開した企業に集中している。79%の企業が高額投資にもかかわらず実装に課題を抱えている。</div>
+      </div>
+
+      <div class="card card-ai">
+        <h3><a href="https://www.deloitte.com/us/en/insights/topics/technology-management/tech-trends/2026/agentic-ai-strategy.html" target="_blank">Agentic AI Strategy: Tech Trends 2026（Deloitte Insights）</a></h3>
+        <div class="card-source">Deloitte Insights / 英語</div>
+        <div class="card-summary">Deloitteが2026年テックトレンドとして「エージェンティックAI戦略」を特集。既存ワークフローへの上乗せではなくエンドツーエンドのプロセス刷新がサイクルタイムを最大50%短縮した事例を報告。ガバナンス・セキュリティ・コスト管理が最大の課題として浮上している。</div>
+      </div>
+
+      <div class="card card-ai">
+        <h3><a href="https://www.northernlight.com/blog/what-is-ai-governance-and-why-it-matters-for-corporate-strategy-in-2026" target="_blank">What Is AI Governance — and Why It Matters for Corporate Strategy in 2026</a></h3>
+        <div class="card-source">Northern Light / 英語</div>
+        <div class="card-summary">Fortune500企業の80%がAIエージェントを業務に組み込んでいるが、ガバナンスを整備できているのはわずか25%で、58ポイントという史上最大の「採用-ガバナンスギャップ」が生じている。2026年はAIリスク管理が取締役会レベルの経営責任となる転換点。</div>
+      </div>
+
+      <div class="card card-ai">
+        <h3><a href="https://www.nttdata.com/jp/ja/trends/data-insight/2026/022002/" target="_blank">AIと共に進化する組織へ（NTTデータ DATA INSIGHT）</a></h3>
+        <div class="card-source">NTT DATA / 日本語</div>
+        <div class="card-summary">中央AI組織が共通ルールとインフラを管理しつつ、現場チームが顧客対応と日常改善を担うハイブリッド型AI組織が高業績企業の標準モデルとして定着しつつある。AIエージェントを導入した企業のDX成功率は未導入企業の約2倍。</div>
+      </div>
+
+      <div class="card card-ai">
+        <h3><a href="https://www.brainpad.co.jp/doors/contents/about_ai_agents_dx/" target="_blank">停滞するDXを打開する"AIエージェント"――経営改革の新たな推進力（DOORS DX）</a></h3>
+        <div class="card-source">DOORS DX（BrainPad）/ 日本語</div>
+        <div class="card-summary">DXが停滞する日本企業においてAIエージェントが経営改革の起爆剤となっている実態を解説。先行導入企業のDX成功率は未導入企業の約2倍。日本のDX市場は2030年度に8.6兆円規模へ拡大すると見込まれている。</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Football -->
+  <div id="football" class="section">
+    <div class="section-title">Football 戦術・マネジメント記事</div>
+    <div class="cards">
+
+      <div class="card card-football">
+        <h3><a href="https://www.rotowire.com/soccer/article/2026-world-cup-group-previews-lineups-odds-predictions-and-tactics-for-all-12-groups-111248" target="_blank">2026 World Cup Group Previews: Tactics, Odds & Lineups</a></h3>
+        <div class="card-source">RotoWire / 英語</div>
+        <div class="card-summary">FIFAワールドカップ2026の全12グループを網羅した戦術分析レポート。48チームが参加する初の拡大フォーマットで、各グループの戦術的傾向・予想スターティングメンバー・フォーメーション予測が詳細に解説されている。8試合をこなすフィジカル管理と局面ごとの戦術的適応力が優勝の鍵と分析。</div>
+      </div>
+
+      <div class="card card-football">
+        <h3><a href="https://talkingbets.wordpress.com/2026/02/08/premier-league-tactical-analysis/" target="_blank">Premier League Tactical Analysis: The Rise of High-Pressing Dominance（2026年2月）</a></h3>
+        <div class="card-source">Talking Bets / 英語</div>
+        <div class="card-summary">2026年プレミアリーグの戦術トレンドを分析。ハイプレスはもはや革新的戦術ではなく上位クラブの最低条件となっており、全上位クラブがその変形版を採用している。現代の戦術的問いは「プレスをするかどうか」ではなく「いつ・どのエリアで・どんなトリガーで」という洗練された問いになっている。</div>
+      </div>
+
+      <div class="card card-football">
+        <h3><a href="https://breakingthelines.com/opinion/world-cup-2026-tactical-preview-why-the-48-team-format-will-reshape-how-we-read-this-tournament/" target="_blank">World Cup 2026 Tactical Preview: Why the 48-Team Format Will Reshape How We Read This Tournament</a></h3>
+        <div class="card-source">Breaking The Lines / 英語</div>
+        <div class="card-summary">48チーム拡大フォーマットが試合の戦術的インセンティブ構造を大きく変えるという論考。12グループ制では3位通過の可能性があるため、グループ第1・2節はリスク管理優先の保守的戦術、第3節で一転した積極的戦術を取るチームが増えると予測。</div>
+      </div>
+
+      <div class="card card-football">
+        <h3><a href="https://learning.coachesvoice.com/cv/tottenham-arsenal-tactics-february-2026/" target="_blank">Tottenham 1 Arsenal 4: Tactical Analysis（2026年2月）</a></h3>
+        <div class="card-source">Coaches' Voice / 英語</div>
+        <div class="card-summary">2026年2月のプレミアリーグ、トッテナム対アーセナル（1-4）の詳細戦術分析。アーセナルの構造的なプレスの仕組み、ポジショナルプレーからの素早いトランジション、守備ブロックの組織的な整備が勝因として解説されている。</div>
+      </div>
+
+      <div class="card card-football">
+        <h3><a href="https://fsi.training/en/blogs/football-tactical-analysis-2026" target="_blank">The Revolution in Football Tactical Analysis in 2026: The Complete Guide</a></h3>
+        <div class="card-source">FSI Football Science Institute / 英語</div>
+        <div class="card-summary">GPSスマートウェアラブル・AIによるパターン認識・VR/ARトレーニングシミュレーションなど最新技術の戦術分析への応用を包括的に解説。AIと機械学習は人間の目には見えないパターンを識別し、試合の帰趨を左右しうる洞察を提供するまでに進化している。</div>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<script>
+  function show(id, btn) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
