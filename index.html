@@ -241,8 +241,26 @@
   <section id="contact">
     <div class="container">
       <h2>お問い合わせ</h2>
-      <p class="contact-lead">サービスに関するご相談はメールにてお気軽にどうぞ。</p>
-      <a href="mailto:info@transformix.jp" class="btn">info@transformix.jp</a>
+      <p class="contact-lead">サービスに関するご相談はお気軽にどうぞ。</p>
+      <form action="https://formspree.io/f/maqvapde" method="POST" style="max-width:560px;">
+        <div style="margin-bottom:1.25rem;">
+          <label style="display:block;font-size:0.85rem;font-weight:700;margin-bottom:0.4rem;">お名前 <span style="color:#c00;">*</span></label>
+          <input type="text" name="name" required style="width:100%;padding:0.75rem 1rem;border:1px solid var(--border);font-size:0.95rem;font-family:inherit;outline:none;" placeholder="山田 太郎">
+        </div>
+        <div style="margin-bottom:1.25rem;">
+          <label style="display:block;font-size:0.85rem;font-weight:700;margin-bottom:0.4rem;">会社名</label>
+          <input type="text" name="company" style="width:100%;padding:0.75rem 1rem;border:1px solid var(--border);font-size:0.95rem;font-family:inherit;outline:none;" placeholder="株式会社〇〇">
+        </div>
+        <div style="margin-bottom:1.25rem;">
+          <label style="display:block;font-size:0.85rem;font-weight:700;margin-bottom:0.4rem;">メールアドレス <span style="color:#c00;">*</span></label>
+          <input type="email" name="email" required style="width:100%;padding:0.75rem 1rem;border:1px solid var(--border);font-size:0.95rem;font-family:inherit;outline:none;" placeholder="taro@example.com">
+        </div>
+        <div style="margin-bottom:1.75rem;">
+          <label style="display:block;font-size:0.85rem;font-weight:700;margin-bottom:0.4rem;">お問い合わせ内容 <span style="color:#c00;">*</span></label>
+          <textarea name="message" required rows="5" style="width:100%;padding:0.75rem 1rem;border:1px solid var(--border);font-size:0.95rem;font-family:inherit;outline:none;resize:vertical;" placeholder="ご相談内容をご記入ください"></textarea>
+        </div>
+        <button type="submit" class="btn" style="border:none;cursor:pointer;font-family:inherit;">送信する</button>
+      </form>
     </div>
   </section>
 
