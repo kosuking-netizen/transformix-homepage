@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transformix Insights — Daily Article Viewer</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --indigo: #1e3a5f; --indigo-light: #eef2f8;
+    --text: #111; --muted: #555; --border: #e0e0e0;
+    --bg: #f7f8fa; --white: #fff;
+    --ai: #2d6a4f; --football: #7b3f00; --kyoto: #6b3fa0;
+  }
+  body { font-family: 'Helvetica Neue','Hiragino Sans','Yu Gothic',sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+  header { background: var(--indigo); color: #fff; padding: 1.75rem 2.5rem; }
+  .header-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
+  .header-left .logo { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.6; margin-bottom: 0.4rem; }
+  .header-left h1 { font-size: 1.35rem; font-weight: 800; }
+  .header-right { display: flex; align-items: center; gap: 0.75rem; }
+  .lang-toggle { display: flex; background: rgba(255,255,255,0.15); border-radius: 2rem; overflow: hidden; }
+  .lang-toggle button { background: none; border: none; color: rgba(255,255,255,0.6); font-size: 0.8rem; font-weight: 700; padding: 0.35rem 0.9rem; cursor: pointer; transition: all 0.2s; }
+  .lang-toggle button.active { background: #fff; color: var(--indigo); border-radius: 2rem; }
+
+  .layout { max-width: 1200px; margin: 0 auto; padding: 2rem 2.5rem; display: grid; grid-template-columns: 190px 1fr; gap: 2rem; }
+  @media (max-width: 768px) { .layout { grid-template-columns: 1fr; } }
+
+  .sidebar { position: sticky; top: 1rem; align-self: start; }
+  .sidebar-title { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
+  .date-list { list-style: none; }
+  .date-list li { margin-bottom: 0.2rem; }
+  .date-list a { display: block; padding: 0.45rem 0.75rem; font-size: 0.82rem; color: var(--muted); border-radius: 4px; text-decoration: none; transition: all 0.15s; border-left: 3px solid transparent; }
+  .date-list a:hover { background: var(--white); color: var(--text); border-left-color: var(--indigo); }
+  .date-list a.today { background: var(--indigo-light); color: var(--indigo); font-weight: 700; border-left-color: var(--indigo); }
+
+  .main-content { min-width: 0; }
+  .tabs { background: var(--white); border: 1px solid var(--border); border-bottom: none; display: flex; border-radius: 4px 4px 0 0; flex-wrap: wrap; }
+  .tab { padding: 0.8rem 1.2rem; font-size: 0.85rem; font-weight: 600; cursor: pointer; border-bottom: 3px solid transparent; color: var(--muted); transition: all 0.2s; background: none; border-top: none; border-left: none; border-right: none; }
+  .tab:hover { color: var(--text); background: var(--bg); }
+  .tab.active { color: var(--indigo); border-bottom-color: var(--indigo); }
+  .tab.tab-ai.active { color: var(--ai); border-bottom-color: var(--ai); }
+  .tab.tab-football.active { color: var(--football); border-bottom-color: var(--football); }
+  .tab.tab-kyoto.active { color: var(--kyoto); border-bottom-color: var(--kyoto); }
+
+  .date-header { background: var(--white); border: 1px solid var(--border); border-top: none; padding: 0.9rem 1.2rem; display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1rem; }
+  .date-label { font-size: 0.95rem; font-weight: 800; color: var(--indigo); }
+  .badge { background: var(--indigo-light); color: var(--indigo); padding: 0.18rem 0.6rem; border-radius: 2rem; font-size: 0.72rem; font-weight: 700; }
+  .badge-ai { background: #e8f5ee; color: var(--ai); }
+  .badge-football { background: #fdf0e6; color: var(--football); }
+  .badge-kyoto { background: #f5eeff; color: var(--kyoto); }
+
+  .section { display: none; }
+  .section.active { display: block; }
+  .cards { display: grid; gap: 0.65rem; }
+  .card { background: var(--white); border: 1px solid var(--border); padding: 1.1rem 1.4rem; border-radius: 4px; border-left: 4px solid var(--indigo); }
+  .card-ai { border-left-color: var(--ai); }
+  .card-football { border-left-color: var(--football); }
+  .card-kyoto { border-left-color: var(--kyoto); }
+  .card h3 { font-size: 0.92rem; font-weight: 700; margin-bottom: 0.35rem; line-height: 1.4; }
+  .card h3 a { color: var(--indigo); text-decoration: none; }
+  .card h3 a:hover { text-decoration: underline; }
+  .card-ai h3 a { color: var(--ai); }
+  .card-football h3 a { color: var(--football); }
+  .card-kyoto h3 a { color: var(--kyoto); }
+  .card-source { font-size: 0.73rem; color: var(--muted); margin-bottom: 0.5rem; }
+  .card-summary { font-size: 0.862rem; line-height: 1.75; }
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="header-left">
+      <a id="back-link" href="/" style="font-size:0.75rem;opacity:0.6;color:#fff;text-decoration:none;display:block;margin-bottom:0.4rem;" data-ja="← トップページへ" data-en="← Back to Top">← トップページへ</a>
+      <h1>📰 <span data-ja="インサイト" data-en="Insights">インサイト</span></h1>
+    </div>
+    <div class="header-right">
+      <div class="lang-toggle">
+        <button id="btn-ja" class="active" onclick="setLang('ja')">JP</button>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-title" data-ja="収集日一覧" data-en="Archive">収集日一覧</div>
+    <ul class="date-list">
+      <li><a href="index.html" class="today">2026-05-12 <span data-ja="（今日）" data-en="(Today)">（今日）</span></a></li>
+      <li><a href="2026-05-11.html">2026-05-11</a></li>
+      <li><a href="2026-05-10.html">2026-05-10</a></li>
+    </ul>
+  </aside>
+
+  <div class="main-content">
+    <div class="tabs">
+      <button class="tab active" onclick="show('scm',this)">SCM（12）</button>
+      <button class="tab tab-ai" onclick="show('ai',this)">AI / DX（7）</button>
+      <button class="tab tab-football" onclick="show('football',this)">Football（5）</button>
+      <button class="tab tab-kyoto" onclick="show('kyoto',this)"><span data-ja="京都・仏教・瞑想（5）" data-en="Kyoto・Zen（5）">京都・仏教・瞑想（5）</span></button>
+    </div>
+    <div class="date-header">
+      <span class="date-label">2026-05-12</span>
+      <span class="badge">SCM 12<span data-ja="本" data-en=" articles">本</span></span>
+      <span class="badge badge-ai">AI/DX 7<span data-ja="本" data-en=" articles">本</span></span>
+      <span class="badge badge-football">Football 5<span data-ja="本" data-en=" articles">本</span></span>
+      <span class="badge badge-kyoto"><span data-ja="京都・仏教・瞑想" data-en="Kyoto・Zen">京都・仏教・瞑想</span> 5<span data-ja="本" data-en=" articles">本</span></span>
+    </div>
+
+    <!-- SCM -->
+    <div id="scm" class="section active"><div class="cards">
+
+      <div class="card">
+        <h3><a href="https://www.trustcloud.ai/grc/supply-chain-resilience-ultimate-guide-to-global-risk-management/" target="_blank" rel="noopener noreferrer">Supply Chain Resilience: Ultimate Guide to Global Risk Management 2026</a></h3>
+        <div class="card-source">TrustCloud / <span data-ja="英語" data-en="English">英語</span></div>
+        <div class="card-summary" data-ja="サプライチェーンのレジリエンスを2026年のグローバルリスク管理の観点から体系的に解説した包括的ガイド。地政学リスク、サイバーリスク、原材料不足を経営戦略に組み込む重要性を強調し、73%のサプライチェーン幹部が今後1〜3年でオペレーティングモデルの変革を計画していることを報告している。デュアルソーシング、デジタルツイン活用、AIによるリスクシミュレーションが鍵となる取り組みとして示されている。" data-en="A comprehensive guide to supply chain resilience in 2026 emphasizing global risk management, covering geopolitical, cyber, and material risks. 73% of supply chain leaders are planning operating model transformations, with dual sourcing, digital twins, and AI risk simulation as core strategies.">サプライチェーンのレジリエンスを2026年のグローバルリスク管理の観点から体系的に解説した包括的ガイド。地政学リスク、サイバーリスク、原材料不足を経営戦略に組み込む重要性を強調し、73%のサプライチェーン幹部が今後1〜3年でオペレーティングモデルの変革を計画していることを報告している。デュアルソーシング、デジタルツイン活用、AIによるリスクシミュレーションが鍵となる取り組みとして示されている。</div>
+      </div>
+
+      <div class="card">
+        <h3><a href="https://www.exiger.com/perspectives/supplier-risk-management-shifts-2026/" target="_blank" rel="noopener noreferrer">5 Supplier Risk Management Shifts Gartner Is Surfacing for 2026</a></h3>
+        <div class="card-source">Exiger / <span data-ja="英語" data-en="English">英語</span></div>
+        <div class="card-summary" data-ja="Gartnerが2026年に注目するサプライヤーリスク管理の5つの変化をExigerがまとめた記事。リスク管理の予防中心から回復力重視へのシフト、AIによるリアルタイムサプライヤー監視の普及、第三者・第四者リスクの可視化強化が主要トレンドとして挙げられている。サプライチェーンの戦略的意思決定層がサプライヤーリスクをより重視している。" data-en="Summarizes five Gartner-identified supplier risk management shifts for 2026, including the move from prevention-only to resilience-focused strategies and the rise of AI-powered real-time supplier monitoring. Organizations are embedding third- and fourth-party risk visibility into strategic decision-making.">Gartnerが2026年に注目するサプライヤーリスク管理の5つの変化をExigerがまとめた記事。リスク管理の予防中心から回復力重視へのシフト、AIによるリアルタイムサプライヤー監視の普及、第三者・第四者リスクの可視化強化が主要トレンドとして挙げられている。サプライチェーンの戦略的意思決定層がサプライヤーリスクをより重視している。</div>
+      </div>
+
+      <div class="card">
+        <h3><a href="https://emag.directindustry.com/2026/01/19/geopolitics-supply-chain-risks-2026/" target="_blank" rel="noopener noreferrer">Supply Chain Risks in 2026: How Companies Must Adapt</a></h3>
+        <div class="card-source">DirectIndustry e-Magazine / <span data-ja="英語" data-en="English">英語</span></div>
+        <div class="card-summary" data-ja="2026年のサプライチェーンが直面する主要リスクを地政学的視点から分析。紛争・貿易摩擦・戦略的対立がシステミックリスクとして他のすべてのサプライチェーンリスクに影響を与える「メタリスク」として位置づけられている。企業はサプライチェーンのデュアルソーシングと地域分散をコアの競争戦略として採用することが求められている。" data-en="Analyzes the geopolitical 'meta-risk' shaping supply chain strategies in 2026, where conflicts, trade disputes, and rivalries create systemic vulnerabilities across all supply chain functions. Companies must embed geographic diversification and dual sourcing as core competitive strategies.">2026年のサプライチェーンが直面する主要リスクを地政学的視点から分析。紛争・貿易摩擦・戦略的対立がシステミックリスクとして他のすべてのサプライチェーンリスクに影響を与える「メタリスク」として位置づけられている。企業はサプライチェーンのデュアルソーシングと地域分散をコアの競争戦略として採用することが求められている。</div>
+      </div>
+
+      <div class="card">
+        <h3><a href="https://www.ey.com/en_us/insights/coo/autonomous-supply-chain-planning-with-ai" target="_blank" rel="noopener noreferrer">Autonomous Supply Chain Planning with AI</a></h3>
+        <div class="card-source">EY / <span data-ja="英語" data-en="English">英語</span></div>
+        <div class="card-summary" data-ja="EYが解説する自律型サプライチェーン計画の概念。エンドツーエンドの計画能力として需要・供給・在庫・キャパシティ・財務目標を連続的に接続し、常時稼働の意思決定システムを構築する方法が示されている。事前承認された行動は自動実行され、高インパクトな判断のみ人間がエスカレーション対応する仕組みが核心となっている。" data-en="EY outlines autonomous supply chain planning as an end-to-end, always-on system connecting demand, supply, inventory, capacity, and financial objectives. Pre-approved routine decisions execute automatically, escalating only high-impact or ambiguous decisions to human planners.">EYが解説する自律型サプライチェーン計画の概念。エンドツーエンドの計画能力として需要・供給・在庫・キャパシティ・財務目標を連続的に接続し、常時稼働の意思決定システムを構築する方法が示されている。事前承認された行動は自動実行され、高インパクトな判断のみ人間がエスカレーション対応する仕組みが核心となっている。</div>
+      </div>
+
+      <div class="card">
+        <h3><a href="https://logisticsviewpoints.com/2026/04/01/q1-2026-supply-chain-trends-costs-rise-ai-moves-into-execution/" target="_blank" rel="noopener noreferrer">Q1 2026 Supply Chain Trends: Costs Rise, AI Moves Into Execution</a></h3>
+        <div class="card-source">Logistics Viewpoints / <span data-ja="英語" data-en="English">英語</span></div>
+        <div class="card-summary" data-ja="2026年第1四半期のサプライチェーントレンドレポート。AIが計画領域から実行領域へと移行しつつあり、コスト上昇と在庫最適化の圧力が高まっていることが報告されている。需要予測精度向上（20〜40%）や調達最適化で測定可能なROIを実証できる企業と、そうでない企業の分断が2026年の焦点となっている。" data-en="A Q1 2026 analysis showing AI moving beyond supply chain planning into execution workflows as cost pressures intensify. Companies demonstrating measurable ROI — with 20–40% demand forecast accuracy gains — are pulling ahead, creating a clear divide from those still in pilot mode.">2026年第1四半期のサプライチェーントレンドレポート。AIが計画領域から実行領域へと移行しつつあり、コスト上昇と在庫最適化の圧力が高まっていることが報告されている。需要予測精度向上（20〜40%）や調達最適化で測定可能なROIを実証できる企業と、そうでない企業の分断が2026年の焦点となっている。</div>
+      </div>
+
+      <div class="card">
+        <h3><a href="https://www.globaltrademag.com/how-ai-driven-trade-intelligence-is-reshaping-global-supply-chain-decision-making-in-2026/" target="_blank" rel="noopener noreferrer">How AI-Driven Trade Intelligence Is Reshaping Global Supply Chain Decision-Making in 2026</a></h3>
+        <div class="card-source">Global Trade Magazine / <span data-ja="英語" data-en="English">英語</span></div>
+        <div class="card-summary" data-ja="AIを活用したトレードインテリジェンス（貿易情報分析）がグローバルサプライチェーンの意思決定をどう変えているかを解説した記事。関税変動・地政学リスク・輸送コストをリアルタイムで統合分析し、経営層の意思決定を支援するプラットフォームが普及しつつある。特に製造業・自動車業界での活用が進んでいる。" data-en="Examines how AI-driven trade intelligence platforms are reshaping supply chain decision-making in 2026 by integrating real-time tariff, geopolitical, and logistics cost data. Manufacturing and automotive sectors are leading adoption as organizations navigate economic and trade volatility.">AIを活用したトレードインテリジェンス（貿易情報分析）がグローバルサプライチェーンの意思決定をどう変えているかを解説した記事。関税変動・地政学リスク・輸送コストをリアルタイムで統合分析し、経営層の意思決定を支援するプラットフォームが普及しつつある。特に製造業・自動車業界での活用が進んでいる。</div>
+      </div>
+
+      <div class="card">
+        <h3><a href="https://www.scmr.com/article/ai-in-the-supply-chain-from-pilot-programs-to-pl-impact" target="_blank" rel="noopener noreferrer">AI in the Supply Chain: From Pilot Programs to P&amp;L Impact</a></h3>
+        <div class="card-source">Supply Chain Management Review (SCMR) / <span data-ja="英語" data-en="English">英語</span></div>
+        <div class="card-summary" data-ja="AIのサプライチェーン活用がパイロット段階から損益への実質的インパクト創出段階へ移行するための条件を分析。データガバナンス・プロセス標準化・クロスファンクショナルな連携なしにAIが成功しない理由を指摘し、既存ワークフローへの統合（並列システムを作らない）が成功の鍵と述べている。" data-en="SCMR analyzes the conditions required for AI to move from pilot projects to measurable P&amp;L impact. Success depends on embedding AI into existing workflows — not parallel systems — backed by data governance, process standardization, and cross-functional alignment.">AIのサプライチェーン活用がパイロット段階から損益への実質的インパクト創出段階へ移行するための条件を分析。データガバナンス・プロセス標準化・クロスファンクショナルな連携なしにAIが成功しない理由を指摘し、既存ワークフローへの統合（並列システムを作らない）が成功の鍵と述べている。</div>
+      </div>
+
+      <div class="card">
+        <h3><a href="https://www.tandfonline.com/doi/full/10.1080/00207543.2026.2630277" target="_blank" rel="noopener noreferrer">Agentic Digital Twins: Bridging Model-Based and AI-Driven Decision-Making for Supply Chain</a></h3>
+        <div class="card-source">Taylor &amp; Francis / International Journal of Production Research / <span data-ja="英語（学術誌）" data-en="English (Academic)">英語（学術誌）</span></div>
+        <div class="card-summary" data-ja="学術誌「International Journal of Production Research」に掲載された2026年の最新研究論文。モデルベースと機械学習ベースの意思決定支援を統合した「エージェント型デジタルツイン」のフレームワークを提案している。サプライチェーン計画に動的シミュレーション能力とリアルタイムのAI意思決定を統合する次世代アーキテクチャの理論的基盤を示す。" data-en="An academic paper proposing an 'agentic digital twin' framework that bridges model-based supply chain planning with AI-driven decision-making. This 2026 research presents a next-generation architecture integrating dynamic simulation with real-time autonomous decision capabilities.">学術誌「International Journal of Production Research」に掲載された2026年の最新研究論文。モデルベースと機械学習ベースの意思決定支援を統合した「エージェント型デジタルツイン」のフレームワークを提案している。サプライチェーン計画に動的シミュレーション能力とリアルタイムのAI意思決定を統合する次世代アーキテクチャの理論的基盤を示す。</div>
+      </div>
+
+      <div class="card">
+        <h3><a href="https://www.globaltrademag.com/how-ai-and-digital-twins-are-revolutionizing-global-supply-chain-management-in-2026/" target="_blank" rel="noopener noreferrer">How AI and Digital Twins Are Revolutionizing Global Supply Chain Management in 2026</a></h3>
+        <div class="card-source">Global Trade Magazine / <span data-ja="英語" data-en="English">英語</span></div>
+        <div class="card-summary" data-ja="デジタルツインとAIの融合がグローバルサプライチェーン管理をどう変革しているかを概説。SiemensのリアルタイムAIシミュレーション機能や、製造ライン・物流フロー・輸送シナリオを物理変更前に仮想環境でモデル化できる能力を紹介している。早期導入企業では主要指標で約30%の効率向上が報告されている。" data-en="Covers the convergence of digital twins and AI in revolutionizing supply chain management in 2026, highlighting real-time AI simulation capabilities that let manufacturers model production lines and logistics scenarios before physical changes. Early adopters report approximately 30% efficiency gains.">デジタルツインとAIの融合がグローバルサプライチェーン管理をどう変革しているかを概説。SiemensのリアルタイムAIシミュレーション機能や、製造ライン・物流フロー・輸送シナリオを物理変更前に仮想環境でモデル化できる能力を紹介している。早期導入企業では主要指標で約30%の効率向上が報告されている。</div>
+      </div>
+
+      <div class="card">
+        <h3><a href="https://www.microsoft.com/en-us/industry/blog/manufacturing-and-mobility/2026/03/24/supply-chain-2-0-how-microsoft-is-powering-simulations-ai-agents-and-physical-ai/" target="_blank" rel="noopener noreferrer">Supply Chain 2.0: How Microsoft Is Powering Simulations, AI Agents, and Physical AI</a></h3>
+        <div class="card-source">Microsoft Industry Blog / <span data-ja="英語" data-en="English">英語</span></div>
+        <div class="card-summary" data-ja="Microsoftが2026年3月に公開した「サプライチェーン2.0」に関する記事。25以上のAIエージェントとアプリケーションを展開し、2026年末までに100以上のエージェントを稼働させる目標を掲げる。需要計画エージェントがAIベースの需要シミュレーションを実行し、予測精度向上と手動作業削減を実現している実例が紹介されている。" data-en="Microsoft describes its Supply Chain 2.0 initiative deploying 25+ AI agents with a goal of 100+ agents by end-2026. A Demand Planning Agent drives AI-based demand simulations, improving forecast accuracy and reducing manual reconciliation in IT supply chain operations.">Microsoftが2026年3月に公開した「サプライチェーン2.0」に関する記事。25以上のAIエージェントとアプリケーションを展開し、2026年末までに100以上のエージェントを稼働させる目標を掲げる。需要計画エージェントがAIベースの需要シミュレーションを実行し、予測精度向上と手動作業削減を実現している実例が紹介されている。</div>
+      </div>
+
+      <div class="card">
+        <h3><a href="https://www.ey.com/en_us/insights/coo/physical-ai-powering-adaptive-supply-chains" target="_blank" rel="noopener noreferrer">Physical AI Powering Adaptive Supply Chains</a></h3>
+        <div class="card-source">EY / <span data-ja="英語" data-en="English">英語</span></div>
+        <div class="card-summary" data-ja="デジタルとフィジカルを融合した「フィジカルAI」がアダプティブ（適応型）サプライチェーンをどう実現するかをEYが解説。ロボット・センサー・リアルタイムデータと計画AIの統合により、物理的な供給制約に即応した自律的な計画調整が可能になる。工場や倉庫の自動化から計画層への接続が次段階のサプライチェーン変革として位置づけられている。" data-en="EY explores how 'Physical AI' — integrating robotics, sensors, and real-time data with planning AI — enables adaptive supply chains that autonomously adjust plans in response to physical constraints. This represents the next stage of supply chain transformation beyond digital-only planning.">デジタルとフィジカルを融合した「フィジカルAI」がアダプティブ（適応型）サプライチェーンをどう実現するかをEYが解説。ロボット・センサー・リアルタイムデータと計画AIの統合により、物理的な供給制約に即応した自律的な計画調整が可能になる。工場や倉庫の自動化から計画層への接続が次段階のサプライチェーン変革として位置づけられている。</div>
+      </div>
+
+      <div class="card">
+        <h3><a href="https://excellement.com/supply-chain-network-optimization/" target="_blank" rel="noopener noreferrer">Supply Chain Network Optimization in 2026: Inventory, Push-Pull Strategy &amp; Integrated Design</a></h3>
+        <div class="card-source">Excellement / <span data-ja="英語" data-en="English">英語</span></div>
+        <div class="card-summary" data-ja="2026年のサプライチェーンネットワーク最適化について、在庫最適化・プッシュ/プル戦略・統合サプライチェーン設計を包括的に解説したガイド。従来の年次レビューから四半期・月次へのダイナミックなネットワーク設計見直しへの移行と、デジタルツインを活用したリアルタイム再最適化が主要テーマ。財務目標との整合を強調したワンナンバー管理の観点からも参照できる。" data-en="A comprehensive 2026 guide to supply chain network optimization covering inventory optimization, push-pull strategies, and integrated supply chain design. Emphasizes shifting from annual to quarterly or monthly dynamic network reviews using digital twin technology for real-time re-optimization.">2026年のサプライチェーンネットワーク最適化について、在庫最適化・プッシュ/プル戦略・統合サプライチェーン設計を包括的に解説したガイド。従来の年次レビューから四半期・月次へのダイナミックなネットワーク設計見直しへの移行と、デジタルツインを活用したリアルタイム再最適化が主要テーマ。財務目標との整合を強調したワンナンバー管理の観点からも参照できる。</div>
+      </div>
+
+    </div></div>
+
+    <!-- AI/DX -->
+    <div id="ai" class="section"><div class="cards">
+
+      <div class="card card-ai">
+        <h3><a href="https://www.wndyr.com/blog/2026-the-year-ai-roi-gets-real-and-forces-a-strategic-fork-in-the-road" target="_blank" rel="noopener noreferrer">2026: The Year AI ROI Gets Real and Forces a Strategic Fork in the Road</a></h3>
+        <div class="card-source">Wndyr / <span data-ja="英語" data-en="English">英語</span></div>
+        <div class="card-summary" data-ja="2026年がAI投資のROI実証元年となり、企業が戦略的な分岐点を迎えると論じる記事。95%のエンタープライズAIパイロットがP&Lインパクトゼロという現実を指摘しつつ、エンドツーエンドのワークフロー再設計を先行した企業がROIを実証して競争優位を確立しつつあることを示す。経営幹部が感じるAI投資へのプレッシャーは前年比で大幅に増している。" data-en="Argues that 2026 is the pivotal year when AI ROI expectations force a strategic divide between companies that can prove business value and those that cannot. Companies redesigning end-to-end workflows before selecting AI models are twice as likely to achieve significant returns.">2026年がAI投資のROI実証元年となり、企業が戦略的な分岐点を迎えると論じる記事。95%のエンタープライズAIパイロットがP&Lインパクトゼロという現実を指摘しつつ、エンドツーエンドのワークフロー再設計を先行した企業がROIを実証して競争優位を確立しつつあることを示す。経営幹部が感じるAI投資へのプレッシャーは前年比で大幅に増している。</div>
+      </div>
+
+      <div class="card card-ai">
+        <h3><a href="https://www.wwt.com/blog/ai-as-strategy-what-ceos-and-boards-must-get-right-in-2026" target="_blank" rel="noopener noreferrer">AI as Strategy: What CEOs and Boards Must Get Right in 2026</a></h3>
+        <div class="card-source">World Wide Technology (WWT) / <span data-ja="英語" data-en="English">英語</span></div>
+        <div class="card-summary" data-ja="CEOと取締役会がAIを単なるIT施策ではなく経営戦略として位置づけるために何を正しく行うべきかを論じた記事。AIが戦略・オペレーション・文化・リスク・タレントに同時に影響を与える「組織の根本的な変革の扉」として捉え直す視点を提供。75%のCEOが企業のAI意思決定者であるという調査結果を踏まえたガバナンス論が中心。" data-en="WWT argues that CEOs and boards must treat AI as core business strategy rather than an IT initiative, with AI now touching strategy, operations, culture, risk, and talent simultaneously. With 75% of CEOs identified as their company's chief AI decision-maker, governance and transformation frameworks are critical.">CEOと取締役会がAIを単なるIT施策ではなく経営戦略として位置づけるために何を正しく行うべきかを論じた記事。AIが戦略・オペレーション・文化・リスク・タレントに同時に影響を与える「組織の根本的な変革の扉」として捉え直す視点を提供。75%のCEOが企業のAI意思決定者であるという調査結果を踏まえたガバナンス論が中心。</div>
+      </div>
+
+      <div class="card card-ai">
+        <h3><a href="https://www.ibm.com/think/insights/ai-roi" target="_blank" rel="noopener noreferrer">How to Maximize AI ROI in 2026</a></h3>
+        <div class="card-source">IBM Think / <span data-ja="英語" data-en="English">英語</span></div>
+        <div class="card-summary" data-ja="IBMが公開したAI ROI最大化に向けた実践的フレームワーク。IBM研究では25%のAI施策しか期待ROIを達成しておらず、企業全体への展開は16%にとどまるという厳しい現実を出発点に、成功パターンを分析している。エンドツーエンドの変革、ワークフロー再設計、人間とAIの協働モデル構築が成功要因として挙げられている。" data-en="IBM presents a practical framework for maximizing AI ROI, starting from the sobering finding that only 25% of AI initiatives deliver expected returns and just 16% scale enterprise-wide. End-to-end transformation, workflow redesign, and human-AI collaboration models are identified as success factors.">IBMが公開したAI ROI最大化に向けた実践的フレームワーク。IBM研究では25%のAI施策しか期待ROIを達成しておらず、企業全体への展開は16%にとどまるという厳しい現実を出発点に、成功パターンを分析している。エンドツーエンドの変革、ワークフロー再設計、人間とAIの協働モデル構築が成功要因として挙げられている。</div>
+      </div>
+
+      <div class="card card-ai">
+        <h3><a href="https://www.fifthrow.com/blog/agentic-ai-s-enterprise-tipping-point-how-april-2026-redefined-systematic-innovation-and-production-scale-adoption" target="_blank" rel="noopener noreferrer">Agentic AI's Enterprise Tipping Point: How April 2026 Redefined Systematic Innovation</a></h3>
+        <div class="card-source">FifthRow / <span data-ja="英語" data-en="English">英語</span></div>
+        <div class="card-summary" data-ja="2026年4月がエージェント型AIの企業導入における転換点となったと分析する記事。グローバルのエージェントAI市場が90億ドルを超え、中央値ROIが171%（米国企業では192%）に達することが示されている。先進企業はエージェントを個別自動化ではなくエンドツーエンドのプロセス再設計の観点から活用している。" data-en="Analyzes April 2026 as the tipping point for agentic AI enterprise adoption, with the global agentic AI market surpassing $9 billion and median ROI reaching 171% globally and 192% for US enterprises. Leading organizations redesign end-to-end processes rather than layering agents onto existing workflows.">2026年4月がエージェント型AIの企業導入における転換点となったと分析する記事。グローバルのエージェントAI市場が90億ドルを超え、中央値ROIが171%（米国企業では192%）に達することが示されている。先進企業はエージェントを個別自動化ではなくエンドツーエンドのプロセス再設計の観点から活用している。</div>
+      </div>
+
+      <div class="card card-ai">
+        <h3><a href="https://hbr.org/sponsored/2026/02/a-blueprint-for-enterprise-wide-agentic-ai-transformation" target="_blank" rel="noopener noreferrer">A Blueprint for Enterprise-Wide Agentic AI Transformation</a></h3>
+        <div class="card-source">Harvard Business Review (Google Cloud協賛) / <span data-ja="英語" data-en="English">英語</span></div>
+        <div class="card-summary" data-ja="HBRとGoogle Cloudが共同で提供する全社的なエージェント型AI変革のブループリント。個別エージェント導入から体系的なアプローチへの移行、プロセス横断でのエージェント統合設計が中心テーマ。Samsungの2030年AI工場化計画やFujitsuの開発サイクル3ヶ月→4時間短縮の事例が紹介されている。" data-en="An HBR blueprint (sponsored by Google Cloud) for enterprise-wide agentic AI transformation, emphasizing systematic rather than ad-hoc agent deployment. Features Samsung's AI factory initiative and Fujitsu's AI development platform that reduced modification cycles from three months to four hours.">HBRとGoogle Cloudが共同で提供する全社的なエージェント型AI変革のブループリント。個別エージェント導入から体系的なアプローチへの移行、プロセス横断でのエージェント統合設計が中心テーマ。Samsungの2030年AI工場化計画やFujitsuの開発サイクル3ヶ月→4時間短縮の事例が紹介されている。</div>
+      </div>
+
+      <div class="card card-ai">
+        <h3><a href="https://www.governance-intelligence.com/regulatory-compliance/how-ai-will-redefine-compliance-risk-and-governance-2026" target="_blank" rel="noopener noreferrer">How AI Will Redefine Compliance, Risk and Governance in 2026</a></h3>
+        <div class="card-source">Governance Intelligence / <span data-ja="英語" data-en="English">英語</span></div>
+        <div class="card-summary" data-ja="AIが企業のコンプライアンス・リスク・ガバナンスを2026年にどう再定義するかを論じた記事。AIが「ツール」から「アクター」（自律的に計画・推論・実行するシステム）へ変わることで、人材ガバナンスと同様の枠組みでAIをガバナンスする必要性が増していることを指摘。自律型エージェントの監視・自律境界設定・ポリシー強制がカギとなる。" data-en="Explores how AI transitioning from a 'tool' to an 'actor' — autonomously planning, reasoning, and executing — requires governance frameworks equivalent to human workforce management. Only one in five companies currently has a mature model for governing autonomous AI agents, creating significant organizational risk.">AIが企業のコンプライアンス・リスク・ガバナンスを2026年にどう再定義するかを論じた記事。AIが「ツール」から「アクター」（自律的に計画・推論・実行するシステム）へ変わることで、人材ガバナンスと同様の枠組みでAIをガバナンスする必要性が増していることを指摘。自律型エージェントの監視・自律境界設定・ポリシー強制がカギとなる。</div>
+      </div>
+
+      <div class="card card-ai">
+        <h3><a href="https://www.ey.com/en_gl/ceo/ceo-outlook-global-report" target="_blank" rel="noopener noreferrer">CEO Priorities 2026: Growth, Resilience, and AI ROI</a></h3>
+        <div class="card-source">EY Global / <span data-ja="英語" data-en="English">英語</span></div>
+        <div class="card-summary" data-ja="EYがグローバルCEOを対象に実施した2026年の経営優先課題に関するレポート。成長・レジリエンス・AIのROI実現が三大テーマとして浮上している。AIへの投資急増と共にCEOがAI意思決定を主導する傾向が強まっており、パイロット段階から全社展開への橋渡しが最大の課題とされている。" data-en="EY's global CEO outlook report identifies growth, resilience, and AI ROI realization as the three dominant priorities for 2026. CEOs are increasingly leading AI investment decisions directly, with the biggest challenge being scaling from pilot programs to enterprise-wide deployment.">EYがグローバルCEOを対象に実施した2026年の経営優先課題に関するレポート。成長・レジリエンス・AIのROI実現が三大テーマとして浮上している。AIへの投資急増と共にCEOがAI意思決定を主導する傾向が強まっており、パイロット段階から全社展開への橋渡しが最大の課題とされている。</div>
+      </div>
+
+    </div></div>
+
+    <!-- Football -->
+    <div id="football" class="section"><div class="cards">
+
+      <div class="card card-football">
+        <h3><a href="https://news.lenovo.com/pressroom/press-releases/football-ai-pro-powers-intelligence-across-the-game/" target="_blank" rel="noopener noreferrer">Football AI Pro Powers Intelligence Across the Game</a></h3>
+        <div class="card-source">Lenovo News / <span data-ja="英語" data-en="English">英語</span></div>
+        <div class="card-summary" data-ja="LenovoのAI Factoryが構築した「Football AI Pro」が2026 FIFAワールドカップ出場全48チームに提供されることを発表した記事。数百万のデータポイントを分析し2,000以上の指標を評価するマルチエージェントシステムにより、コーチ・選手・アナリストに試合前後の分析インサイトを提供する。財政規模に関わらず全チームが同じ分析基盤を使えるAI民主化の事例として注目。" data-en="Lenovo's Football AI Pro, built on Lenovo's AI Factory, provides all 48 FIFA World Cup 2026 teams with AI-powered analytics across 2,000+ metrics. This multi-agent system democratizes access to sophisticated match analysis regardless of team budget — a compelling enterprise AI deployment model at global scale.">LenovoのAI Factoryが構築した「Football AI Pro」が2026 FIFAワールドカップ出場全48チームに提供されることを発表した記事。数百万のデータポイントを分析し2,000以上の指標を評価するマルチエージェントシステムにより、コーチ・選手・アナリストに試合前後の分析インサイトを提供する。財政規模に関わらず全チームが同じ分析基盤を使えるAI民主化の事例として注目。</div>
+      </div>
+
+      <div class="card card-football">
+        <h3><a href="https://www.fifatrainingcentre.com/en/environment/expert-knowledge/david-sumpter-on-football-analytics-and-artificial-intelligence.php" target="_blank" rel="noopener noreferrer">David Sumpter on Football Analytics and Artificial Intelligence</a></h3>
+        <div class="card-source">FIFA Training Centre / <span data-ja="英語" data-en="English">英語</span></div>
+        <div class="card-summary" data-ja="数学者でフットボール分析の第一人者、David Sumpter教授がFIFAトレーニングセンターで語るフットボールにおけるAIとデータ分析の現状と未来。AIがデータのクリーニング・整合から傷害予測・戦術分析まで活用されており、選手トラッキングデータが大規模クラブ限定から中小クラブにも普及し始めていることを論じる。データドリブン経営への示唆に富む。" data-en="Football analytics expert David Sumpter discusses AI's expanding role at the FIFA Training Centre, from data cleaning and injury prediction to tactical analysis. He highlights the democratization of player tracking data as the gap between large and small clubs begins to narrow — mirroring enterprise data democratization trends.">数学者でフットボール分析の第一人者、David Sumpter教授がFIFAトレーニングセンターで語るフットボールにおけるAIとデータ分析の現状と未来。AIがデータのクリーニング・整合から傷害予測・戦術分析まで活用されており、選手トラッキングデータが大規模クラブ限定から中小クラブにも普及し始めていることを論じる。データドリブン経営への示唆に富む。</div>
+      </div>
+
+      <div class="card card-football">
+        <h3><a href="https://www.artificialintelligence-news.com/news/fifa-ai-world-cup-2026-lenovo/" target="_blank" rel="noopener noreferrer">FIFA Is Rebuilding World Football Operations on AI. The World Cup Is Just the First Test</a></h3>
+        <div class="card-source">Artificial Intelligence News / <span data-ja="英語" data-en="English">英語</span></div>
+        <div class="card-summary" data-ja="FIFAが2026ワールドカップをAI変革の「最初のテスト」と位置づけ、フットボール全体のオペレーションをAI上で再構築しようとしていることを報じた記事。Football Language Modelをベースとした生成AIシステムが多言語対応の試合分析・3Dアバター・AIレフェリー支援など多面的に展開される。ゼロ障害許容のグローバルイベントでのAI大規模展開は企業DXへの示唆が大きい。" data-en="Reports how FIFA is using the 2026 World Cup as the first large-scale test of rebuilding football operations on AI, featuring its Football Language Model for multi-language match analysis. From an enterprise perspective, this provides a rare example of AI infrastructure operating at global scale with zero tolerance for failure.">FIFAが2026ワールドカップをAI変革の「最初のテスト」と位置づけ、フットボール全体のオペレーションをAI上で再構築しようとしていることを報じた記事。Football Language Modelをベースとした生成AIシステムが多言語対応の試合分析・3Dアバター・AIレフェリー支援など多面的に展開される。ゼロ障害許容のグローバルイベントでのAI大規模展開は企業DXへの示唆が大きい。</div>
+      </div>
+
+      <div class="card card-football">
+        <h3><a href="https://barcainnovationhub.fcbarcelona.com/blog/ai-computer-vision-football-analytics/" target="_blank" rel="noopener noreferrer">AI and Computer Vision in Football: How Analytics Is Changing the Game</a></h3>
+        <div class="card-source">FC Barcelona Innovation Hub / <span data-ja="英語" data-en="English">英語</span></div>
+        <div class="card-summary" data-ja="FCバルセロナのイノベーションハブが発表したフットボールにおけるAIとコンピュータビジョンの活用事例。プレッシング強度の定量化、選手のポジショニングのリアルタイム解析、次のプレーの予測といった高度な分析が可能になっていることを紹介。データに基づく戦術意思決定プロセスはSCMのシナリオプランニングと多くの点で対比可能。" data-en="FC Barcelona's Innovation Hub details how AI and computer vision are quantifying pressing intensity, tracking real-time player positioning, and predicting next plays. The data-driven tactical decision-making process closely mirrors supply chain scenario planning and adaptive execution.">FCバルセロナのイノベーションハブが発表したフットボールにおけるAIとコンピュータビジョンの活用事例。プレッシング強度の定量化、選手のポジショニングのリアルタイム解析、次のプレーの予測といった高度な分析が可能になっていることを紹介。データに基づく戦術意思決定プロセスはSCMのシナリオプランニングと多くの点で対比可能。</div>
+      </div>
+
+      <div class="card card-football">
+        <h3><a href="https://www.footballmanagerblog.org/2026/01/football-manager-strategic-insights-decision-making.html" target="_blank" rel="noopener noreferrer">Strategic Insights from Football Manager Enhance Decision-Making Skills</a></h3>
+        <div class="card-source">Football Manager Blog / <span data-ja="英語" data-en="English">英語</span></div>
+        <div class="card-summary" data-ja="フットボールマネジメントシミュレーション（Football Manager）が育む意思決定スキルとビジネス戦略への示唆を論じた記事。スクワッドの強み・弱み・シナジーを診断してから最適フォーメーションを設計するアプローチは、組織診断から変革設計を行う経営コンサルタントのプロセスと対比できる。不確実な状況下でのリソース配分と優先順位付けの思考訓練としての価値が示されている。" data-en="Explores how Football Manager's strategic decision-making mechanics build transferable business leadership skills, particularly in resource allocation and prioritization under uncertainty. The approach of mapping squad strengths before setting formations mirrors organizational diagnosis preceding strategic transformation.">フットボールマネジメントシミュレーション（Football Manager）が育む意思決定スキルとビジネス戦略への示唆を論じた記事。スクワッドの強み・弱み・シナジーを診断してから最適フォーメーションを設計するアプローチは、組織診断から変革設計を行う経営コンサルタントのプロセスと対比できる。不確実な状況下でのリソース配分と優先順位付けの思考訓練としての価値が示されている。</div>
+      </div>
+
+    </div></div>
+
+    <!-- 京都・仏教・瞑想 -->
+    <div id="kyoto" class="section"><div class="cards">
+
+      <div class="card card-kyoto">
+        <h3><a href="https://www.iiba.org/business-analysis-blogs/the-art-of-less-applying-wabi-sabi-to-business-analysis/" target="_blank" rel="noopener noreferrer">The Art of Less: Applying Wabi-Sabi to Business Analysis</a></h3>
+        <div class="card-source">IIBA (International Institute of Business Analysis) / <span data-ja="英語" data-en="English">英語</span></div>
+        <div class="card-summary" data-ja="国際ビジネスアナリシス協会（IIBA）が公開した、侘び寂び（Wabi-Sabi）の哲学をビジネス分析に応用する論考。不完全さと不確実性を受け入れ、反復的な改善を通じた組織レジリエンス構築を論じる。SCMにおける精度追求より適応力を重視する思想と共鳴する内容で、経営変革マネジメントへの示唆が豊富。" data-en="IIBA applies the Japanese philosophy of wabi-sabi — embracing imperfection and impermanence — to business analysis and organizational resilience. The iterative refinement mindset resonates strongly with adaptive supply chain planning over precision-obsessed forecasting approaches.">国際ビジネスアナリシス協会（IIBA）が公開した、侘び寂び（Wabi-Sabi）の哲学をビジネス分析に応用する論考。不完全さと不確実性を受け入れ、反復的な改善を通じた組織レジリエンス構築を論じる。SCMにおける精度追求より適応力を重視する思想と共鳴する内容で、経営変革マネジメントへの示唆が豊富。</div>
+      </div>
+
+      <div class="card card-kyoto">
+        <h3><a href="https://nilakantasrinivasan.substack.com/p/embrace-wabi-sabi-for-business-growth" target="_blank" rel="noopener noreferrer">Embrace Wabi-Sabi for Business Growth &amp; Personal Fulfilment (with ServiceNow Case)</a></h3>
+        <div class="card-source">Substack (Nilakanta Srinivasan) / <span data-ja="英語" data-en="English">英語</span></div>
+        <div class="card-summary" data-ja="侘び寂びの哲学を企業成長と個人の充実に適用する考察。ServiceNowがコロナ禍において侘び寂びの核心概念（何も変わらないことを受け入れ、硬直した計画を避け、アジャイルなシステムを構築する）を取り込んだ事例を紹介。不確実性の高い経営環境で変革を推進するリーダーへの哲学的フレームワークとして読める。" data-en="Explores how wabi-sabi philosophy applies to business growth, using ServiceNow's COVID-era agile response as a case study of embracing impermanence to build resilient systems. Provides a philosophical framework for leaders navigating high-uncertainty business transformations.">侘び寂びの哲学を企業成長と個人の充実に適用する考察。ServiceNowがコロナ禍において侘び寂びの核心概念（何も変わらないことを受け入れ、硬直した計画を避け、アジャイルなシステムを構築する）を取り込んだ事例を紹介。不確実性の高い経営環境で変革を推進するリーダーへの哲学的フレームワークとして読める。</div>
+      </div>
+
+      <div class="card card-kyoto">
+        <h3><a href="https://www.japanhousela.com/articles/business-longevity/" target="_blank" rel="noopener noreferrer">The Secrets of Sustainability in Business (Japan's Shinise)</a></h3>
+        <div class="card-source">Japan House Los Angeles / <span data-ja="英語" data-en="English">英語</span></div>
+        <div class="card-summary" data-ja="何百年も続く日本の老舗企業（京都を含む）の持続可能性の秘訣を解説する記事。三方よし（売り手・買い手・世間すべてに良い）の精神と、顧客・従業員・経営理念・変化対応の4要素が長寿企業の経営哲学の根幹として紹介されている。DXが進む現代においても非経済的価値と地域コミュニティへの帰属意識が競争優位の源泉となることを示している。" data-en="Japan House LA examines the management philosophy of Japan's centuries-old shinise businesses including Kyoto's traditional companies, built on the 'Sanpo-Yoshi' principle of mutual benefit for seller, buyer, and society. Non-economic values and community embeddedness remain enduring competitive advantages even in the DX era.">何百年も続く日本の老舗企業（京都を含む）の持続可能性の秘訣を解説する記事。三方よし（売り手・買い手・世間すべてに良い）の精神と、顧客・従業員・経営理念・変化対応の4要素が長寿企業の経営哲学の根幹として紹介されている。DXが進む現代においても非経済的価値と地域コミュニティへの帰属意識が競争優位の源泉となることを示している。</div>
+      </div>
+
+      <div class="card card-kyoto">
+        <h3><a href="https://cissokomamady.com/japan-business-and-management-lessons-for-corporate-longevity/" target="_blank" rel="noopener noreferrer">Japanese Business and Management Lessons for Corporate Longevity</a></h3>
+        <div class="card-source">Cissoko &amp; Company / <span data-ja="英語" data-en="English">英語</span></div>
+        <div class="card-summary" data-ja="日本の経営哲学から企業の長期的持続（コーポレートロンジェビティ）を学ぶ論考。52,000社以上が100年以上続く日本企業のビジネスモデルを分析し、伝統の継続と環境変化への適応を同時に実現するダイナミックな能力を論じる。変革マネジメントと組織文化醸成に示唆を与える日本型経営の哲学的基盤が示されている。" data-en="Analyzes Japan's model of corporate longevity — with over 52,000 companies exceeding 100 years — drawing management lessons around simultaneously preserving essential values while adapting to change. Offers direct parallels to organizational transformation management and cultural change leadership.">日本の経営哲学から企業の長期的持続（コーポレートロンジェビティ）を学ぶ論考。52,000社以上が100年以上続く日本企業のビジネスモデルを分析し、伝統の継続と環境変化への適応を同時に実現するダイナミックな能力を論じる。変革マネジメントと組織文化醸成に示唆を与える日本型経営の哲学的基盤が示されている。</div>
+      </div>
+
+      <div class="card card-kyoto">
+        <h3><a href="https://iventiv.com/insights/mindfulness-as-a-core-executive-leadership-skill" target="_blank" rel="noopener noreferrer">Mindfulness as a Core Executive Leadership Skill</a></h3>
+        <div class="card-source">Iventiv / <span data-ja="英語" data-en="English">英語</span></div>
+        <div class="card-summary" data-ja="マインドフルネスを経営幹部の中核リーダーシップスキルとして位置づけるIventivの論考。注意調整・反応ではなく応答・プレッシャー下での安定という「メンタルフィットネス」能力が、AI時代の経営判断において特に重要になっていることを示している。AIが定型判断を担う時代に、人間固有の直感・共感・戦略的存在感がより差別化要素となることを論じる。" data-en="Positions mindfulness as a core executive leadership skill — emphasizing mental fitness, attention regulation, and responding rather than reacting under pressure. As AI handles routine decisions, human capacities for judgment, empathy, and strategic presence become increasingly differentiating for executives.">マインドフルネスを経営幹部の中核リーダーシップスキルとして位置づけるIventivの論考。注意調整・反応ではなく応答・プレッシャー下での安定という「メンタルフィットネス」能力が、AI時代の経営判断において特に重要になっていることを示している。AIが定型判断を担う時代に、人間固有の直感・共感・戦略的存在感がより差別化要素となることを論じる。</div>
+      </div>
+
+    </div></div>
+  </div>
+</div>
+
+<script>
+  function show(id, btn) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function setLang(lang) {
+    document.querySelectorAll('[data-ja]').forEach(el => {
+      el.textContent = el.dataset[lang];
+    });
+    document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.documentElement.lang = lang;
+    document.getElementById('back-link').href = lang === 'en' ? '/en/' : '/';
+    sessionStorage.setItem('txLang', lang);
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('lang') === 'en') {
+      setLang('en');
+      sessionStorage.setItem('txLang', 'en');
+    } else if (sessionStorage.getItem('txLang') === 'en') {
+      setLang('en');
+    }
+  });
+</script>
+</body>
+</html>
