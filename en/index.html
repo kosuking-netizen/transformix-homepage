@@ -70,6 +70,18 @@
     .flagship-tags { display:flex; gap:0.5rem; flex-wrap:wrap; }
     .flagship-tags span { border:1px solid var(--border); font-size:0.8rem; padding:0.3rem 0.9rem; color:var(--muted); }
 
+    /* BEFORE AFTER */
+    .ba-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:2.5rem; }
+    .ba-card { border:1px solid var(--border); background:#fff; overflow:hidden; }
+    .ba-before { padding:1.25rem 1.5rem; background:var(--light); }
+    .ba-before-label { font-size:0.65rem; font-weight:700; letter-spacing:0.2em; color:var(--muted); text-transform:uppercase; margin-bottom:0.5rem; }
+    .ba-before p { font-size:0.88rem; color:var(--muted); line-height:1.6; }
+    .ba-arrow { text-align:center; padding:0.5rem; background:#fff; color:var(--indigo); font-size:1rem; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .ba-after { padding:1.25rem 1.5rem; background:var(--indigo-light); }
+    .ba-after-label { font-size:0.65rem; font-weight:700; letter-spacing:0.2em; color:var(--indigo); text-transform:uppercase; margin-bottom:0.5rem; }
+    .ba-after p { font-size:0.88rem; color:var(--indigo); line-height:1.6; font-weight:600; }
+    @media (max-width:768px) { .ba-grid { grid-template-columns:1fr; } }
+
     /* SPECIALIZED */
     .services-sub-title { font-size:0.72rem; font-weight:700; letter-spacing:0.2em; color:var(--muted); text-transform:uppercase; margin:2.5rem 0 1.5rem; }
     .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:1px solid var(--border); }
@@ -195,6 +207,41 @@
         <h3>Transformation Total Advisory</h3>
         <p>"We know we need to transform — but we don't know where to start." Starting from that management challenge, we find the breakthrough across SCM, digital, and organization — then stay with you all the way through execution.</p>
         <div class="flagship-tags"><span>Retained Advisory</span><span>Spot Consulting</span><span>Hands-on Support</span></div>
+      </div>
+      <div class="ba-grid">
+        <div class="ba-card">
+          <div class="ba-before">
+            <div class="ba-before-label">Before</div>
+            <p>Plans are disconnected between management and the floor — decisions are slow</p>
+          </div>
+          <div class="ba-arrow">↓</div>
+          <div class="ba-after">
+            <div class="ba-after-label">After</div>
+            <p>Management, business, and operations move on the same numbers — faster decisions</p>
+          </div>
+        </div>
+        <div class="ba-card">
+          <div class="ba-before">
+            <div class="ba-before-label">Before</div>
+            <p>DX investment isn't taking root on the ground — no visible results</p>
+          </div>
+          <div class="ba-arrow">↓</div>
+          <div class="ba-after">
+            <div class="ba-after-label">After</div>
+            <p>Digital tools are embedded in daily work — the organization runs on data</p>
+          </div>
+        </div>
+        <div class="ba-card">
+          <div class="ba-before">
+            <div class="ba-before-label">Before</div>
+            <p>Everyone knows transformation is needed — but the organization won't move</p>
+          </div>
+          <div class="ba-arrow">↓</div>
+          <div class="ba-after">
+            <div class="ba-after-label">After</div>
+            <p>A culture of self-driven transformation takes hold — continuous evolution</p>
+          </div>
+        </div>
       </div>
       <div class="services-sub-title">Specialized Services</div>
       <div class="cards">
