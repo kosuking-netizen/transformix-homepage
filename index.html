@@ -115,6 +115,15 @@
     .card h3 { font-size:1.05rem; font-weight:800; margin-bottom:0.75rem; line-height:1.4; }
     .card p { font-size:0.92rem; color:var(--muted); line-height:1.8; }
 
+    /* PRICING */
+    .price-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-bottom:2rem; }
+    .price-card { border:1px solid var(--border); padding:2rem; background:#fff; }
+    .price-type { font-size:0.72rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--indigo); margin-bottom:0.75rem; }
+    .price-card h3 { font-size:1.1rem; font-weight:800; margin-bottom:0.75rem; }
+    .price-card p { font-size:0.9rem; color:var(--muted); line-height:1.8; }
+    .price-note { font-size:0.88rem; color:var(--muted); padding-top:1.5rem; border-top:1px solid var(--border); line-height:1.8; }
+    @media (max-width:768px) { .price-grid { grid-template-columns:1fr; } }
+
     /* MISSION */
     #mission { background:var(--text); color:#fff; }
     .mv-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; }
@@ -179,6 +188,7 @@
       <div class="logo">Transformix</div>
       <ul class="nav-links">
         <li><a href="#services">サービス</a></li>
+        <li><a href="#pricing">料金</a></li>
         <li><a href="#about">会社概要</a></li>
         <li><a href="#profile">代表</a></li>
         <li><a href="/daily/" style="color:var(--indigo);font-weight:700;">📰 インサイト</a></li>
@@ -194,6 +204,7 @@
 
   <div class="mobile-menu" id="mobileMenu">
     <a href="#services" onclick="closeMenu()">サービス</a>
+    <a href="#pricing" onclick="closeMenu()">料金</a>
     <a href="#about" onclick="closeMenu()">会社概要</a>
     <a href="#profile" onclick="closeMenu()">代表</a>
     <a href="/daily/" class="highlight">📰 インサイト</a>
@@ -228,6 +239,30 @@
         <div class="card"><div class="card-num">05</div><h3>エグゼクティブコーチング</h3><p>経営者・リーダー向けの個別コーチング。個人の変革が組織の変革につながる。</p></div>
         <div class="card card-kyoto"><div class="card-num">06</div><h3>京都で話しませんか。</h3><p>日常のオフィスを離れ、京都でじっくり対話する。戦略の壁打ち、大事な意思決定——カジュアルに、でも深く。</p></div>
       </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="container">
+      <h2>料金</h2>
+      <div class="price-grid">
+        <div class="price-card">
+          <div class="price-type">Monthly</div>
+          <h3>月額顧問型</h3>
+          <p>月額固定制。定期的なミーティング・相談対応・資料レビューなど、継続的なアドバイザリーを提供します。</p>
+        </div>
+        <div class="price-card">
+          <div class="price-type">Spot</div>
+          <h3>スポット相談</h3>
+          <p>単発・課題特定型。半日〜1日単位での集中セッション。特定テーマの壁打ちや意思決定支援に対応します。</p>
+        </div>
+        <div class="price-card">
+          <div class="price-type">Project</div>
+          <h3>プロジェクト型</h3>
+          <p>期間を定めた伴走支援。スコープ・期間・成果物を合意のうえ、プロジェクトベースでご提案します。</p>
+        </div>
+      </div>
+      <p class="price-note">料金はご相談内容・支援範囲・期間により異なります。まずはお気軽にお問い合わせください。</p>
     </div>
   </section>
 
