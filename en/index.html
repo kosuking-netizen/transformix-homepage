@@ -81,6 +81,15 @@
     .card h3 { font-size:1.05rem; font-weight:800; margin-bottom:0.75rem; line-height:1.4; }
     .card p { font-size:0.92rem; color:var(--muted); line-height:1.8; }
 
+    /* PRICING */
+    .price-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-bottom:2rem; }
+    .price-card { border:1px solid var(--border); padding:2rem; background:#fff; }
+    .price-type { font-size:0.72rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--indigo); margin-bottom:0.75rem; }
+    .price-card h3 { font-size:1.1rem; font-weight:800; margin-bottom:0.75rem; }
+    .price-card p { font-size:0.9rem; color:var(--muted); line-height:1.8; }
+    .price-note { font-size:0.88rem; color:var(--muted); padding-top:1.5rem; border-top:1px solid var(--border); line-height:1.8; }
+    @media (max-width:768px) { .price-grid { grid-template-columns:1fr; } }
+
     /* MISSION */
     #mission { background:var(--text); color:#fff; }
     .mv-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; }
@@ -145,6 +154,7 @@
       <div class="logo">Transformix</div>
       <ul class="nav-links">
         <li><a href="#services">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#profile">Profile</a></li>
         <li><a href="/daily/?lang=en" style="color:var(--indigo);font-weight:700;">📰 Insights</a></li>
@@ -160,6 +170,7 @@
 
   <div class="mobile-menu" id="mobileMenu">
     <a href="#services" onclick="closeMenu()">Services</a>
+    <a href="#pricing" onclick="closeMenu()">Pricing</a>
     <a href="#about" onclick="closeMenu()">About</a>
     <a href="#profile" onclick="closeMenu()">Profile</a>
     <a href="/daily/?lang=en" class="highlight">📰 Insights</a>
@@ -194,6 +205,30 @@
         <div class="card"><div class="card-num">05</div><h3>Executive Coaching</h3><p>One-on-one coaching for executives and leaders. Personal transformation that drives organizational change.</p></div>
         <div class="card card-kyoto"><div class="card-num">06</div><h3>Let's talk in Kyoto.</h3><p>Step away from the office. Come to Kyoto for a focused conversation — strategy sessions, key decisions, and deep dialogue. Casual, but meaningful.</p></div>
       </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="container">
+      <h2>Pricing</h2>
+      <div class="price-grid">
+        <div class="price-card">
+          <div class="price-type">Monthly</div>
+          <h3>Retained Advisory</h3>
+          <p>Fixed monthly engagement. Ongoing advisory through regular meetings, consultations, and document reviews.</p>
+        </div>
+        <div class="price-card">
+          <div class="price-type">Spot</div>
+          <h3>Spot Consulting</h3>
+          <p>Single-session or issue-focused engagement. Half-day or full-day intensive sessions for targeted problem-solving and decision support.</p>
+        </div>
+        <div class="price-card">
+          <div class="price-type">Project</div>
+          <h3>Project-Based</h3>
+          <p>Time-bound hands-on support. Scope, duration, and deliverables are agreed upon upfront and tailored to your needs.</p>
+        </div>
+      </div>
+      <p class="price-note">Fees vary depending on the scope, content, and duration of engagement. Please feel free to contact us for details.</p>
     </div>
   </section>
 
