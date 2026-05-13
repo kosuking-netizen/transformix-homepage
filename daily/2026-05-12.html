@@ -41,20 +41,13 @@
   .date-list a.today { background: var(--indigo-light); color: var(--indigo); font-weight: 700; border-left-color: var(--indigo); }
 
   .main-content { min-width: 0; }
-  .tabs { background: var(--white); border: 1px solid var(--border); border-bottom: none; display: flex; border-radius: 4px 4px 0 0; flex-wrap: wrap; }
+  .tabs { background: var(--white); border: 1px solid var(--border); border-bottom: none; display: flex; border-radius: 4px 4px 0 0; flex-wrap: wrap; position: sticky; top: 0; z-index: 10; }
   .tab { padding: 0.8rem 1.2rem; font-size: 0.85rem; font-weight: 600; cursor: pointer; border-bottom: 3px solid transparent; color: var(--muted); transition: all 0.2s; background: none; border-top: none; border-left: none; border-right: none; }
   .tab:hover { color: var(--text); background: var(--bg); }
   .tab.active { color: var(--indigo); border-bottom-color: var(--indigo); }
   .tab.tab-ai.active { color: var(--ai); border-bottom-color: var(--ai); }
   .tab.tab-football.active { color: var(--football); border-bottom-color: var(--football); }
   .tab.tab-kyoto.active { color: var(--kyoto); border-bottom-color: var(--kyoto); }
-
-  .date-header { background: var(--white); border: 1px solid var(--border); border-top: none; padding: 0.9rem 1.2rem; display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1rem; }
-  .date-label { font-size: 0.95rem; font-weight: 800; color: var(--indigo); }
-  .badge { background: var(--indigo-light); color: var(--indigo); padding: 0.18rem 0.6rem; border-radius: 2rem; font-size: 0.72rem; font-weight: 700; }
-  .badge-ai { background: #e8f5ee; color: var(--ai); }
-  .badge-football { background: #fdf0e6; color: var(--football); }
-  .badge-kyoto { background: #f5eeff; color: var(--kyoto); }
 
   .section { display: none; }
   .section.active { display: block; }
@@ -101,13 +94,6 @@
       <button class="tab tab-ai" onclick="show('ai',this)">AI / DX（7）</button>
       <button class="tab tab-football" onclick="show('football',this)">Football（5）</button>
       <button class="tab tab-kyoto" onclick="show('kyoto',this)"><span data-ja="京都・仏教・瞑想（5）" data-en="Kyoto・Zen（5）">京都・仏教・瞑想（5）</span></button>
-    </div>
-    <div class="date-header">
-      <span class="date-label">2026-05-12</span>
-      <span class="badge">SCM 12<span data-ja="本" data-en=" articles">本</span></span>
-      <span class="badge badge-ai">AI/DX 7<span data-ja="本" data-en=" articles">本</span></span>
-      <span class="badge badge-football">Football 5<span data-ja="本" data-en=" articles">本</span></span>
-      <span class="badge badge-kyoto"><span data-ja="京都・仏教・瞑想" data-en="Kyoto・Zen">京都・仏教・瞑想</span> 5<span data-ja="本" data-en=" articles">本</span></span>
     </div>
 
     <!-- SCM -->
