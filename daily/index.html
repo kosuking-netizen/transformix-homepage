@@ -29,7 +29,7 @@
   .lang-toggle button { background: none; border: none; color: rgba(255,255,255,0.6); font-size: 0.8rem; font-weight: 700; padding: 0.35rem 0.9rem; cursor: pointer; transition: all 0.2s; }
   .lang-toggle button.active { background: #fff; color: var(--indigo); border-radius: 2rem; }
   .layout { max-width: 1200px; margin: 0 auto; padding: 2rem 2.5rem; display: grid; grid-template-columns: 190px 1fr; gap: 2rem; }
-  @media (max-width: 768px) { .layout { grid-template-columns: 1fr; padding: 1rem; } .sidebar { position: static; } .tabs { position: static; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; } }
+  @media (max-width: 768px) { .layout { grid-template-columns: 1fr; padding: 1rem; } .sidebar { position: static; background: var(--bg); } .tabs { position: static; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; } .card { background: var(--white); } }
   .sidebar { position: sticky; top: 1rem; align-self: start; }
   .sidebar-title { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
   .date-list { list-style: none; }
