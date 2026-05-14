@@ -373,7 +373,7 @@
     <div class="container">
       <h2>お問い合わせ</h2>
       <p class="contact-lead">サービスに関するご相談はお気軽にどうぞ。</p>
-      <form action="https://formspree.io/f/maqvapde" method="POST" style="max-width:560px;text-align:left;">
+      <form id="contact-form" style="max-width:560px;text-align:left;">
         <div style="margin-bottom:1.25rem;">
           <label style="display:block;font-size:0.85rem;font-weight:700;margin-bottom:0.4rem;">お名前 <span style="color:#c00;">*</span></label>
           <input type="text" name="name" required style="width:100%;padding:0.75rem 1rem;border:1px solid var(--border);font-size:0.95rem;font-family:inherit;outline:none;" placeholder="山田 太郎">
@@ -390,12 +390,35 @@
           <label style="display:block;font-size:0.85rem;font-weight:700;margin-bottom:0.4rem;">お問い合わせ内容 <span style="color:#c00;">*</span></label>
           <textarea name="message" required rows="5" style="width:100%;padding:0.75rem 1rem;border:1px solid var(--border);font-size:0.95rem;font-family:inherit;outline:none;resize:vertical;" placeholder="ご相談内容をご記入ください"></textarea>
         </div>
-        <input type="hidden" name="_next" value="https://transformix.jp/thanks.html">
         <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1.25rem;">送信することで<a href="/privacy.html" style="color:var(--indigo);text-decoration:underline;">個人情報保護方針</a>に同意したものとみなします。</p>
-        <div class="cf-turnstile" data-sitekey="0x4AAAAAAAAAADOsGhxOmhVxq3CPQiM8UdogYbQ" style="margin-bottom:1.25rem;"></div>
-        <button type="submit" class="btn" style="border:none;cursor:pointer;font-family:inherit;">送信する</button>
+        <p id="form-error" style="display:none;font-size:0.85rem;color:#c00;margin-bottom:1rem;">送信に失敗しました。時間をおいて再度お試しください。</p>
+        <button type="submit" id="form-submit" class="btn" style="border:none;cursor:pointer;font-family:inherit;">送信する</button>
       </form>
-      <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+      <script>
+        document.getElementById('contact-form').addEventListener('submit', async function(e) {
+          e.preventDefault();
+          var btn = document.getElementById('form-submit');
+          btn.disabled = true;
+          btn.textContent = '送信中…';
+          document.getElementById('form-error').style.display = 'none';
+          try {
+            var res = await fetch('https://formspree.io/f/maqvapde', {
+              method: 'POST',
+              body: new FormData(this),
+              headers: { 'Accept': 'application/json' }
+            });
+            if (res.ok) {
+              window.location.href = '/thanks.html';
+            } else {
+              throw new Error();
+            }
+          } catch(err) {
+            document.getElementById('form-error').style.display = 'block';
+            btn.disabled = false;
+            btn.textContent = '送信する';
+          }
+        });
+      </script>
     </div>
   </section>
 
