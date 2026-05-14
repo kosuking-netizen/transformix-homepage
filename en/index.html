@@ -346,7 +346,7 @@
     <div class="container">
       <h2>Contact</h2>
       <p class="contact-lead">For inquiries about our services, please feel free to reach out.</p>
-      <form action="https://formspree.io/f/maqvapde" method="POST" style="max-width:560px;text-align:left;">
+      <form id="contact-form" style="max-width:560px;text-align:left;">
         <div style="margin-bottom:1.25rem;">
           <label style="display:block;font-size:0.85rem;font-weight:700;margin-bottom:0.4rem;">Name <span style="color:#c00;">*</span></label>
           <input type="text" name="name" required style="width:100%;padding:0.75rem 1rem;border:1px solid var(--border);font-size:0.95rem;font-family:inherit;outline:none;" placeholder="Taro Yamada">
@@ -363,11 +363,40 @@
           <label style="display:block;font-size:0.85rem;font-weight:700;margin-bottom:0.4rem;">Message <span style="color:#c00;">*</span></label>
           <textarea name="message" required rows="5" style="width:100%;padding:0.75rem 1rem;border:1px solid var(--border);font-size:0.95rem;font-family:inherit;outline:none;resize:vertical;" placeholder="Please describe your inquiry"></textarea>
         </div>
-        <input type="hidden" name="_next" value="https://transformix.jp/en/thanks.html">
         <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1.25rem;">By submitting this form, you agree to our <a href="/en/privacy.html" style="color:var(--indigo);text-decoration:underline;">Privacy Policy</a>.</p>
-
-        <button type="submit" class="btn" style="border:none;cursor:pointer;font-family:inherit;">Send</button>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAADOsGsJALOi69vw5" style="margin-bottom:1.25rem;"></div>
+        <p id="form-error" style="display:none;font-size:0.85rem;color:#c00;margin-bottom:1rem;">Submission failed. Please try again later.</p>
+        <button type="submit" id="form-submit" class="btn" style="border:none;cursor:pointer;font-family:inherit;">Send</button>
       </form>
+      <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+      <script>
+        document.getElementById('contact-form').addEventListener('submit', async function(e) {
+          e.preventDefault();
+          var btn = document.getElementById('form-submit');
+          btn.disabled = true;
+          btn.textContent = 'Sending…';
+          document.getElementById('form-error').style.display = 'none';
+          try {
+            var res = await fetch('https://formspree.io/f/maqvapde', {
+              method: 'POST',
+              body: new FormData(this),
+              headers: { 'Accept': 'application/json' }
+            });
+            if (res.ok) {
+              window.location.href = '/en/thanks.html';
+            } else {
+              var data = await res.json().catch(function(){ return {}; });
+              throw new Error('HTTP ' + res.status + ': ' + (data.error || JSON.stringify(data)));
+            }
+          } catch(err) {
+            var errEl = document.getElementById('form-error');
+            errEl.textContent = 'Submission failed. Error: ' + (err.message || err);
+            errEl.style.display = 'block';
+            btn.disabled = false;
+            btn.textContent = 'Send';
+          }
+        });
+      </script>
     </div>
   </section>
 
