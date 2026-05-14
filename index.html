@@ -412,10 +412,13 @@
             if (res.ok) {
               window.location.href = '/thanks.html';
             } else {
-              throw new Error();
+              var data = await res.json().catch(function(){ return {}; });
+              throw new Error('HTTP ' + res.status + ': ' + (data.error || JSON.stringify(data)));
             }
           } catch(err) {
-            document.getElementById('form-error').style.display = 'block';
+            var errEl = document.getElementById('form-error');
+            errEl.textContent = '送信に失敗しました。エラー: ' + (err.message || err);
+            errEl.style.display = 'block';
             btn.disabled = false;
             btn.textContent = '送信する';
           }
