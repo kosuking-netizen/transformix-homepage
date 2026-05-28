@@ -26,7 +26,7 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #ffffff;
+      --bg: #faf9f7;
       --text: #111111;
       --muted: #222222;
       --border: #e0e0e0;
@@ -42,12 +42,12 @@
     /* NAV */
     header { position: fixed; top:0; left:0; right:0; background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); z-index:100; }
     nav { max-width:1100px; margin:0 auto; padding:0 2.5rem; height:68px; display:flex; align-items:center; gap:2.5rem; }
-    .logo { font-size:1.25rem; font-weight:800; letter-spacing:0.06em; margin-right:auto; white-space:nowrap; }
+    .logo { font-size:1.25rem; font-weight:800; letter-spacing:0.01em; color:var(--indigo); margin-right:auto; white-space:nowrap; }
     .nav-links { list-style:none; display:flex; gap:2rem; }
     .nav-links a { font-size:0.85rem; color:var(--muted); white-space:nowrap; transition:color 0.2s; }
     .nav-links a:hover { color:var(--text); }
-    .lang-btn { background:none; border:1px solid var(--border); padding:0.3rem 0.9rem; font-size:0.8rem; cursor:pointer; white-space:nowrap; transition:border-color 0.2s; }
-    .lang-btn:hover { border-color: var(--text); }
+    .lang-btn { background:none; border:1px solid var(--border); padding:0.3rem 0.9rem; font-size:0.8rem; cursor:pointer; white-space:nowrap; transition:border-color 0.2s; display:inline-block; text-decoration:none; color:var(--muted); }
+    .lang-btn:hover { border-color: var(--text); color:var(--text); }
 
     /* HERO */
     #hero { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:8rem 2.5rem 5rem; background:var(--warm); text-align:center; }
@@ -102,17 +102,9 @@
     .card h3 { font-size:1.05rem; font-weight:800; margin-bottom:0.75rem; line-height:1.4; }
     .card p { font-size:0.92rem; color:var(--muted); line-height:1.8; }
 
-    /* PRICING */
-    .price-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-bottom:2rem; }
-    .price-card { border:1px solid var(--border); padding:2rem; background:#fff; }
-    .price-type { font-size:0.72rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--indigo); margin-bottom:0.75rem; }
-    .price-card h3 { font-size:1.1rem; font-weight:800; margin-bottom:0.75rem; }
-    .price-card p { font-size:0.9rem; color:var(--muted); line-height:1.8; }
-    .price-note { font-size:0.88rem; color:var(--muted); padding-top:1.5rem; border-top:1px solid var(--border); line-height:1.8; }
-    @media (max-width:768px) { .price-grid { grid-template-columns:1fr; } }
-
     /* MISSION */
-    #mission { background:var(--text); color:#fff; }
+    #mission { background:var(--indigo) !important; color:#fff; }
+    .mv-reason { font-size:0.9rem; color:rgba(255,255,255,0.5); margin-bottom:2.5rem; letter-spacing:0.05em; }
     .mv-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; }
     .mv-label { font-size:0.65rem; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:1rem; }
     .mv-text { font-size:1.35rem; font-weight:700; line-height:1.6; }
@@ -138,7 +130,7 @@
 
     /* CONTACT */
     #contact { text-align:left; }
-    .contact-lead { font-size:1rem; color:var(--muted); margin-bottom:2rem; }
+    .contact-intro { font-size:0.95rem; color:var(--muted); margin-bottom:2rem; line-height:1.9; }
 
     /* FOOTER */
     footer { background:var(--text); color:rgba(255,255,255,0.35); text-align:center; padding:2.5rem; font-size:0.8rem; }
@@ -172,16 +164,15 @@
 <body>
   <header>
     <nav>
-      <div class="logo">Transformix</div>
+      <a href="/en/" class="logo">Transformix</a>
       <ul class="nav-links">
         <li><a href="#services">Services</a></li>
-        <li><a href="#pricing">Pricing</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#profile">Profile</a></li>
         <li><a href="/daily/?lang=en" style="color:var(--indigo);font-weight:700;">📰 Insights</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <a href="/index.html" class="lang-btn">JA</a>
+      <a href="/" class="lang-btn">JA</a>
       <a href="/" class="mobile-lang-btn">JP</a>
       <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -191,7 +182,6 @@
 
   <div class="mobile-menu" id="mobileMenu">
     <a href="#services" onclick="closeMenu()">Services</a>
-    <a href="#pricing" onclick="closeMenu()">Pricing</a>
     <a href="#about" onclick="closeMenu()">About</a>
     <a href="#profile" onclick="closeMenu()">Profile</a>
     <a href="/daily/?lang=en" class="highlight">📰 Insights</a>
@@ -203,8 +193,18 @@
     <div class="hero-inner">
       <div class="hero-eyebrow">Management Transformation Partner for Manufacturers</div>
       <h1>Your transformation.<br>Our mix.</h1>
-      <p>Integrating SCM, digital, and organization across manufacturing from a management perspective to support enterprise value growth. From supply chain to management itself — we drive the change.</p>
+      <p>SCM, digital, and organization — fragmented flows, reconnected through the spine of management.</p>
       <a href="#contact" class="btn">Get in Touch</a>
+    </div>
+  </section>
+
+  <section id="mission">
+    <div class="container">
+      <p class="mv-reason">——The reason Transformix exists.</p>
+      <div class="mv-grid">
+        <div><div class="mv-label">Mission</div><p class="mv-text">Doubt into drive. Vision into reality.</p></div>
+        <div><div class="mv-label">Vision</div><p class="mv-text">Where creativity and joy define the way we work.</p></div>
+      </div>
     </div>
   </section>
 
@@ -214,91 +214,52 @@
       <div class="flagship-card">
         <div class="flagship-badge">Flagship</div>
         <h3>Transformation Total Advisory</h3>
-        <p>"We know we need to transform — but we don't know where to start." Starting from that management challenge, we look for the breakthrough inside the very entanglements — long-held industry norms and organizational constraints — then work across SCM, digital, and organization to turn it into reality.</p>
+        <p>Everyone knows transformation is necessary. The inability to act isn't a question of will — it's a question of structure and sequence. Where to start, how to move it, how to make it stick — we work through all of it, on the ground, together.</p>
         <div class="flagship-tags"><span>Retained Advisory</span><span>Spot Consulting</span><span>Hands-on Support</span></div>
       </div>
       <div class="ba-grid">
         <div class="ba-card">
           <div class="ba-before">
             <div class="ba-before-label">Before</div>
-            <p>Plans are disconnected between management and the floor — decisions are slow</p>
+            <p>You explain it. Nothing moves. The more meetings, the more exhausted everyone gets.</p>
           </div>
           <div class="ba-arrow">↓</div>
           <div class="ba-after">
             <div class="ba-after-label">After</div>
-            <p>Management, business, and operations move on the same numbers — faster decisions</p>
+            <p>Management and the floor see the same picture — and move together.</p>
           </div>
         </div>
         <div class="ba-card">
           <div class="ba-before">
             <div class="ba-before-label">Before</div>
-            <p>DX investment isn't taking root on the ground — no visible results</p>
+            <p>The system is running. But people haven't changed.</p>
           </div>
           <div class="ba-arrow">↓</div>
           <div class="ba-after">
             <div class="ba-after-label">After</div>
-            <p>Digital tools are embedded in daily work — the organization runs on data</p>
+            <p>The tool fits the hand.</p>
           </div>
         </div>
         <div class="ba-card">
           <div class="ba-before">
             <div class="ba-before-label">Before</div>
-            <p>Everyone knows transformation is needed — but the organization won't move</p>
+            <p>People want to change. But the momentum won't spread.</p>
           </div>
           <div class="ba-arrow">↓</div>
           <div class="ba-after">
             <div class="ba-after-label">After</div>
-            <p>A culture of self-driven transformation takes hold — continuous evolution</p>
+            <p>Transformation is no longer one person's job.</p>
           </div>
         </div>
       </div>
       <div class="services-sub-title">Specialized Services</div>
       <div class="cards">
-        <div class="card"><div class="card-num">01</div><h3>SCM-Driven Management Reform</h3><p>From PSI/S&OP to one-number management. Integrating supply chain with corporate management to sharpen decision-making.</p></div>
-        <div class="card"><div class="card-num">02</div><h3>DX & IT Transformation</h3><p>From digital process design to IT strategy and execution. Building systems that actually work by bridging management and technology.</p></div>
-        <div class="card"><div class="card-num">03</div><h3>AI Process Innovation</h3><p>End-to-end support for AI-driven process reform — from strategy to implementation and on-the-ground adoption.</p></div>
-        <div class="card"><div class="card-num">04</div><h3>Organization & Work Design</h3><p>Redesigning how work gets done — structure, decision-making, and meeting culture — to build the foundation for transformation.</p></div>
-        <div class="card"><div class="card-num">05</div><h3>Executive Coaching</h3><p>One-on-one coaching for executives and leaders. Personal transformation that drives organizational change.</p></div>
-        <div class="card card-kyoto"><div class="card-num">06</div><h3>Let's talk in Kyoto.</h3><p>Step away from the office. Come to Kyoto for a focused conversation — strategy sessions, key decisions, and deep dialogue. Casual, but meaningful.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="pricing">
-    <div class="container">
-      <h2>Pricing</h2>
-      <div class="price-grid">
-        <div class="price-card">
-          <div class="price-type">Monthly</div>
-          <h3>Retained Advisory</h3>
-          <p>Fixed monthly engagement. Ongoing advisory through regular meetings, consultations, and document reviews.</p>
-        </div>
-        <div class="price-card">
-          <div class="price-type">Spot</div>
-          <h3>Spot Consulting</h3>
-          <p>Single-session or issue-focused engagement. Half-day or full-day intensive sessions for targeted problem-solving and decision support.</p>
-        </div>
-        <div class="price-card">
-          <div class="price-type">Project</div>
-          <h3>Project-Based</h3>
-          <p>Time-bound hands-on support. Scope, duration, and deliverables are agreed upon upfront and tailored to your needs.</p>
-        </div>
-      </div>
-      <p class="price-note">Fees vary depending on the scope, content, and duration of engagement. Please feel free to contact us for details.</p>
-    </div>
-  </section>
-
-  <section id="mission">
-    <div class="container">
-      <div class="mv-grid">
-        <div>
-          <div class="mv-label">Mission</div>
-          <p class="mv-text">Doubt into drive. Vision into reality.</p>
-        </div>
-        <div>
-          <div class="mv-label">Vision</div>
-          <p class="mv-text">Where creativity and joy define the way we work.</p>
-        </div>
+        <div class="card"><div class="card-num">01</div><h3>SCM-Driven Management Reform</h3><p>Plans are in motion. But the numbers mean something different in every department. Supply chain problems are, more often than not, management structure problems.</p></div>
+        <div class="card"><div class="card-num">02</div><h3>DX & IT Transformation</h3><p>The system is in. But the floor hasn't changed. We close the gap between technology and the people who have to use it.</p></div>
+        <div class="card"><div class="card-num">03</div><h3>AI Process Innovation</h3><p>Everyone said AI would change things. Nobody said where to start. We design the whole path — from strategy to adoption — together.</p></div>
+        <div class="card"><div class="card-num">04</div><h3>Organization & Work Design</h3><p>Talented people aren't doing their real work. Change the structure, and people start to move.</p></div>
+        <div class="card"><div class="card-num">05</div><h3>Executive Coaching</h3><p>You don't have to carry the weight of leadership alone. Step outside your role and take time to think clearly.</p></div>
+        <div class="card card-kyoto"><div class="card-num">06</div><h3>A conversation in Kyoto.</h3><p>One day in Kyoto. Quiet the noise, sort the structure, decide the next move. Away from the rush, thinking finds its way.</p></div>
       </div>
     </div>
   </section>
@@ -325,7 +286,7 @@
         <div class="profile-name">Kosuke Izawa</div>
         <div class="profile-title">Founder</div>
         <div class="profile-hook">A practitioner who drove management transformation from the inside.</div>
-        <p class="profile-bio">20+ years at a Japanese global manufacturer, leading both SCM and IT functions. Drove management transformation from within through cost structure reform, process redesign, and digital advancement. Drawing on that experience, he founded Transformix to support manufacturing transformation — combining an insider's perspective with an external adviser's objectivity.</p>
+        <p class="profile-bio">I have seen it many times on the ground — the moment someone stops the flow, and the moment someone brings it back. I always wanted to be the one who creates it.<br><br>20+ years at a Japanese global manufacturer, leading both SCM and IT functions. Drove management transformation from within through cost structure reform, process redesign, and digital advancement. Founded Transformix to bring that experience outside — combining an insider's depth with an adviser's perspective.</p>
         <div class="profile-section-title">Core Expertise</div>
         <ul class="profile-skills">
           <li>Global SCM</li>
@@ -345,8 +306,8 @@
 
   <section id="contact">
     <div class="container">
-      <h2>Contact</h2>
-      <p class="contact-lead">For inquiries about our services, please feel free to reach out.</p>
+      <h2>Let's talk.</h2>
+      <p class="contact-intro">Reaching out isn't a commitment.<br>"Here's our situation —" That's enough to start.<br>From a single session to ongoing partnership — the shape comes later.</p>
       <form id="contact-form" style="max-width:560px;text-align:left;">
         <div style="margin-bottom:1.25rem;">
           <label style="display:block;font-size:0.85rem;font-weight:700;margin-bottom:0.4rem;">Name <span style="color:#c00;">*</span></label>
@@ -364,10 +325,10 @@
           <label style="display:block;font-size:0.85rem;font-weight:700;margin-bottom:0.4rem;">Message <span style="color:#c00;">*</span></label>
           <textarea name="message" required rows="5" style="width:100%;padding:0.75rem 1rem;border:1px solid var(--border);font-size:0.95rem;font-family:inherit;outline:none;resize:vertical;" placeholder="Please describe your inquiry"></textarea>
         </div>
-        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1.25rem;">By submitting this form, you agree to our <a href="/en/privacy.html" style="color:var(--indigo);text-decoration:underline;">Privacy Policy</a>.</p>
+        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1.25rem;">We'll get back to you within 2 business days. For details on how we handle your information, see our <a href="/en/privacy.html" style="color:var(--indigo);text-decoration:underline;">Privacy Policy</a>.</p>
         <div class="cf-turnstile" data-sitekey="0x4AAAAAADOsGsJALOi69vw5" style="margin-bottom:1.25rem;"></div>
         <p id="form-error" style="display:none;font-size:0.85rem;color:#c00;margin-bottom:1rem;">Submission failed. Please try again later.</p>
-        <button type="submit" id="form-submit" class="btn" style="border:none;cursor:pointer;font-family:inherit;">Send</button>
+        <button type="submit" id="form-submit" class="btn" style="border:none;cursor:pointer;font-family:inherit;">Start the Conversation</button>
       </form>
       <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
       <script>
@@ -394,7 +355,7 @@
             errEl.textContent = 'Submission failed. Error: ' + (err.message || err);
             errEl.style.display = 'block';
             btn.disabled = false;
-            btn.textContent = 'Send';
+            btn.textContent = 'Start the Conversation';
           }
         });
       </script>
