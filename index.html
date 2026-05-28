@@ -116,8 +116,8 @@
 
     /* BEFORE AFTER */
     .ba-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:2.5rem; }
-    .ba-card { border:1px solid var(--border); background:#fff; overflow:hidden; }
-    .ba-before { padding:1.25rem 1.5rem; background:var(--light); }
+    .ba-card { border:1px solid var(--border); background:#fff; overflow:hidden; display:flex; flex-direction:column; }
+    .ba-before { padding:1.25rem 1.5rem; background:var(--light); flex:1; }
     .ba-before-label { font-size:0.65rem; font-weight:700; letter-spacing:0.2em; color:var(--muted); text-transform:uppercase; margin-bottom:0.5rem; }
     .ba-before p { font-size:0.88rem; color:var(--muted); line-height:1.6; }
     .ba-arrow { text-align:center; padding:0.5rem; background:#fff; color:var(--indigo); font-size:1rem; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
