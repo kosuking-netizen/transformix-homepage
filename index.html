@@ -60,7 +60,7 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #ffffff;
+      --bg: #faf9f7;
       --text: #111111;
       --muted: #222222;
       --border: #e0e0e0;
@@ -76,7 +76,7 @@
     /* NAV */
     header { position: fixed; top:0; left:0; right:0; background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); z-index:100; }
     nav { max-width:1100px; margin:0 auto; padding:0 2.5rem; height:68px; display:flex; align-items:center; gap:2.5rem; }
-    .logo { font-size:1.25rem; font-weight:800; letter-spacing:0.06em; margin-right:auto; white-space:nowrap; }
+    .logo { font-size:1.25rem; font-weight:800; letter-spacing:0.01em; color:var(--indigo); margin-right:auto; white-space:nowrap; }
     .nav-links { list-style:none; display:flex; gap:2rem; }
     .nav-links a { font-size:0.85rem; color:var(--muted); white-space:nowrap; transition:color 0.2s; }
     .nav-links a:hover { color:var(--text); }
@@ -146,7 +146,8 @@
     @media (max-width:768px) { .price-grid { grid-template-columns:1fr; } }
 
     /* MISSION */
-    #mission { background:var(--text); color:#fff; }
+    #mission { background:var(--indigo) !important; color:#fff; }
+    .mv-reason { font-size:0.9rem; color:rgba(255,255,255,0.5); margin-bottom:2.5rem; letter-spacing:0.05em; }
     .mv-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; }
     .mv-label { font-size:0.65rem; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:1rem; }
     .mv-text { font-size:1.35rem; font-weight:700; line-height:1.6; }
@@ -172,7 +173,12 @@
 
     /* CONTACT */
     #contact { text-align:left; }
-    .contact-lead { font-size:1rem; color:var(--muted); margin-bottom:2rem; }
+    .contact-lead { font-size:1.2rem; font-weight:700; color:var(--text); margin-bottom:0.75rem; }
+    .contact-intro { font-size:0.95rem; color:var(--muted); margin-bottom:2rem; line-height:1.9; }
+
+    /* CLOSING */
+    #closing { background:var(--warm) !important; text-align:center; }
+    .closing-text { font-size:1.1rem; color:var(--muted); line-height:2.2; margin-bottom:2.5rem; }
 
     /* FOOTER */
     footer { background:var(--text); color:rgba(255,255,255,0.35); text-align:center; padding:2.5rem; font-size:0.8rem; }
@@ -206,10 +212,9 @@
 <body>
   <header>
     <nav>
-      <div class="logo">Transformix</div>
+      <a href="/" class="logo">Transformix</a>
       <ul class="nav-links">
         <li><a href="#services">サービス</a></li>
-        <li><a href="#pricing">料金</a></li>
         <li><a href="#about">会社概要</a></li>
         <li><a href="#profile">代表</a></li>
         <li><a href="/daily/" style="color:var(--indigo);font-weight:700;">📰 インサイト</a></li>
@@ -225,7 +230,6 @@
 
   <div class="mobile-menu" id="mobileMenu">
     <a href="#services" onclick="closeMenu()">サービス</a>
-    <a href="#pricing" onclick="closeMenu()">料金</a>
     <a href="#about" onclick="closeMenu()">会社概要</a>
     <a href="#profile" onclick="closeMenu()">代表</a>
     <a href="/daily/" class="highlight">📰 インサイト</a>
@@ -233,100 +237,83 @@
     <a href="/en/">EN</a>
   </div>
 
+  <!-- Section 1 & 2: 変更なし -->
   <section id="hero">
     <div class="hero-inner">
       <div class="hero-eyebrow">製造業の経営変革パートナー</div>
       <h1>あなたの変革へ、最高の掛け算で。</h1>
-      <p>製造業のSCM・デジタル・組織を経営視点で統合し、企業価値向上を支援する。<br>サプライチェーンから、経営そのものを変える。</p>
+      <!-- Section 3: FVサブコピー改訂 -->
+      <p>SCM・デジタル・組織——分断された流れを、経営の軸で一本につなぐ。</p>
       <a href="#contact" class="btn">お問い合わせ</a>
+    </div>
+  </section>
+
+  <!-- Section 7: Mission/Vision をヒーロー直後に移動 -->
+  <section id="mission">
+    <div class="container">
+      <p class="mv-reason">——Transformixがここにある理由。</p>
+      <div class="mv-grid">
+        <div><div class="mv-label">Mission</div><p class="mv-text">迷いを力に、変革を現実に。</p></div>
+        <div><div class="mv-label">Vision</div><p class="mv-text">人が創造的に、楽しく働く世界を。</p></div>
+      </div>
     </div>
   </section>
 
   <section id="services">
     <div class="container">
       <h2>サービス</h2>
+      <!-- Section 4: フラッグシップ説明文改訂 -->
       <div class="flagship-card">
         <div class="flagship-badge">Flagship</div>
         <h3>変革トータルアドバイザリー</h3>
-        <p>「変革が必要とは分かっているが、どこから手をつければいいか分からない」——そのような経営課題を起点に、長年の慣習や組織のしがらみの中にこそ突破口を見つけ、SCM・デジタル・組織を横断して実行まで伴走する。</p>
+        <p>変革の必要性は、みんなわかっている。動けないのは、意志の問題ではない。構造と順序の問題だ。どこから始め、どう動かし、どう定着させるか——その全体を、現場で一緒に動かす。</p>
         <div class="flagship-tags"><span>顧問型</span><span>スポット相談</span><span>伴走支援</span></div>
       </div>
+      <!-- Section 6: Before/After 改訂 -->
       <div class="ba-grid">
         <div class="ba-card">
           <div class="ba-before">
             <div class="ba-before-label">Before</div>
-            <p>計画が経営と現場で乖離しており、意思決定が遅い</p>
+            <p>伝えても動かない。会議を重ねるほど、疲弊する。</p>
           </div>
           <div class="ba-arrow">↓</div>
           <div class="ba-after">
             <div class="ba-after-label">After</div>
-            <p>経営・事業・現場が同じ数字で動き、判断が速くなる</p>
+            <p>経営と現場が、同じ景色を見て動く組織。</p>
           </div>
         </div>
         <div class="ba-card">
           <div class="ba-before">
             <div class="ba-before-label">Before</div>
-            <p>DXに投資しているが、現場に定着せず成果が見えない</p>
+            <p>システムは動いている。でも、人は変わっていない。</p>
           </div>
           <div class="ba-arrow">↓</div>
           <div class="ba-after">
             <div class="ba-after-label">After</div>
-            <p>デジタルが現場に根付き、データで動ける組織になる</p>
+            <p>道具が、人の手に馴染んでいる。</p>
           </div>
         </div>
         <div class="ba-card">
           <div class="ba-before">
             <div class="ba-before-label">Before</div>
-            <p>変革の必要性は分かるが、社内が動かず進まない</p>
+            <p>変革したい人はいる。でも、動きが広がらない。</p>
           </div>
           <div class="ba-arrow">↓</div>
           <div class="ba-after">
             <div class="ba-after-label">After</div>
-            <p>変革を自走できる組織・文化が育ち、継続的に進化する</p>
+            <p>変革が、一人の仕事ではなくなる。</p>
           </div>
         </div>
       </div>
+      <!-- Section 5: 専門サービス冒頭文改訂 -->
       <div class="services-sub-title">専門サービス</div>
       <div class="cards">
-        <div class="card"><div class="card-num">01</div><h3>SCM × 経営変革</h3><p>PSI/S&OPからワンナンバーマネジメントへ。サプライチェーンを起点に経営管理を統合する。</p></div>
-        <div class="card"><div class="card-num">02</div><h3>DX・IT変革支援</h3><p>デジタルの仕組みづくりから実行まで。経営とITをつなぐ視点で、使える仕組みを作る。</p></div>
-        <div class="card"><div class="card-num">03</div><h3>AIプロセス改革</h3><p>AIを活用したプロセス改革の戦略策定から導入・定着まで。使えるAIを現場に根付かせる。</p></div>
-        <div class="card"><div class="card-num">04</div><h3>組織・働き方デザイン</h3><p>働き方・組織設計・意思決定・会議の進め方など、変革の土台となる組織力を高める。</p></div>
-        <div class="card"><div class="card-num">05</div><h3>エグゼクティブコーチング</h3><p>経営者・リーダー向けの個別コーチング。個人の変革が組織の変革につながる。</p></div>
-        <div class="card card-kyoto"><div class="card-num">06</div><h3>京都で話しませんか。</h3><p>日常のオフィスを離れ、京都でじっくり対話する。戦略の壁打ち、大事な意思決定——カジュアルに、でも深く。</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="pricing">
-    <div class="container">
-      <h2>料金</h2>
-      <div class="price-grid">
-        <div class="price-card">
-          <div class="price-type">Monthly</div>
-          <h3>月額顧問型</h3>
-          <p>月額固定制。定期的なミーティング・相談対応・資料レビューなど、継続的なアドバイザリーを提供します。</p>
-        </div>
-        <div class="price-card">
-          <div class="price-type">Spot</div>
-          <h3>スポット相談</h3>
-          <p>単発・課題特定型。半日〜1日単位での集中セッション。特定テーマの壁打ちや意思決定支援に対応します。</p>
-        </div>
-        <div class="price-card">
-          <div class="price-type">Project</div>
-          <h3>プロジェクト型</h3>
-          <p>期間を定めた伴走支援。スコープ・期間・成果物を合意のうえ、プロジェクトベースでご提案します。</p>
-        </div>
-      </div>
-      <p class="price-note">料金はご相談内容・支援範囲・期間により異なります。まずはお気軽にお問い合わせください。</p>
-    </div>
-  </section>
-
-  <section id="mission">
-    <div class="container">
-      <div class="mv-grid">
-        <div><div class="mv-label">Mission</div><p class="mv-text">迷いを力に、変革を現実に。</p></div>
-        <div><div class="mv-label">Vision</div><p class="mv-text">人が創造的に、楽しく働く世界を。</p></div>
+        <div class="card"><div class="card-num">01</div><h3>SCM × 経営変革</h3><p>計画は動いている。でも数字の意味が、部門ごとにバラバラだ。サプライチェーンの問題は、多くの場合、経営構造の問題でもある。</p></div>
+        <div class="card"><div class="card-num">02</div><h3>DX・IT変革支援</h3><p>システムは入れた。でも現場は変わっていない。テクノロジーと人の間にある溝を、埋める。</p></div>
+        <div class="card"><div class="card-num">03</div><h3>AIプロセス改革</h3><p>AIを使えば変わると言われた。何から始めればいいかは、誰も教えてくれなかった。戦略から定着まで、一緒に設計する。</p></div>
+        <div class="card"><div class="card-num">04</div><h3>組織・働き方デザイン</h3><p>優秀な人が、本来の仕事ができていない。構造を変えれば、人は動き始める。</p></div>
+        <div class="card"><div class="card-num">05</div><h3>エグゼクティブコーチング</h3><p>経営の孤独を、一人で抱えなくていい。立場を外れた場所で、思考を整える時間をつくる。</p></div>
+        <div class="card card-kyoto"><div class="card-num">06</div><h3>京都での対話セッション</h3><p>京都で、一日だけ立ち止まる。構造を整理し、感情を落ち着かせ、次の一手を決める。喧騒から離れた場所で、思考は動き始める。</p></div>
       </div>
     </div>
   </section>
@@ -346,6 +333,7 @@
     </div>
   </section>
 
+  <!-- Section 10: プロフィール冒頭改訂 -->
   <section id="profile">
     <div class="container">
       <h2>代表プロフィール</h2>
@@ -353,7 +341,7 @@
         <div class="profile-name">井沢 晃将<span style="font-size:0.55em;font-weight:400;color:var(--muted);margin-left:0.5em;">（いざわ こうすけ）</span></div>
         <div class="profile-title">Founder</div>
         <div class="profile-hook">経営変革を、事業会社の内側から動かしてきた実務家。</div>
-        <p class="profile-bio">日系グローバル製造業にてSCM・IT両機能を統括。コスト構造の改革・業務プロセスの再設計・デジタル推進を通じ、経営変革を内部からリードしてきた実務経験20年以上。その経験を活かし、Transformixを設立。製造業の変革を、外部の視点と内部経験を掛け合わせて支援している。</p>
+        <p class="profile-bio">変革の現場で何度も見てきた。誰かが流れを止め、誰かが流れを取り戻す瞬間を。私はずっと、その流れを作る側にいたかった。<br><br>日系グローバル製造業にてSCM・IT両機能を統括。コスト構造の改革・業務プロセスの再設計・デジタル推進を通じ、経営変革を内部からリードしてきた実務経験20年以上。その経験を活かし、Transformixを設立。製造業の変革を、外部の視点と内部経験を掛け合わせて支援している。</p>
         <div class="profile-section-title">専門領域</div>
         <ul class="profile-skills">
           <li>グローバルSCM</li>
@@ -371,10 +359,11 @@
     </div>
   </section>
 
+  <!-- Section 8: お問い合わせセクション改訂 -->
   <section id="contact">
     <div class="container">
-      <h2>お問い合わせ</h2>
-      <p class="contact-lead">サービスに関するご相談はお気軽にどうぞ。</p>
+      <h2>まず、話してみてください。</h2>
+      <p class="contact-intro">問い合わせは、決断ではない。<br>「こういう状況なのですが」——その一言で十分です。<br>単発のスポット相談から、継続的な伴走まで、形は、そのあとで。</p>
       <form id="contact-form" style="max-width:560px;text-align:left;">
         <div style="margin-bottom:1.25rem;">
           <label style="display:block;font-size:0.85rem;font-weight:700;margin-bottom:0.4rem;">お名前 <span style="color:#c00;">*</span></label>
@@ -392,10 +381,10 @@
           <label style="display:block;font-size:0.85rem;font-weight:700;margin-bottom:0.4rem;">お問い合わせ内容 <span style="color:#c00;">*</span></label>
           <textarea name="message" required rows="5" style="width:100%;padding:0.75rem 1rem;border:1px solid var(--border);font-size:0.95rem;font-family:inherit;outline:none;resize:vertical;" placeholder="ご相談内容をご記入ください"></textarea>
         </div>
-        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1.25rem;">送信することで<a href="/privacy.html" style="color:var(--indigo);text-decoration:underline;">個人情報保護方針</a>に同意したものとみなします。</p>
+        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1.25rem;">送信後、2営業日以内にご連絡します。※個人情報の取り扱いについては<a href="/privacy.html" style="color:var(--indigo);text-decoration:underline;">プライバシーポリシー</a>をご覧ください。</p>
         <div class="cf-turnstile" data-sitekey="0x4AAAAAADOsGsJALOi69vw5" style="margin-bottom:1.25rem;"></div>
         <p id="form-error" style="display:none;font-size:0.85rem;color:#c00;margin-bottom:1rem;">送信に失敗しました。時間をおいて再度お試しください。</p>
-        <button type="submit" id="form-submit" class="btn" style="border:none;cursor:pointer;font-family:inherit;">送信する</button>
+        <button type="submit" id="form-submit" class="btn" style="border:none;cursor:pointer;font-family:inherit;">相談を申し込む</button>
       </form>
       <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
       <script>
@@ -422,10 +411,18 @@
             errEl.textContent = '送信に失敗しました。エラー: ' + (err.message || err);
             errEl.style.display = 'block';
             btn.disabled = false;
-            btn.textContent = '送信する';
+            btn.textContent = '相談を申し込む';
           }
         });
       </script>
+    </div>
+  </section>
+
+  <!-- Section 11: サイト締め言葉（新設） -->
+  <section id="closing">
+    <div class="container">
+      <p class="closing-text">変革は、一人でするものではない。<br>流れを動かす準備ができたとき、ここに来てほしい。</p>
+      <a href="#contact" class="btn">相談を申し込む</a>
     </div>
   </section>
 
