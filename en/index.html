@@ -159,6 +159,19 @@
       .cards { grid-template-columns:1fr; }
       .mv-grid { grid-template-columns:1fr; gap:2rem; }
     }
+
+    @media (max-width:480px) {
+      /* Flagship card */
+      .flagship-card { padding:1.5rem; }
+      .flagship-card h3 { font-size:1.1rem; }
+
+      /* About table: stacked layout */
+      .about-table tr { display:block; border-bottom:1px solid var(--border); padding:0.75rem 0; }
+      .about-table tr:last-child { border-bottom:none; }
+      .about-table th, .about-table td { display:block; width:100%; border-bottom:none; padding:0; }
+      .about-table th { font-size:0.72rem; color:var(--muted); font-weight:700; letter-spacing:0.05em; margin-bottom:0.2rem; }
+      .about-table td { font-size:0.95rem; }
+    }
   </style>
 </head>
 <body>
