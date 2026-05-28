@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ハーフタイム</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #0D1B2A;
+            color: #FFFFFF;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: 300;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #C9A84C, transparent);
+        }
+
+        .label {
+            font-family: 'Raleway', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.4em;
+            color: #C9A84C;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            display: block;
+            text-align: center;
+        }
+
+        /* HERO */
+        .hero {
+            padding: 120px 0 100px;
+            text-align: center;
+            background-image:
+                linear-gradient(rgba(13, 27, 42, 0.78), rgba(13, 27, 42, 0.93)),
+                url('https://images.unsplash.com/photo-1676012088690-d2197f76db9b?w=1600&q=80&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-brand {
+            font-family: 'Raleway', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.6em;
+            color: #C9A84C;
+            margin-bottom: 12px;
+            display: block;
+            text-transform: uppercase;
+        }
+
+        .hero-brand-ja {
+            font-family: 'Noto Serif JP', serif;
+            font-size: clamp(32px, 5.5vw, 48px);
+            font-weight: 700;
+            color: #FFFFFF;
+            letter-spacing: 0.15em;
+            margin-bottom: 48px;
+            display: block;
+            line-height: 1.2;
+        }
+
+        .hero h1 {
+            font-family: 'Noto Serif JP', serif;
+            font-size: clamp(26px, 4.5vw, 40px);
+            font-weight: 700;
+            line-height: 1.7;
+            color: #FFFFFF;
+            margin-bottom: 36px;
+            letter-spacing: 0.03em;
+        }
+
+        .hero p {
+            font-size: 15px;
+            color: #B0C0D8;
+            line-height: 2.4;
+        }
+
+        /* ABOUT */
+        .about {
+            text-align: center;
+        }
+
+        .about p {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 16px;
+            line-height: 2.6;
+            color: #FFFFFF;
+        }
+
+        .about p + p {
+            margin-top: 36px;
+        }
+
+        /* FOR WHO */
+        .for-who {
+            background-color: #0F2035;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .for-who-item {
+            padding: 32px 0;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+        }
+
+        .for-who-item:last-child {
+            border-bottom: none;
+        }
+
+        .for-who-item p {
+            font-size: 15px;
+            color: #FFFFFF;
+            line-height: 2.2;
+        }
+
+        /* FORMAT */
+        .format {
+            text-align: center;
+        }
+
+        .format-info {
+            font-family: 'Raleway', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            color: #C9A84C;
+            letter-spacing: 0.1em;
+            line-height: 2.6;
+            margin-bottom: 48px;
+        }
+
+        .format-table {
+            width: 100%;
+            max-width: 360px;
+            margin: 0 auto;
+        }
+
+        .format-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(176, 192, 216, 0.12);
+            font-size: 14px;
+        }
+
+        .format-row:last-child {
+            border-bottom: none;
+        }
+
+        .format-label {
+            color: #FFFFFF;
+        }
+
+        .format-time {
+            color: #8A9BB5;
+            font-family: 'Raleway', sans-serif;
+            font-size: 13px;
+        }
+
+        /* RULES */
+        .rules {
+            background-color: #0F2035;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .rule-item {
+            padding: 28px 0;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+        }
+
+        .rule-item:last-child {
+            border-bottom: none;
+        }
+
+        .rule-item p {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 16px;
+            color: #FFFFFF;
+            line-height: 2.0;
+        }
+
+        .rule-item small {
+            display: block;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 12px;
+            color: #8A9BB5;
+            margin-top: 6px;
+            letter-spacing: 0.05em;
+        }
+
+        /* HOST */
+        .host {
+            text-align: center;
+        }
+
+        .host-name {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 10px;
+        }
+
+        .host-role {
+            font-size: 13px;
+            color: #B0C0D8;
+            letter-spacing: 0.05em;
+            margin-bottom: 40px;
+        }
+
+        .host-bio {
+            font-size: 14px;
+            color: #B0C0D8;
+            line-height: 2.4;
+            margin-bottom: 40px;
+        }
+
+        .host-quote {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 16px;
+            color: #FFFFFF;
+            line-height: 2.4;
+            padding: 32px 40px;
+            border-left: 2px solid #C9A84C;
+            text-align: left;
+            background-color: rgba(201, 168, 76, 0.04);
+        }
+
+        /* CTA */
+        .cta {
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .cta h2 {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 14px;
+            color: #B0C0D8;
+            line-height: 2.2;
+            margin-bottom: 48px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #C9A84C;
+            color: #0D1B2A;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            padding: 18px 56px;
+            text-decoration: none;
+            transition: opacity 0.25s ease;
+        }
+
+        .cta-button:hover {
+            opacity: 0.8;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 48px 0;
+            text-align: center;
+            border-top: 1px solid rgba(176, 192, 216, 0.1);
+        }
+
+        footer p {
+            font-size: 12px;
+            color: #8A9BB5;
+            line-height: 2.2;
+            letter-spacing: 0.05em;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 20px;
+            }
+            section {
+                padding: 60px 0;
+            }
+            .hero {
+                padding: 80px 0 60px;
+            }
+            .host-quote {
+                padding: 24px 20px;
+            }
+            .cta {
+                padding: 80px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <span class="hero-brand">HALF TIME</span>
+            <span class="hero-brand-ja">ハーフタイム</span>
+            <h1>変革の最前線にいる人は、<br>孤独だ。</h1>
+            <p>同じ景色を見ている人が、どこかにいる。<br>ハーフタイムは、その人たちが集まる場所です。</p>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ABOUT -->
+    <section class="about">
+        <div class="container">
+            <span class="label">About</span>
+            <p>サッカーのハーフタイムには、カメラがない。<br>監督と選手だけが、ロッカールームで本音を話す。<br>戦略を立て直し、感情を整え、後半に備える。</p>
+            <p>ハーフタイムは、そういう場です。<br>会社名も、肩書きも、ここでは必要ありません。</p>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- FOR WHO -->
+    <section class="for-who">
+        <div class="container">
+            <span class="label">For</span>
+            <div class="for-who-item">
+                <p>DX・SCM・組織変革を推進しているが、<br>社内で本音を話せる相手がいない</p>
+            </div>
+            <div class="for-who-item">
+                <p>「正しい方向に進んでいるか」を<br>同じ立場の人と確かめたい</p>
+            </div>
+            <div class="for-who-item">
+                <p>戦略よりも、壁打ちが必要だと感じている</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- FORMAT -->
+    <section class="format">
+        <div class="container">
+            <span class="label">Format</span>
+            <p class="format-info">
+                月1回　／　火〜木曜　／　20:00〜21:30<br>
+                Zoom　／　クローズド　／　10名以内
+            </p>
+            <div class="format-table">
+                <div class="format-row">
+                    <span class="format-label">チェックイン</span>
+                    <span class="format-time">10 min</span>
+                </div>
+                <div class="format-row">
+                    <span class="format-label">テーマ共有</span>
+                    <span class="format-time">25 min</span>
+                </div>
+                <div class="format-row">
+                    <span class="format-label">本音討議</span>
+                    <span class="format-time">40 min</span>
+                </div>
+                <div class="format-row">
+                    <span class="format-label">持ち帰り確認</span>
+                    <span class="format-time">10 min</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- RULES -->
+    <section class="rules">
+        <div class="container">
+            <span class="label">Rules</span>
+            <div class="rule-item">
+                <p>ここで話したことは、外に出さない</p>
+                <small>チャタムハウスルール</small>
+            </div>
+            <div class="rule-item">
+                <p>会社名・役職は名乗らなくていい</p>
+            </div>
+            <div class="rule-item">
+                <p>売り込みは、誰もしない</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- HOST -->
+    <section class="host">
+        <div class="container">
+            <span class="label">Host</span>
+            <p class="host-name">井沢 晃将</p>
+            <p class="host-role">Transformix合同会社 代表　／　経営変革アドバイザー</p>
+            <p class="host-bio">
+                SCM・DX・組織変革の現場を20年以上歩いてきた。<br>
+                グローバル製造業で経営変革を主導し、<br>
+                2026年、Transformixを立ち上げた。
+            </p>
+            <blockquote class="host-quote">
+                「変革は、一人では動かない。<br>
+                　でも、一人で考え抜いた人間だけが、<br>
+                　本当の仲間を引き寄せる。」
+            </blockquote>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <h2>参加の意思を伝える</h2>
+            <p>今、どんな壁に向き合っていますか？<br>一言だけ教えてください。</p>
+            <!-- Google FormsのURLをここに入れてください -->
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdGENMCTOq891wfKR7eO8YyO8wVtoE-dcbRtSAzhY0SYhTn3w/viewform?usp=publish-editor" class="cta-button" target="_blank">フォームを開く</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>HALF TIME<br>Transformix合同会社<br>transformix.jp</p>
+        </div>
+    </footer>
+
+</body>
+</html>
