@@ -394,3 +394,37 @@ footer {
   .nav-links { display: none; }
   .about-table th { width: 100px; }
 }
+
+@media (max-width: 480px) {
+  /* 会社概要テーブル：縦積みレイアウト */
+  .about-table tr {
+    display: block;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 0.75rem 0;
+  }
+  .about-table tr:last-child {
+    border-bottom: none;
+  }
+  .about-table th,
+  .about-table td {
+    display: block;
+    width: 100%;
+    border-bottom: none;
+    padding: 0 1rem;
+  }
+  .about-table th {
+    font-size: 0.75rem;
+    color: var(--muted);
+    padding-bottom: 0.25rem;
+    white-space: nowrap;
+  }
+  .about-table td {
+    padding-top: 0;
+    font-size: 0.95rem;
+  }
+
+  /* フラッグシップカードタイトル */
+  .flagship-card h3 {
+    font-size: 1.2rem;
+  }
+}
