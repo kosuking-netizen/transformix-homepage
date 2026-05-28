@@ -116,8 +116,12 @@
             color: #FFFFFF;
         }
 
-        .about p + p {
+        .about-block + .about-block {
             margin-top: 36px;
+        }
+
+        .about-block p + p {
+            margin-top: 4px;
         }
 
         /* FOR WHO */
@@ -325,6 +329,10 @@
             .cta {
                 padding: 80px 0;
             }
+            .about p {
+                text-align: left;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
@@ -346,8 +354,15 @@
     <section class="about">
         <div class="container">
             <span class="label">About</span>
-            <p>サッカーのハーフタイムには、カメラがない。<br>監督と選手だけが、ロッカールームで本音を話す。<br>戦略を立て直し、感情を整え、後半に備える。</p>
-            <p>ハーフタイムは、そういう場です。<br>会社名も、肩書きも、ここでは必要ありません。</p>
+            <div class="about-block">
+                <p>サッカーのハーフタイムには、カメラがない。</p>
+                <p>監督と選手だけが、ロッカールームで本音を話す。</p>
+                <p>戦略を立て直し、感情を整え、後半に備える。</p>
+            </div>
+            <div class="about-block">
+                <p>ハーフタイムは、そういう場です。</p>
+                <p>会社名も、肩書きも、ここでは必要ありません。</p>
+            </div>
         </div>
     </section>
 
