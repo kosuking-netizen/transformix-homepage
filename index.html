@@ -74,10 +74,17 @@
     a { color: inherit; text-decoration: none; }
 
     /* ANNOUNCE BAR */
-    .announce-bar { background: var(--indigo); color: rgba(255,255,255,0.9); text-align: center; padding: 0.55rem 1rem; font-size: 0.8rem; letter-spacing: 0.02em; display: flex; align-items: center; justify-content: center; gap: 0.75rem; flex-wrap: wrap; }
-    .announce-new { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; opacity: 0.55; }
-    .announce-link { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.18); padding: 0.15rem 0.7rem; border-radius: 2rem; font-size: 0.78rem; white-space: nowrap; transition: background 0.2s; text-decoration: none; }
+    .announce-bar { background: var(--indigo); color: rgba(255,255,255,0.9); text-align: center; padding: 0.55rem 1rem; font-size: 0.8rem; letter-spacing: 0.02em; display: flex; align-items: center; justify-content: center; gap: 0.75rem; flex-wrap: nowrap; white-space: nowrap; overflow: hidden; }
+    .announce-new { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; opacity: 0.55; flex-shrink: 0; }
+    .announce-text-full { overflow: hidden; text-overflow: ellipsis; }
+    .announce-text-short { display: none; }
+    .announce-link { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.18); padding: 0.15rem 0.7rem; border-radius: 2rem; font-size: 0.78rem; white-space: nowrap; transition: background 0.2s; text-decoration: none; flex-shrink: 0; }
     .announce-link:hover { background: rgba(255,255,255,0.3); }
+    @media (max-width: 600px) {
+      .announce-new { display: none; }
+      .announce-text-full { display: none; }
+      .announce-text-short { display: inline; }
+    }
 
     /* NAV */
     header { position: fixed; top:0; left:0; right:0; background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); z-index:100; }
@@ -233,7 +240,8 @@
   <header>
     <div class="announce-bar">
       <span class="announce-new">NEW</span>
-      📰 毎日更新：SCM・AI/DX・Football・東洋哲学 インサイト
+      <span class="announce-text-full">📰 毎日更新：SCM・AI/DX・Football・東洋哲学 インサイト</span>
+      <span class="announce-text-short">📰 毎日インサイト更新中</span>
       <a href="/daily/" class="announce-link">今日の記事を読む →</a>
     </div>
     <nav>
