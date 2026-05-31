@@ -307,11 +307,17 @@
       .profile-name { font-size:1.2rem; display:flex; flex-direction:column; gap:0.15rem; }
       .profile-name > span { font-size:0.78rem !important; margin-left:0 !important; }
       .profile-hook { font-size:1.05rem; }
-      .profile-bio { font-size:0.88rem; line-height:1.8; margin-bottom:1.25rem; }
+      .profile-bio { font-size:0.88rem; line-height:2; margin-bottom:1rem; }
+      .profile-bio-detail { display:block; }
+      .profile-career { list-style:none; margin-bottom:1rem; display:flex; flex-direction:column; gap:0.5rem; }
+      .profile-career li { font-size:0.88rem; color:var(--muted); line-height:1.6; padding-left:1rem; position:relative; }
+      .profile-career li::before { content:'―'; position:absolute; left:0; color:var(--indigo); font-weight:700; }
+      .profile-skills { margin-bottom:1.25rem; }
       .profile-skills li { font-size:0.78rem; padding:0.25rem 0.75rem; }
-      .profile-meta { gap:0.6rem; }
-      .profile-meta-item { flex-direction:column; gap:0.2rem; }
-      .profile-meta-label { min-width:unset; font-size:0.72rem; letter-spacing:0.05em; color:var(--muted); font-weight:700; }
+      .profile-meta { gap:0.5rem; }
+      .profile-meta-item { flex-direction:row; gap:0.75rem; align-items:baseline; }
+      .profile-meta-label { min-width:unset; font-size:0.78rem; letter-spacing:0.03em; color:var(--muted); font-weight:700; white-space:nowrap; }
+      .profile-section-title { margin-bottom:0.5rem; }
 
       /* Mission/Vision 1行に収める */
       .mv-text { font-size: clamp(1rem, 4.8vw, 1.3rem); white-space: nowrap; }
@@ -455,7 +461,13 @@
         <div class="profile-title">Founder</div>
         <div class="profile-hook">経営変革の現場に、内側から関わり続けてきた。</div>
         <p class="profile-bio">変革の現場で何度も見てきた。誰かが流れを止め、誰かが流れを取り戻す瞬間を。私はずっと、その流れを作る側にいたかった。</p>
-        <p class="profile-bio">SIer出身として、ITの現場を知ったうえで製造業へ。日系グローバル製造業にてSCM・IT両機能を統括。SCMを起点に経営変革を動かすことを軸に、構造の再設計・データ可視化・組織改革を一貫して推進してきた。実務経験20年以上。その経験を活かし、Transformixを設立。製造業の変革を、外部の視点と内部経験を掛け合わせて支援している。</p>
+        <ul class="profile-bio-detail profile-career">
+          <li>SIer出身、日系グローバル製造業へ</li>
+          <li>米国子会社でIT戦略・業務改革を担う</li>
+          <li>グローバルSCM改革を主導</li>
+          <li>SCMを起点に、経営変革へ</li>
+          <li>実務20年以上、Transformixを設立</li>
+        </ul>
         <div class="profile-section-title">専門領域</div>
         <ul class="profile-skills">
           <li>グローバルSCM</li>
