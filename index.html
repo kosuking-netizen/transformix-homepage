@@ -106,6 +106,9 @@
     .btn:hover { opacity:0.75; }
     .hero-trust { font-size:0.82rem; color:var(--muted); margin-top:1.25rem; letter-spacing:0.02em; }
 
+    /* PC専用改行 */
+    .br-pc { display:inline; }
+
     /* SECTIONS */
     section { padding:7rem 2.5rem; }
     section:nth-child(even) { background:var(--light); }
@@ -140,7 +143,8 @@
     @media (max-width:768px) { .ba-grid { grid-template-columns:1fr; } }
 
     /* SPECIALIZED */
-    .services-sub-title { font-size:0.72rem; font-weight:700; letter-spacing:0.2em; color:var(--muted); text-transform:uppercase; margin:2.5rem 0 1.5rem; }
+    .services-sub-title { font-size:0.72rem; font-weight:700; letter-spacing:0.2em; color:var(--muted); text-transform:uppercase; margin:3rem 0 1.5rem; display:flex; align-items:center; gap:1rem; }
+    .services-sub-title::after { content:''; flex:1; height:1px; background:var(--border); }
     .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:1px solid var(--border); }
     .card { background:#fff; padding:2.5rem 2rem; border-right:1px solid var(--border); border-bottom:1px solid var(--border); }
     .card:nth-child(3n):not(.card-kyoto) { border-right:none; }
@@ -164,7 +168,7 @@
     .mv-reason { font-size:0.9rem; color:rgba(255,255,255,0.5); margin-bottom:2.5rem; letter-spacing:0.05em; }
     .mv-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; }
     .mv-label { font-size:0.65rem; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:1rem; }
-    .mv-text { font-size:1.35rem; font-weight:700; line-height:1.6; }
+    .mv-text { font-size:1.5rem; font-weight:700; line-height:1.6; }
 
     /* ABOUT */
     .about-table { width:100%; border-collapse:collapse; }
@@ -176,7 +180,7 @@
     .profile-box { border:1px solid var(--border); padding:3rem; max-width:720px; }
     .profile-name { font-size:1.5rem; font-weight:800; letter-spacing:-0.01em; margin-bottom:0.25rem; }
     .profile-title { font-size:0.85rem; color:var(--muted); margin-bottom:1rem; }
-    .profile-hook { font-size:1.05rem; font-weight:700; color:var(--indigo); margin-bottom:1.25rem; line-height:1.5; }
+    .profile-hook { font-size:1.15rem; font-weight:700; color:var(--indigo); margin-bottom:1.25rem; line-height:1.65; }
     .profile-bio { font-size:0.92rem; color:var(--muted); line-height:1.9; margin-bottom:1.75rem; }
     .profile-section-title { font-size:0.65rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); margin-bottom:0.75rem; }
     .profile-skills { list-style:none; display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.75rem; }
@@ -225,6 +229,15 @@
       h2 { font-size:1.6rem; }
       .card { padding:1.75rem 1.5rem; }
       .flagship-card { padding:2rem 1.5rem; }
+
+      /* PC専用改行を非表示 */
+      .br-pc { display:none; }
+
+      /* ヒーローCTAボタン全幅 */
+      #hero .btn { display:block; width:100%; text-align:center; }
+
+      /* Mission/Vision 文字サイズアップ */
+      .mv-text { font-size:1.6rem; }
     }
 
     @media (max-width:480px) {
@@ -252,12 +265,15 @@
       .profile-box { padding:1.5rem 1.25rem; }
       .profile-name { font-size:1.2rem; display:flex; flex-direction:column; gap:0.15rem; }
       .profile-name > span { font-size:0.78rem !important; margin-left:0 !important; }
-      .profile-hook { font-size:0.95rem; }
+      .profile-hook { font-size:1.05rem; }
       .profile-bio { font-size:0.88rem; line-height:1.8; margin-bottom:1.25rem; }
       .profile-skills li { font-size:0.78rem; padding:0.25rem 0.75rem; }
       .profile-meta { gap:0.6rem; }
       .profile-meta-item { flex-direction:column; gap:0.2rem; }
       .profile-meta-label { min-width:unset; font-size:0.72rem; letter-spacing:0.05em; color:var(--muted); font-weight:700; }
+
+      /* 送信ボタン全幅 */
+      #contact .btn { display:block; width:100%; text-align:center; }
 
       /* フッター */
       footer { padding:2rem 1.25rem; line-height:2; }
@@ -301,7 +317,7 @@
   <section id="hero">
     <div class="hero-inner">
       <h1>変革は、<br>掛け算で動く。</h1>
-      <p>SCM・デジタル・組織——分断された流れを、経営の軸で一本につなぐ。</p>
+      <p>SCM・デジタル・組織——<br>分断された流れを、経営の軸で一本につなぐ。</p>
       <a href="#contact" class="btn">お問い合わせ</a>
     </div>
   </section>
@@ -322,7 +338,7 @@
       <div class="flagship-card">
         <div class="flagship-badge">Flagship</div>
         <h3>変革トータルアドバイザリー</h3>
-        <p>変革の必要性は、みんなわかっている。動けないのは、意志の問題ではない。構造と順序の問題だ。<br>どこから始め、どう動かし、どう定着させるか——<br>その全体を、現場で一緒に動かす。</p>
+        <p>変革の必要性は、みんなわかっている。動けないのは、意志の問題ではない。構造と順序の問題だ。<span class="br-pc"><br></span>どこから始め、どう動かし、どう定着させるか——<span class="br-pc"><br></span>その全体を、現場で一緒に動かす。</p>
         <div class="flagship-tags"><span>顧問型</span><span>スポット相談</span><span>伴走支援</span></div>
       </div>
       <div class="ba-grid">
@@ -420,19 +436,19 @@
       <form id="contact-form" style="max-width:560px;text-align:left;">
         <div style="margin-bottom:1.25rem;">
           <label style="display:block;font-size:0.85rem;font-weight:700;margin-bottom:0.4rem;">お名前 <span style="color:#c00;">*</span></label>
-          <input type="text" name="name" required style="width:100%;padding:0.75rem 1rem;border:1px solid var(--border);font-size:0.95rem;font-family:inherit;outline:none;" placeholder="山田 太郎">
+          <input type="text" name="name" required style="width:100%;padding:0.75rem 1rem;border:1px solid var(--border);font-size:1rem;font-family:inherit;outline:none;" placeholder="山田 太郎">
         </div>
         <div style="margin-bottom:1.25rem;">
           <label style="display:block;font-size:0.85rem;font-weight:700;margin-bottom:0.4rem;">会社名</label>
-          <input type="text" name="company" style="width:100%;padding:0.75rem 1rem;border:1px solid var(--border);font-size:0.95rem;font-family:inherit;outline:none;" placeholder="株式会社〇〇">
+          <input type="text" name="company" style="width:100%;padding:0.75rem 1rem;border:1px solid var(--border);font-size:1rem;font-family:inherit;outline:none;" placeholder="株式会社〇〇">
         </div>
         <div style="margin-bottom:1.25rem;">
           <label style="display:block;font-size:0.85rem;font-weight:700;margin-bottom:0.4rem;">メールアドレス <span style="color:#c00;">*</span></label>
-          <input type="email" name="email" required style="width:100%;padding:0.75rem 1rem;border:1px solid var(--border);font-size:0.95rem;font-family:inherit;outline:none;" placeholder="taro@example.com">
+          <input type="email" name="email" required style="width:100%;padding:0.75rem 1rem;border:1px solid var(--border);font-size:1rem;font-family:inherit;outline:none;" placeholder="taro@example.com">
         </div>
         <div style="margin-bottom:1.75rem;">
           <label style="display:block;font-size:0.85rem;font-weight:700;margin-bottom:0.4rem;">お問い合わせ内容 <span style="color:#c00;">*</span></label>
-          <textarea name="message" required rows="5" style="width:100%;padding:0.75rem 1rem;border:1px solid var(--border);font-size:0.95rem;font-family:inherit;outline:none;resize:vertical;" placeholder="ご相談内容をご記入ください"></textarea>
+          <textarea name="message" required rows="5" style="width:100%;padding:0.75rem 1rem;border:1px solid var(--border);font-size:1rem;font-family:inherit;outline:none;resize:vertical;" placeholder="ご相談内容をご記入ください"></textarea>
         </div>
         <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1.25rem;">送信後、2営業日以内にご連絡します。※個人情報の取り扱いについては<a href="/privacy.html" style="color:var(--indigo);text-decoration:underline;">プライバシーポリシー</a>をご覧ください。</p>
         <div class="cf-turnstile" data-sitekey="0x4AAAAAADOsGsJALOi69vw5" style="margin-bottom:1.25rem;"></div>
