@@ -101,7 +101,7 @@
     .hero-inner { max-width:680px; }
     .hero-eyebrow { font-size:0.95rem; font-weight:700; letter-spacing:0.15em; color:var(--indigo); margin-bottom:1.5rem; }
     .hero-inner h1 { font-size:clamp(2.4rem,5vw,4rem); font-weight:800; line-height:1.15; letter-spacing:-0.02em; margin-bottom:1.5rem; }
-    .hero-inner p { font-size:1.05rem; color:var(--muted); margin-bottom:2.5rem; line-height:1.85; max-width:680px; margin-left:auto; margin-right:auto; }
+    .hero-inner p { font-size:1.05rem; color:var(--muted); margin-bottom:3rem; line-height:1.85; max-width:680px; margin-left:auto; margin-right:auto; }
     .btn { display:inline-block; background:var(--indigo); color:#fff; padding:1rem 2.5rem; font-size:0.9rem; font-weight:600; letter-spacing:0.04em; transition:opacity 0.2s; }
     .btn:hover { opacity:0.75; }
     .hero-trust { font-size:0.82rem; color:var(--muted); margin-top:1.25rem; letter-spacing:0.02em; }
@@ -136,7 +136,7 @@
     .ba-arrow { text-align:center; padding:0.5rem; background:#fff; color:var(--indigo); font-size:1rem; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
     .ba-after { padding:1.25rem 1.5rem; background:var(--indigo-light); }
     .ba-after-label { font-size:0.65rem; font-weight:700; letter-spacing:0.2em; color:var(--indigo); text-transform:uppercase; margin-bottom:0.5rem; }
-    .ba-after p { font-size:0.88rem; color:var(--indigo); line-height:1.6; font-weight:600; }
+    .ba-after p { font-size:0.88rem; color:var(--indigo); line-height:1.6; font-weight:700; }
     @media (max-width:768px) { .ba-grid { grid-template-columns:1fr; } }
 
     /* SPECIALIZED */
@@ -147,8 +147,8 @@
     .card:nth-child(4):not(.card-kyoto), .card:nth-child(5):not(.card-kyoto) { border-bottom:none; }
     section:nth-child(even) .card { background:var(--light); }
     .card-num { font-size:0.75rem; font-weight:700; color:var(--indigo); letter-spacing:0.1em; margin-bottom:0.85rem; }
-    .card h3 { font-size:1.05rem; font-weight:800; margin-bottom:0.75rem; line-height:1.4; }
-    .card p { font-size:0.92rem; color:var(--muted); line-height:1.8; }
+    .card h3 { font-size:1.05rem; font-weight:800; margin-bottom:1rem; line-height:1.4; }
+    .card p { font-size:0.92rem; color:var(--muted); line-height:1.9; }
 
     /* PRICING */
     .price-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-bottom:2rem; }
@@ -322,14 +322,14 @@
       <div class="flagship-card">
         <div class="flagship-badge">Flagship</div>
         <h3>変革トータルアドバイザリー</h3>
-        <p>変革の必要性は、みんなわかっている。動けないのは、意志の問題ではない。構造と順序の問題だ。どこから始め、どう動かし、どう定着させるか——その全体を、現場で一緒に動かす。</p>
+        <p>変革の必要性は、みんなわかっている。動けないのは、意志の問題ではない。構造と順序の問題だ。<br>どこから始め、どう動かし、どう定着させるか——<br>その全体を、現場で一緒に動かす。</p>
         <div class="flagship-tags"><span>顧問型</span><span>スポット相談</span><span>伴走支援</span></div>
       </div>
       <div class="ba-grid">
         <div class="ba-card">
           <div class="ba-before">
             <div class="ba-before-label">Before</div>
-            <p>伝えても動かない。会議を重ねるほど、疲弊する。</p>
+            <p>伝えても動かない。<br>会議を重ねるほど、疲弊する。</p>
           </div>
           <div class="ba-arrow">↓</div>
           <div class="ba-after">
@@ -340,7 +340,7 @@
         <div class="ba-card">
           <div class="ba-before">
             <div class="ba-before-label">Before</div>
-            <p>システムは動いている。でも、人は変わっていない。</p>
+            <p>システムは動いている。<br>でも、人は変わっていない。</p>
           </div>
           <div class="ba-arrow">↓</div>
           <div class="ba-after">
@@ -351,7 +351,7 @@
         <div class="ba-card">
           <div class="ba-before">
             <div class="ba-before-label">Before</div>
-            <p>変革したい人はいる。でも、動きが広がらない。</p>
+            <p>変革したい人はいる。<br>でも、動きが広がらない。</p>
           </div>
           <div class="ba-arrow">↓</div>
           <div class="ba-after">
@@ -362,12 +362,12 @@
       </div>
       <div class="services-sub-title">専門サービス</div>
       <div class="cards">
-        <div class="card"><div class="card-num">01</div><h3>SCM × 経営変革</h3><p>計画は動いている。でも数字の意味が、部門ごとにバラバラだ。サプライチェーンの問題は、多くの場合、経営構造の問題でもある。</p></div>
-        <div class="card"><div class="card-num">02</div><h3>DX・IT変革支援</h3><p>システムは入れた。でも現場は変わっていない。テクノロジーと人の間にある溝を、埋める。</p></div>
-        <div class="card"><div class="card-num">03</div><h3>AIプロセス改革</h3><p>AIを使えば変わると言われた。何から始めればいいかは、誰も教えてくれなかった。戦略から定着まで、一緒に設計する。</p></div>
-        <div class="card"><div class="card-num">04</div><h3>組織・働き方デザイン</h3><p>優秀な人が、本来の仕事ができていない。構造を変えれば、人は動き始める。</p></div>
-        <div class="card"><div class="card-num">05</div><h3>エグゼクティブコーチング</h3><p>経営の孤独を、一人で抱えなくていい。立場を外れた場所で、思考を整える時間をつくる。</p></div>
-        <div class="card card-kyoto"><div class="card-num">06</div><h3>京都での対話セッション</h3><p>京都で、一日だけ立ち止まる。構造を整理し、感情を落ち着かせ、次の一手を決める。喧騒から離れた場所で、思考は動き始める。</p></div>
+        <div class="card"><div class="card-num">01</div><h3>SCM × 経営変革</h3><p>計画は動いている。<br>でも数字の意味が、部門ごとにバラバラだ。<br>サプライチェーンの問題は、多くの場合、経営構造の問題でもある。</p></div>
+        <div class="card"><div class="card-num">02</div><h3>DX・IT変革支援</h3><p>システムは入れた。<br>でも現場は変わっていない。<br>テクノロジーと人の間にある溝を、埋める。</p></div>
+        <div class="card"><div class="card-num">03</div><h3>AIプロセス改革</h3><p>AIを使えば変わると言われた。<br>何から始めればいいかは、誰も教えてくれなかった。<br>戦略から定着まで、一緒に設計する。</p></div>
+        <div class="card"><div class="card-num">04</div><h3>組織・働き方デザイン</h3><p>優秀な人が、本来の仕事ができていない。<br>構造を変えれば、人は動き始める。</p></div>
+        <div class="card"><div class="card-num">05</div><h3>エグゼクティブコーチング</h3><p>経営の孤独を、一人で抱えなくていい。<br>立場を外れた場所で、思考を整える時間をつくる。</p></div>
+        <div class="card card-kyoto"><div class="card-num">06</div><h3>京都での対話セッション</h3><p>京都で、一日だけ立ち止まる。<br>構造を整理し、感情を落ち着かせ、次の一手を決める。<br>喧騒から離れた場所で、思考は動き始める。</p></div>
       </div>
     </div>
   </section>
@@ -416,7 +416,7 @@
   <section id="contact">
     <div class="container">
       <h2>まず、話してみる。</h2>
-      <p class="contact-intro">問い合わせは、決断ではない。「こういう状況なのですが」——その一言で十分です。単発のスポット相談から、継続的な伴走まで、形は、そのあとで。</p>
+      <p class="contact-intro">問い合わせは、決断ではない。<br>「こういう状況なのですが」——その一言で十分です。<br>単発のスポット相談から、継続的な伴走まで、形は、そのあとで。</p>
       <form id="contact-form" style="max-width:560px;text-align:left;">
         <div style="margin-bottom:1.25rem;">
           <label style="display:block;font-size:0.85rem;font-weight:700;margin-bottom:0.4rem;">お名前 <span style="color:#c00;">*</span></label>
