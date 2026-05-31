@@ -220,12 +220,26 @@
       .hamburger { display:flex; }
       .cards { grid-template-columns:1fr; }
       .mv-grid { grid-template-columns:1fr; gap:2rem; }
+      section { padding:4.5rem 1.5rem; }
+      #hero { padding:8rem 1.5rem 4rem; }
+      h2 { font-size:1.6rem; }
+      .card { padding:1.75rem 1.5rem; }
+      .flagship-card { padding:2rem 1.5rem; }
     }
 
     @media (max-width:480px) {
+      section { padding:3.5rem 1.25rem; }
+      #hero { padding:7rem 1.25rem 3rem; }
+
       /* フラッグシップカード */
       .flagship-card { padding:1.5rem; }
       .flagship-card h3 { font-size:1.1rem; }
+
+      /* カード */
+      .card { padding:1.5rem 1.25rem; }
+
+      /* h2 折り返し対応 */
+      h2 { display:block; border-bottom:none; border-left:4px solid var(--indigo); padding-bottom:0; padding-left:0.85rem; font-size:1.4rem; }
 
       /* 会社概要テーブル：縦積み */
       .about-table tr { display:block; border-bottom:1px solid var(--border); padding:0.75rem 0; }
@@ -235,7 +249,7 @@
       .about-table td { font-size:0.95rem; }
 
       /* プロフィール：モバイル最適化 */
-      .profile-box { padding:1.5rem; }
+      .profile-box { padding:1.5rem 1.25rem; }
       .profile-name { font-size:1.2rem; display:flex; flex-direction:column; gap:0.15rem; }
       .profile-name > span { font-size:0.78rem !important; margin-left:0 !important; }
       .profile-hook { font-size:0.95rem; }
@@ -244,6 +258,9 @@
       .profile-meta { gap:0.6rem; }
       .profile-meta-item { flex-direction:column; gap:0.2rem; }
       .profile-meta-label { min-width:unset; font-size:0.72rem; letter-spacing:0.05em; color:var(--muted); font-weight:700; }
+
+      /* フッター */
+      footer { padding:2rem 1.25rem; line-height:2; }
     }
   </style>
 </head>
@@ -377,7 +394,8 @@
         <div class="profile-name">井沢 晃将<span style="font-size:0.55em;font-weight:400;color:var(--muted);margin-left:0.5em;">（いざわ こうすけ）</span></div>
         <div class="profile-title">Founder</div>
         <div class="profile-hook">経営変革を、事業会社の内側から動かしてきた。</div>
-        <p class="profile-bio">変革の現場で何度も見てきた。誰かが流れを止め、誰かが流れを取り戻す瞬間を。私はずっと、その流れを作る側にいたかった。<br><br>SIer出身として、ITの現場を知ったうえで製造業へ。日系グローバル製造業にてSCM・IT両機能を統括。SCMを起点に経営変革を動かすことを軸に、構造の再設計・データ可視化・組織改革を一貫して推進してきた。実務経験20年以上。その経験を活かし、Transformixを設立。製造業の変革を、外部の視点と内部経験を掛け合わせて支援している。</p>
+        <p class="profile-bio">変革の現場で何度も見てきた。誰かが流れを止め、誰かが流れを取り戻す瞬間を。私はずっと、その流れを作る側にいたかった。</p>
+        <p class="profile-bio">SIer出身として、ITの現場を知ったうえで製造業へ。日系グローバル製造業にてSCM・IT両機能を統括。SCMを起点に経営変革を動かすことを軸に、構造の再設計・データ可視化・組織改革を一貫して推進してきた。実務経験20年以上。その経験を活かし、Transformixを設立。製造業の変革を、外部の視点と内部経験を掛け合わせて支援している。</p>
         <div class="profile-section-title">専門領域</div>
         <ul class="profile-skills">
           <li>グローバルSCM</li>
@@ -398,7 +416,7 @@
   <section id="contact">
     <div class="container">
       <h2>まず、話してみる。</h2>
-      <p class="contact-intro">問い合わせは、決断ではない。<br>「こういう状況なのですが」——その一言で十分です。<br>単発のスポット相談から、継続的な伴走まで、形は、そのあとで。</p>
+      <p class="contact-intro">問い合わせは、決断ではない。「こういう状況なのですが」——その一言で十分です。単発のスポット相談から、継続的な伴走まで、形は、そのあとで。</p>
       <form id="contact-form" style="max-width:560px;text-align:left;">
         <div style="margin-bottom:1.25rem;">
           <label style="display:block;font-size:0.85rem;font-weight:700;margin-bottom:0.4rem;">お名前 <span style="color:#c00;">*</span></label>
@@ -465,7 +483,11 @@
   </script>
 
   <footer>
-    <p>&copy; 2026 Transformix. All rights reserved. &nbsp;|&nbsp; <a href="/privacy.html" style="color:rgba(255,255,255,0.35);text-decoration:underline;">個人情報保護方針</a> &nbsp;|&nbsp; <a href="/tokushoho.html" style="color:rgba(255,255,255,0.35);text-decoration:underline;">特定商取引法に基づく表記</a></p>
+    <p style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.5rem 1rem;align-items:center;">
+      <span>&copy; 2026 Transformix. All rights reserved.</span>
+      <a href="/privacy.html" style="color:rgba(255,255,255,0.35);text-decoration:underline;">個人情報保護方針</a>
+      <a href="/tokushoho.html" style="color:rgba(255,255,255,0.35);text-decoration:underline;">特定商取引法に基づく表記</a>
+    </p>
   </footer>
 </body>
 </html>
