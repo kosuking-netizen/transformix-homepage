@@ -287,11 +287,17 @@
       .profile-box { padding:1.5rem 1.25rem; }
       .profile-name { font-size:1.2rem; }
       .profile-hook { font-size:1.05rem; }
-      .profile-bio { font-size:0.88rem; line-height:1.8; margin-bottom:1.25rem; }
+      .profile-bio { font-size:0.88rem; line-height:2; margin-bottom:1rem; }
+      .profile-bio-detail { display:block; }
+      .profile-career { list-style:none; margin-bottom:1rem; display:flex; flex-direction:column; gap:0.5rem; }
+      .profile-career li { font-size:0.88rem; color:var(--muted); line-height:1.6; padding-left:1rem; position:relative; }
+      .profile-career li::before { content:'―'; position:absolute; left:0; color:var(--indigo); font-weight:700; }
+      .profile-skills { margin-bottom:1.25rem; }
       .profile-skills li { font-size:0.78rem; padding:0.25rem 0.75rem; }
-      .profile-meta { gap:0.6rem; }
-      .profile-meta-item { flex-direction:column; gap:0.2rem; }
-      .profile-meta-label { min-width:unset; font-size:0.72rem; letter-spacing:0.05em; color:var(--muted); font-weight:700; }
+      .profile-meta { gap:0.5rem; }
+      .profile-meta-item { flex-direction:row; gap:0.75rem; align-items:baseline; }
+      .profile-meta-label { min-width:unset; font-size:0.78rem; letter-spacing:0.03em; color:var(--muted); font-weight:700; white-space:nowrap; }
+      .profile-section-title { margin-bottom:0.5rem; }
 
       /* Mission/Vision 1行に収める */
       .mv-text { font-size: clamp(1rem, 4.8vw, 1.3rem); white-space: nowrap; }
@@ -432,7 +438,13 @@
         <div class="profile-title">Founder</div>
         <div class="profile-hook">Been in the middle of management transformation — from the inside.</div>
         <p class="profile-bio">I've seen it happen — the moment a transformation stalls, and the moment someone brings it back to life. I always wanted to be on the side that keeps things moving.</p>
-        <p class="profile-bio">Started in IT consulting, then moved into manufacturing. At a Japanese global manufacturer, led both SCM and IT functions. Using SCM as the entry point, I was involved in management transformation through structural redesign, data visibility, and organizational change — for over 20 years. Founded Transformix to bring that experience outside — combining an insider's depth with an external perspective.</p>
+        <ul class="profile-bio profile-bio-detail profile-career">
+          <li>Started in IT consulting → Japanese global manufacturer</li>
+          <li>IT strategy & business reform at a US subsidiary</li>
+          <li>Led global SCM transformation</li>
+          <li>From SCM to management transformation</li>
+          <li>20+ years of experience, founded Transformix</li>
+        </ul>
         <div class="profile-section-title">Core Expertise</div>
         <ul class="profile-skills">
           <li>Global SCM</li>
