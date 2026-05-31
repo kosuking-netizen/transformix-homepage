@@ -267,7 +267,8 @@
 
     @media (max-width:480px) {
       section { padding:3.5rem 1.25rem; }
-      #hero { padding:7rem 1.25rem 3rem; }
+      #hero { padding:5rem 1.25rem 3rem; }
+      .hero-inner p { font-size:0.92rem; line-height:1.75; }
 
       /* Flagship card */
       .flagship-card { padding:1.5rem; }
@@ -302,8 +303,11 @@
       .profile-meta-label { min-width:unset; font-size:0.78rem; letter-spacing:0.03em; color:var(--muted); font-weight:700; white-space:nowrap; }
       .profile-section-title { margin-bottom:0.5rem; }
 
-      /* Mission/Vision 1行に収める */
-      .mv-text { font-size: clamp(1rem, 4.8vw, 1.3rem); white-space: nowrap; }
+      /* Mission/Vision */
+      .mv-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .mv-label { text-align: center; }
+      .mv-text { font-size: clamp(1rem, 4.2vw, 1.25rem); line-height: 1.65; text-align: center; white-space: normal; }
+      .mv-reason { text-align: center; }
 
       /* Footer */
       footer { padding:2rem 1.25rem; line-height:2; }
@@ -347,17 +351,17 @@
   <section id="hero">
     <div class="hero-inner">
       <h1>Transformation<br>compounds.</h1>
-      <p>SCM, digital, and organization —<br>we restart the flow through a clear management axis.</p>
+      <p>Across SCM, digital, and organization —<br>we restart the flow.</p>
       <a href="#contact" class="btn">Get in Touch</a>
     </div>
   </section>
 
   <section id="mission">
     <div class="container">
-      <p class="mv-reason">——The reason Transformix exists.</p>
+      <p class="mv-reason">Why Transformix exists.</p>
       <div class="mv-grid">
-        <div><div class="mv-label">Mission</div><p class="mv-text">From uncertainty to action. From vision to reality.</p></div>
-        <div><div class="mv-label">Vision</div><p class="mv-text">A world where people work with creativity and purpose.</p></div>
+        <div><div class="mv-label">Mission</div><p class="mv-text">From uncertainty to action.<br class="br-mv">From vision to reality.</p></div>
+        <div><div class="mv-label">Vision</div><p class="mv-text">A world where people work<br class="br-mv">with creativity and purpose.</p></div>
       </div>
     </div>
   </section>
@@ -368,14 +372,14 @@
       <div class="flagship-card">
         <div class="flagship-badge">Flagship</div>
         <h3>Management Transformation Partner</h3>
-        <p>Everyone knows transformation is necessary. The inability to act isn't a question of will — it's a question of structure and sequence. Where to start, how to move it, how to make it stick — we work through all of it, on the ground, together.</p>
+        <p>Transformation stalls not from lack of will — but from unclear structure and sequence. We work through all of it, on the ground, together.</p>
         <div class="flagship-tags"><span>Retained Advisory</span><span>Spot Consulting</span><span>Hands-on Support</span></div>
       </div>
       <div class="ba-grid">
         <div class="ba-card">
           <div class="ba-before">
             <div class="ba-before-label">Before</div>
-            <p>You explain it. Nothing moves. The more meetings, the more exhausted everyone gets.</p>
+            <p>More meetings. Less movement. Everyone's running out of steam.</p>
           </div>
           <div class="ba-arrow">↓</div>
           <div class="ba-after">
@@ -397,7 +401,7 @@
         <div class="ba-card">
           <div class="ba-before">
             <div class="ba-before-label">Before</div>
-            <p>The will to change is there. But it stays isolated.</p>
+            <p>The drive is there. But it never spreads.</p>
           </div>
           <div class="ba-arrow">↓</div>
           <div class="ba-after">
@@ -408,12 +412,12 @@
       </div>
       <div class="services-sub-title">Specialized Services</div>
       <div class="cards">
-        <div class="card"><div class="card-num">01</div><h3>SCM-Driven Business Transformation</h3><p>Operations are running. But the numbers mean something different in every department. Most supply chain problems are, at root, management structure problems.</p></div>
+        <div class="card"><div class="card-num">01</div><h3>SCM-Driven Business Transformation</h3><p>Numbers tell different stories in every department. Most SCM problems are really management problems in disguise.</p></div>
         <div class="card"><div class="card-num">02</div><h3>Digital & IT Transformation</h3><p>The system is live. But behavior hasn't changed. We close the gap between technology and the people who need to use it.</p></div>
         <div class="card"><div class="card-num">03</div><h3>AI Process Innovation</h3><p>Everyone said AI would change things. Nobody said where to start. We design the whole path — from strategy to adoption — together.</p></div>
         <div class="card"><div class="card-num">04</div><h3>Organization & Work Design</h3><p>Talented people aren't doing their real work. Change the structure, and people start to move.</p></div>
         <div class="card"><div class="card-num">05</div><h3>Executive Coaching</h3><p>You don't have to carry the weight of leadership alone. Step outside your role and take time to think clearly.</p></div>
-        <div class="card card-kyoto"><div class="card-num">06</div><h3>Would you like to clear your thinking in Kyoto?</h3><p>A one-day dialogue session in Kyoto.<br>A city that has never rushed an answer.<br>Step outside your role, talk it through, and decide your next move together.</p></div>
+        <div class="card card-kyoto"><div class="card-num">06</div><h3>Come think it through in Kyoto.</h3><p>A one-day dialogue session in Kyoto.<br>A city built on taking the long view.<br>Step outside your role, talk it through, and decide your next move together.</p></div>
       </div>
     </div>
   </section>
@@ -439,11 +443,11 @@
       <div class="profile-box">
         <div class="profile-name">Kosuke Izawa</div>
         <div class="profile-title">Founder</div>
-        <div class="profile-hook">Driven management transformation from the inside — for over 20 years.</div>
+        <div class="profile-hook">Leading transformation from within —<br>for over 20 years.</div>
         <p class="profile-bio">I've seen it happen — the moment a transformation stalls, and the moment someone brings it back to life. I always wanted to be on the side that keeps things moving.</p>
         <ul class="profile-bio profile-bio-detail profile-career">
           <li>Started in IT consulting → Japanese global manufacturer</li>
-          <li>IT strategy & business reform at a US subsidiary</li>
+          <li>IT strategy & business transformation at a US subsidiary</li>
           <li>Led global SCM transformation</li>
           <li>From SCM to management transformation</li>
           <li>20+ years of experience, founded Transformix</li>
@@ -484,7 +488,7 @@
         </div>
         <div style="margin-bottom:1.75rem;">
           <label style="display:block;font-size:0.85rem;font-weight:700;margin-bottom:0.4rem;">Message <span style="color:#c00;">*</span></label>
-          <textarea name="message" required rows="5" style="width:100%;padding:0.75rem 1rem;border:1px solid var(--border);font-size:1rem;font-family:inherit;outline:none;resize:vertical;" placeholder="Please describe your inquiry"></textarea>
+          <textarea name="message" required rows="5" style="width:100%;padding:0.75rem 1rem;border:1px solid var(--border);font-size:1rem;font-family:inherit;outline:none;resize:vertical;" placeholder="Tell us what's going on"></textarea>
         </div>
         <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1.25rem;">We'll get back to you within 2 business days. For details on how we handle your information, see our <a href="/en/privacy.html" style="color:var(--indigo);text-decoration:underline;">Privacy Policy</a>.</p>
         <div class="cf-turnstile" data-sitekey="0x4AAAAAADOsGsJALOi69vw5" style="margin-bottom:1.25rem;"></div>
