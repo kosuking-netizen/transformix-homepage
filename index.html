@@ -269,7 +269,7 @@
       .cards { grid-template-columns:1fr; }
       .mv-grid { grid-template-columns:1fr; gap:2rem; }
       section { padding:4.5rem 1.5rem; }
-      #hero { padding:10.5rem 2.5rem 5rem; }
+      #hero { padding:10.5rem 1.5rem 5rem; }
       h2 { font-size:1.6rem; }
       .card { padding:1.75rem 1.5rem; }
       .flagship-card { padding:2rem 1.5rem; }
@@ -280,8 +280,10 @@
       /* ヒーローCTAボタン：モバイルはinlineのまま */
       #hero .btn { display:inline-block; width:auto; }
 
-      /* ヒーローサブコピー：モバイルで文字を小さく */
-      .hero-inner p { font-size:0.9rem; }
+      /* ヒーローh1：モバイルで少し小さく */
+      .hero-inner h1 { font-size:2rem; }
+      /* ヒーローサブコピー：モバイルでバランス調整 */
+      .hero-inner p { font-size:1rem; letter-spacing:-0.03em; }
 
       /* Mission/Vision 文字サイズアップ */
       .mv-text { font-size:1.6rem; }
