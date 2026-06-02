@@ -388,9 +388,55 @@
     arch.classList.toggle('open');
   }
 
+  function initBilingual() {
+    // card-source: 「/ 日本語」「/ 英語」等を英語に変換し data-ja/data-en を付与
+    const srcFixes = [
+      ['/ 日本語', '/ Japanese'],
+      ['/ 英語', '/ English'],
+      ['日本国際問題研究所（JIIA）', 'Japan Institute of International Affairs (JIIA)'],
+      ['メンバーズ', 'Members Co.'],
+      ['中川政七商店', 'Nakagawa Masashichi Shoten'],
+    ];
+    document.querySelectorAll('.card-source').forEach(el => {
+      let en = el.textContent;
+      srcFixes.forEach(([j, e]) => { en = en.split(j).join(e); });
+      el.dataset.ja = el.textContent;
+      el.dataset.en = en;
+      el.textContent = en;
+    });
+    // Japanese article titles: data-ja/data-en を付与し英語タイトルをデフォルト表示
+    const titleMap = {
+      'サプライチェーンDX完全ガイド｜AI・IoT活用による可視化・レジリエンス強化の実践手法【2026年版】':
+        'Complete Guide to Supply Chain DX 2026: AI, IoT & Resilience',
+      '生成AIからサプライチェーン最適化まで！主要消費財メーカー7社に学ぶDX戦略':
+        'From Generative AI to SCM Optimization: DX Strategies from 7 Major CPG Manufacturers',
+      '2026年のITランドスケープを読む：日本トップCIOが語る洞察':
+        "Reading the 2026 IT Landscape: Insights from Japan's Leading CIOs",
+      'DXからAIトランスフォーメーションへ——NECが語る「AIネイティブカンパニー」への変革':
+        'From DX to AI Transformation: NEC on Building an AI-Native Company',
+      'AI 日本の進化：2026年注目の活用事例ベスト10':
+        'AI Evolution in Japan: Top 10 Use Cases to Watch in 2026',
+      'CIOは変革の主役になれる——アクセンチュアAIセンター長が語る全社AI展開の鍵':
+        'CIOs Can Lead Transformation: Accenture Japan AI Head on Enterprise-Wide Deployment',
+      '【2026年最新版】DX事例30選：9つの業界別に紹介〜有名企業はどんなDXをやっている？〜':
+        "[2026 Edition] 30 DX Success Cases Across 9 Industries: What Are Japan's Leading Companies Doing?",
+      '300年企業の社長交代。中川政七商店が考える「いい会社ってなんだろう？」':
+        '300-Year Company Succession: Nakagawa Masashichi Shoten on What Makes a Good Company',
+    };
+    document.querySelectorAll('.card h3 a').forEach(el => {
+      const ja = el.textContent.trim();
+      if (titleMap[ja]) {
+        el.dataset.ja = ja;
+        el.dataset.en = titleMap[ja];
+        el.textContent = titleMap[ja];
+      }
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     buildDateList('date-list');
     buildDateList('mobile-date-list');
+    initBilingual();
     const lang = localStorage.getItem('lang') || (navigator.language.startsWith('ja') ? 'ja' : 'en');
     if (lang !== 'en') setLang(lang);
   });
