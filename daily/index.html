@@ -94,6 +94,7 @@
     <div class="header-left">
       <a href="/" style="font-size:0.8rem;opacity:0.85;color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:0.3rem;margin-bottom:0.5rem;padding:0.25rem 0.6rem;border:1px solid rgba(255,255,255,0.4);border-radius:3px;" data-ja="← トップページへ" data-en="← Back to Top">← Back to Top</a>
       <h1><span data-ja="インサイト — 毎日更新" data-en="Insights — Daily Update">Insights — Daily Update</span></h1>
+      <div id="last-updated" style="margin-top:0.4rem;font-size:0.78rem;opacity:0.65;"></div>
     </div>
     <div class="header-right">
       <div class="lang-toggle">
@@ -435,6 +436,20 @@
     buildDateList('date-list');
     buildDateList('mobile-date-list');
     initBilingual();
+
+    // 最終更新日を表示
+    if (typeof DAILY_DATES !== 'undefined' && DAILY_DATES.length > 0) {
+      const latest = DAILY_DATES[0];
+      const [y, m, d] = latest.split('-');
+      const el = document.getElementById('last-updated');
+      if (el) {
+        const jaText = `最終更新：${y}年${parseInt(m)}月${parseInt(d)}日`;
+        const enText = `Last updated: ${y}/${m}/${d}`;
+        el.setAttribute('data-ja', jaText);
+        el.setAttribute('data-en', enText);
+        el.textContent = enText;
+      }
+    }
     const lang = localStorage.getItem('lang') || 'en';
     if (lang !== 'en') setLang(lang);
   });
