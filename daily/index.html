@@ -71,8 +71,9 @@
   .badge-concept { color: #1e3a5f; border-color: #1e3a5f; }
   .badge-case    { color: #b07800; border-color: #b07800; }
   .badge-person  { color: #0077b6; border-color: #0077b6; }
+  /* グローバル：デスクトップではアーカイブUI非表示 */
   .archive-toggle { display: none; }
-  .mobile-archive { display: none; }
+  .mobile-archive  { display: none; }
   @media (max-width: 768px) {
     .layout { grid-template-columns: 1fr; padding: 1rem; }
     .sidebar { display: none; }
@@ -92,9 +93,8 @@
 <header>
   <div class="header-inner">
     <div class="header-left">
-      <a href="/" style="font-size:0.8rem;opacity:0.85;color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:0.3rem;margin-bottom:0.5rem;padding:0.25rem 0.6rem;border:1px solid rgba(255,255,255,0.4);border-radius:3px;" data-ja="← トップページへ" data-en="← Back to Top">← Back to Top</a>
-      <h1><span data-ja="インサイト — 毎日更新" data-en="Insights — Daily Update">Insights — Daily Update</span></h1>
-      <div id="last-updated" style="margin-top:0.4rem;font-size:0.78rem;opacity:0.65;"></div>
+      <div class="logo">Transformix</div>
+      <h1><span data-ja="デイリーインサイト" data-en="Daily Insights">Daily Insights</span></h1>
     </div>
     <div class="header-right">
       <div class="lang-toggle">
@@ -113,10 +113,10 @@
 
   <div class="main-content">
     <div class="tabs">
-      <button class="tab active" onclick="show('scm',this)" data-ja="SCM（12）" data-en="SCM（12）">SCM（12）</button>
-      <button class="tab tab-ai" onclick="show('ai',this)" data-ja="AI / DX（7）" data-en="AI / DX（7）">AI / DX（7）</button>
-      <button class="tab tab-football" onclick="show('football',this)" data-ja="Football（5）" data-en="Football（5）">Football（5）</button>
-      <button class="tab tab-kyoto" onclick="show('kyoto',this)" data-ja="東洋哲学（5）" data-en="E. Philosophy（5）">E. Philosophy（5）</button>
+      <button class="tab active" onclick="show('scm',this)" data-ja="SCM（10）" data-en="SCM（10）">SCM（10）</button>
+      <button class="tab tab-ai" onclick="show('ai',this)" data-ja="AI / DX（6）" data-en="AI / DX（6）">AI / DX（6）</button>
+      <button class="tab tab-football" onclick="show('football',this)" data-ja="Football（6）" data-en="Football（6）">Football（6）</button>
+      <button class="tab tab-kyoto" onclick="show('kyoto',this)" data-ja="東洋哲学（6）" data-en="E. Philosophy（6）">E. Philosophy（6）</button>
     </div>
 
     <!-- SCM -->
@@ -124,86 +124,72 @@
 
       <div class="card">
         <span class="badge badge-concept" data-ja="概論" data-en="Overview">Overview</span>
-        <h3><a href="https://jp.weforum.org/stories/2026/01/how-we-can-best-enable-the-new-era-of-supply-chains-ja/" target="_blank" rel="noopener noreferrer">サプライチェーンの新たな時代を実現する方法</a></h3>
-        <div class="card-source">世界経済フォーラム（WEF）/ 日本語</div>
-        <div class="card-summary" data-ja="プロロジスが米英独印中メキシコの経営幹部1,800名以上を対象に実施した調査を引用し、2026年のサプライチェーンに変革をもたらす要因として「エネルギーの信頼性」「AI」「立地の地政学的再配置」の3つを挙げる。経営層の約6割が「2030年までにサプライチェーンの地域単位での最適化が進む」と予測しており、EY調査ではグローバル企業の74%が過去24カ月に地政学リスクの影響を受けたと回答。「新たな時代のサプライチェーンは管理ツールではなく戦略的経営の中核」という視座を提供する。" data-en="The WEF piece draws on a Prologis survey of 1,800+ executives across six countries, identifying energy reliability, AI, and geopolitical relocation as the three forces reshaping supply chains in 2026. With 60% of executives predicting regional supply chain optimization by 2030 and 74% of global firms reporting geopolitical disruptions in the past 24 months, the article argues that AI is no longer optional—it is the analytical backbone of resilient supply chain design.">The WEF piece draws on a Prologis survey of 1,800+ executives across six countries, identifying energy reliability, AI, and geopolitical relocation as the three forces reshaping supply chains in 2026. With 60% of executives predicting regional supply chain optimization by 2030 and 74% of global firms reporting geopolitical disruptions in the past 24 months, the article argues that AI is no longer optional—it is the analytical backbone of resilient supply chain design.</div>
+        <h3><a href="https://media.emuniinc.jp/2026/04/07/manufacturing-dx-2/" target="_blank" rel="noopener noreferrer">2026年の日本製造業：地政学・AI・熟練工引退が生む5つの構造危機</a></h3>
+        <div class="card-source">エムニ / 日本語</div>
+        <div class="card-summary" data-ja="日本製造業が2026年に直面する5つの構造的危機を分析。①中国の過剰生産による「高品質・適正価格」戦略の瓦解（東南アジアでBYDがトヨタを超える）、②GPU1基3〜4万ドル・大手4社が2024年に1,040億ドルを投資するAIインフラコスト競争、③65歳以上が人口の29.3%を占める高齢化による熟練工の暗黙知喪失、④ERP・MESが独立した状態で61%の企業がレガシーシステムを保有するデータサイロ化、⑤2024年被害総額166億ドル超のサイバーセキュリティ脅威。解決策としてAIエージェントによる知識デジタル化・オープンソース活用・部門横断型意思決定基盤を提示し、「AIを単なる効率化ツールではなく業務プロセスの再設計基盤として捉えよ」と訴える。" data-en="Japanese manufacturing in 2026 faces five structural crises—China's deflationary exports undermining the 'quality at fair price' model (BYD surpassing Toyota in Southeast Asia), escalating AI infrastructure costs (top four tech firms invested $104B in GPUs in 2024), accelerating loss of tacit knowledge as 29.3% of Japan's population is 65+, data silos with 61% of firms still on legacy systems, and cybersecurity threats exceeding $16.6B in 2024 damages. The article argues AI agents should function not as efficiency tools but as the foundation for redesigning operational processes, prescribing a 'start small, expand by stage' strategy grounded in data integration.">Japanese manufacturing in 2026 faces five structural crises—China's deflationary exports undermining the 'quality at fair price' model (BYD surpassing Toyota in Southeast Asia), escalating AI infrastructure costs (top four tech firms invested $104B in GPUs in 2024), accelerating loss of tacit knowledge as 29.3% of Japan's population is 65+, data silos with 61% of firms still on legacy systems, and cybersecurity threats exceeding $16.6B in 2024 damages. The article argues AI agents should function not as efficiency tools but as the foundation for redesigning operational processes, prescribing a 'start small, expand by stage' strategy grounded in data integration.</div>
       </div>
 
       <div class="card">
         <span class="badge badge-concept" data-ja="概論" data-en="Overview">Overview</span>
-        <h3><a href="https://www.gartner.com/en/newsroom/press-releases/2026-04-07-gartner-forecasts-supply-chain-management-software-with-agentic-ai-will-grow-to-53-billion-in-spend-by-2030" target="_blank" rel="noopener noreferrer">Gartner Forecasts SCM Software with Agentic AI Will Grow to $53 Billion by 2030</a></h3>
-        <div class="card-source">Gartner / 英語</div>
-        <div class="card-summary" data-ja="GartnerはエージェンティックAIを搭載したSCM市場が2025年の20億ドル未満から2030年に530億ドルへ急拡大すると予測。2026年SCM Symposiumテーマ「Dynamic by Design」のもと、AIと自律的意思決定をもはや任意ではなく必須と位置づけ、SCPソリューションを「戦略から実行にまたがる唯一の真実のバージョンを構築するプラットフォーム」と再定義した。" data-en="Gartner forecasts the SCM software market with agentic AI will surge from under $2 billion in 2025 to $53 billion by 2030—a 25x expansion. Under the 2026 symposium theme 'Dynamic by Design,' Gartner declares AI and autonomous decision-making are no longer optional, redefining SCP solutions as platforms that create a 'single version of truth' from strategic to execution horizons.">Gartner forecasts the SCM software market with agentic AI will surge from under $2 billion in 2025 to $53 billion by 2030—a 25x expansion. Under the 2026 symposium theme 'Dynamic by Design,' Gartner declares AI and autonomous decision-making are no longer optional, redefining SCP solutions as platforms that create a 'single version of truth' from strategic to execution horizons.</div>
+        <h3><a href="https://www.toolsgroup.com/blog/decision-centric-supply-chain-planning-2026/" target="_blank" rel="noopener noreferrer">Decision-Centric Supply Chain Planning: Moving Beyond Forecast to Decision in 2026</a></h3>
+        <div class="card-source">ToolsGroup / 英語</div>
+        <div class="card-summary" data-ja="サプライチェーン計画の本質が「静的な予測の生成」から「不確実性下での継続的な意思決定の支援」へとシフトしていると主張する。「ボラティリティは新しい常態だ」という認識のもと、計画ツールを「決定を評価・整合・ガバナンスする統合環境」として再定義。在庫とサービスレベルのトレードオフを最適化し、生きたセグメンテーションフレームワークで日々の意思決定を支援する「Decision-Centric」アプローチを提唱。AIは人間の判断を代替するのではなく、パターン認識・シナリオ評価・意思決定スケールを支援する役割に留まるとし、成功指標も予測精度からサービス安定性・意思決定サイクル速度・運転資本効率へと移行を促す。" data-en="ToolsGroup argues that supply chain planning must shift from static forecasting to a continuous 'decision-centric' model where the question changes from 'What should the plan be?' to 'What do we do when reality deviates?' The framework treats planning as a unified decision repository with AI supporting (not replacing) human judgment. Success metrics move from forecast accuracy toward service stability, decision cycle speed, and working capital efficiency.">ToolsGroup argues that supply chain planning must shift from static forecasting to a continuous 'decision-centric' model where the question changes from 'What should the plan be?' to 'What do we do when reality deviates?' The framework treats planning as a unified decision repository with AI supporting (not replacing) human judgment. Success metrics move from forecast accuracy toward service stability, decision cycle speed, and working capital efficiency.</div>
       </div>
 
       <div class="card">
         <span class="badge badge-concept" data-ja="概論" data-en="Overview">Overview</span>
-        <h3><a href="https://www.ascm.org/ascm-insights/making-the-case-for-integrated-business-planning/" target="_blank" rel="noopener noreferrer">Making the Case for Integrated Business Planning</a></h3>
-        <div class="card-source">ASCM (Association for Supply Chain Management) / 英語</div>
-        <div class="card-summary" data-ja="ASCMがIBPの価値をAberdeen Group調査で定量化。クラス最高企業は遅れた企業と比べて年間売上総利益率47%向上・定時完全納品28%改善・3カ月先予測精度31%向上を実現。著者Henry Canitzは「IBPはS&OPを財務・組織全体の戦略的整合へと拡張したもの」と整理し、SCM機能を事業成功の不可欠な要素として位置づける。" data-en="ASCM's analysis of Aberdeen Group data reveals best-in-class IBP practitioners outperform laggards by 47% in gross margin, 28% in on-time-in-full delivery, and 31% in three-month forecast accuracy. Author Henry Canitz cuts through the S&OP/IBP/SIOP naming confusion, framing IBP as the strategic expansion of S&OP into finance and organizational alignment.">ASCM's analysis of Aberdeen Group data reveals best-in-class IBP practitioners outperform laggards by 47% in gross margin, 28% in on-time-in-full delivery, and 31% in three-month forecast accuracy. Author Henry Canitz cuts through the S&OP/IBP/SIOP naming confusion, framing IBP as the strategic expansion of S&OP into finance and organizational alignment.</div>
+        <h3><a href="https://clarkstonconsulting.com/insights/advanced-decision-making-in-supply-chain/" target="_blank" rel="noopener noreferrer">Advanced Decision-Making in Supply Chain: 2026 Gartner Symposium Recap</a></h3>
+        <div class="card-source">Clarkston Consulting / 英語</div>
+        <div class="card-summary" data-ja="2026年 Gartner サプライチェーン・シンポジウムの総括。「77%の組織が現行業務モデルはAI時代の競争に不十分と考えている」。アストラゼネカは5年以内に意思決定の50%を自動化する計画を公表し、コロンビア スポーツウェアは厳格なガバナンスにより1億ドル超の削減を実現。「組織はAIを導入しただけでは変革しない。意思決定の流れを改善することで初めて変革できる」が核心メッセージ。" data-en="The 2026 Gartner Supply Chain Symposium crystallized that 'organizations will not transform simply by deploying AI—they will transform by improving how decisions flow.' Key findings: 77% believe their operating model is inadequate for an AI-driven environment, AstraZeneca targeting 50% automated decisions within five years, and Columbia Sportswear realizing over $100M in savings through disciplined governance. Gartner cautioned against overspending on AI infrastructure without foundational capabilities.">The 2026 Gartner Supply Chain Symposium crystallized that 'organizations will not transform simply by deploying AI—they will transform by improving how decisions flow.' Key findings: 77% believe their operating model is inadequate for an AI-driven environment, AstraZeneca targeting 50% automated decisions within five years, and Columbia Sportswear realizing over $100M in savings through disciplined governance. Gartner cautioned against overspending on AI infrastructure without foundational capabilities.</div>
       </div>
 
       <div class="card">
         <span class="badge badge-concept" data-ja="概論" data-en="Overview">Overview</span>
-        <h3><a href="https://www.bciglobal.com/themes/supply-chain/sales-and-operations-planning-sandop" target="_blank" rel="noopener noreferrer">Sales and Operations Planning (S&amp;OP) Best Practices</a></h3>
-        <div class="card-source">BCI Global / 英語</div>
-        <div class="card-summary" data-ja="BCI GlobalがS&OPを5段階成熟度モデルで体系化した記事。S&OPを「ツールではなくプロセス」として定義し、経営幹部のスポンサーシップが成否を分けると主張。高度なS&OPを実践する企業は在庫適正化・サービス水準向上・財務パフォーマンスの安定化を同時達成できる。2026年においても基礎的な組織設計がAI効果の前提条件という視座を提供する。" data-en="BCI Global's practitioner guide frames S&OP as a five-stage organizational maturity model—not a software purchase—where executive sponsorship and cross-functional commitment are the primary success factors. Companies with advanced S&OP achieve inventory optimization, service level improvement, and financial stability simultaneously. Foundational planning discipline remains the prerequisite before AI can deliver transformative supply chain value.">BCI Global's practitioner guide frames S&OP as a five-stage organizational maturity model—not a software purchase—where executive sponsorship and cross-functional commitment are the primary success factors. Companies with advanced S&OP achieve inventory optimization, service level improvement, and financial stability simultaneously. Foundational planning discipline remains the prerequisite before AI can deliver transformative supply chain value.</div>
-      </div>
-
-      <div class="card">
-        <span class="badge badge-concept" data-ja="概論" data-en="Overview">Overview</span>
-        <h3><a href="https://decisionbrain.com/supply-chain-planning-software-integrating-sop-demand-planning-and-network-design/" target="_blank" rel="noopener noreferrer">Supply Chain Planning: Integrating S&amp;OP, Demand Planning and Network Design</a></h3>
-        <div class="card-source">DecisionBrain / 英語</div>
-        <div class="card-summary" data-ja="S&OP・需要計画・ネットワーク設計を統合するプラットフォームへの移行が競争優位を生む理由を論じた記事。双方向計画ループが「ワンナンバーマネジメント」の精度を飛躍的に高め、AI予測精度向上の前提として計画アーキテクチャの再設計が不可欠と主張する。" data-en="DecisionBrain argues that AI-driven forecast improvements require an integrated planning architecture connecting S&OP, demand planning, and network design into a single platform. Bidirectional feedback loops enable true one-number management—making this a foundational argument for organizations deploying AI on top of fragmented planning systems without first fixing the architecture underneath.">DecisionBrain argues that AI-driven forecast improvements require an integrated planning architecture connecting S&OP, demand planning, and network design into a single platform. Bidirectional feedback loops enable true one-number management—making this a foundational argument for organizations deploying AI on top of fragmented planning systems without first fixing the architecture underneath.</div>
+        <h3><a href="https://www.priority-software.com/resources/supply-chain-inventory-management/" target="_blank" rel="noopener noreferrer">Strategies for Effective Inventory Control in SCM in 2026</a></h3>
+        <div class="card-source">Priority Software / 英語</div>
+        <div class="card-summary" data-ja="2026年のサプライチェーン在庫管理における3フェーズ（調達・保管管理・製品可用性）と6つのコントロール手法（MOQ/EOQ・JIT・安全在庫・ABC分析・VED分析・ERP）を体系化した実践ガイド。「需要変動期のピーク対応とグローバルサプライヤー管理が複合的複雑性を生む」と指摘し、ERP統合による360度の可視性がリアルタイムの意思決定を可能にするという論旨はS&OP/IBP実務者向けの整理として高い実用性がある。" data-en="This 2026 guide systematizes inventory control across three phases (procurement, storage, product availability) and six core methods including JIT, ABC analysis, and ERP integration. The key argument: demand variability during peak periods combined with global supplier management creates compounding complexity that only ERP-enabled '360-degree visibility' can resolve, enabling real-time cross-functional decision-making across procurement, logistics, and customer service.">This 2026 guide systematizes inventory control across three phases (procurement, storage, product availability) and six core methods including JIT, ABC analysis, and ERP integration. The key argument: demand variability during peak periods combined with global supplier management creates compounding complexity that only ERP-enabled '360-degree visibility' can resolve, enabling real-time cross-functional decision-making across procurement, logistics, and customer service.</div>
       </div>
 
       <div class="card">
         <span class="badge badge-case" data-ja="事例" data-en="Case Study">Case Study</span>
-        <h3><a href="https://www.nttdata.com/jp/ja/trends/data-insight/2026/0403/" target="_blank" rel="noopener noreferrer">在庫1割減、品切れ5割減、物流効率1割改善――ライオンのSCM改革への道</a></h3>
-        <div class="card-source">NTT DATA / 日本語</div>
-        <div class="card-summary" data-ja="ライオン株式会社がNTTデータとの協業で在庫削減と品切れ防止の両立というジレンマをプロセス改革で打破した事例。SCM戦略部シニアSCMデザインストラテジスト望月則孝氏主導で在庫約1割削減・品切れ約5割削減・物流効率約1割改善という三つ巴の成果を同時達成。「テクノロジーではなくプロセス設計の思想転換」が本質的な変革要因であることを示す国内屈指の先行事例。" data-en="Lion Corporation's SCM transformation—led by Senior SCM Design Strategist Noritaka Mochizuki—simultaneously achieved 10% inventory reduction, 50% stockout reduction, and 10% logistics efficiency improvement. The breakthrough was not technology but a redesign of the demand-supply planning process: replacing intuition-driven planning with a data-driven decision model—one of Japan's most quantified SCM transformation case studies.">Lion Corporation's SCM transformation—led by Senior SCM Design Strategist Noritaka Mochizuki—simultaneously achieved 10% inventory reduction, 50% stockout reduction, and 10% logistics efficiency improvement. The breakthrough was not technology but a redesign of the demand-supply planning process: replacing intuition-driven planning with a data-driven decision model—one of Japan's most quantified SCM transformation case studies.</div>
+        <h3><a href="https://www.constellationr.com/blog-news/insights/walmart-s-fiscal-2026-bets-supply-chain-optimization-ai-automation" target="_blank" rel="noopener noreferrer">Walmart's Fiscal 2026 Bets: Supply Chain Optimization, AI, and Automation</a></h3>
+        <div class="card-source">Constellation Research / 英語</div>
+        <div class="card-summary" data-ja="Walmartの2026年度戦略を解説。CFO が「米国内の半分以下の店舗しか自動化の恩恵をまだ受けていない。まだまだ大きな余地がある」と述べる。Q4売上高1,806億ドル（前年比4.1%増）・グローバル広告収入44億ドル（前年比27%増）・ECが全体の18%・FY2025に開発者時間400万時間削減。CEOは「WallyというAIが欠品・過剰在庫の根本原因をより精度高く速く解析している」と言及。在庫自動化・EC・広告・メンバーシップの4本柱が連動するAI活用が競争優位の源泉。" data-en="Walmart's fiscal 2026 strategy: CFO John David Rainey notes 'less than half of U.S. stores are fully served by automation.' Concrete 2025 results include $4.4B global advertising revenue (+27%), e-commerce at 18% of business, and 4 million developer hours saved through AI, while CEO McMillon credited AI system 'Wally' with greater accuracy diagnosing out-of-stock and overstock root causes. The integration of automation, AI logistics, marketplace, and membership income ($3.8B, +21%) makes Walmart the clearest example of supply chain transformation driving P&amp;L outcomes.">Walmart's fiscal 2026 strategy: CFO John David Rainey notes 'less than half of U.S. stores are fully served by automation.' Concrete 2025 results include $4.4B global advertising revenue (+27%), e-commerce at 18% of business, and 4 million developer hours saved through AI, while CEO McMillon credited AI system 'Wally' with greater accuracy diagnosing out-of-stock and overstock root causes. The integration of automation, AI logistics, marketplace, and membership income ($3.8B, +21%) makes Walmart the clearest example of supply chain transformation driving P&amp;L outcomes.</div>
       </div>
 
       <div class="card">
         <span class="badge badge-case" data-ja="事例" data-en="Case Study">Case Study</span>
-        <h3><a href="http://logisticsviewpoints.com/2026/05/28/nike-tightening-the-link-between-demand-signals-and-global-supply-planning/" target="_blank" rel="noopener noreferrer">Nike: Tightening the Link Between Demand Signals and Global Supply Planning</a></h3>
-        <div class="card-source">Logistics Viewpoints / 英語</div>
-        <div class="card-summary" data-ja="Nikeの需要シグナルとグローバル供給計画の連携戦略を分析。「予測精度の向上よりも調整までの速度（speed-to-adjustment）が勝敗を分ける」という論点と「The supply chain becomes part of the brand promise」という言葉が示すように、NikeはSCMを単なるオペレーションではなくブランド価値の担保として再定義している。" data-en="Logistics Viewpoints dissects Nike's strategy of synchronizing demand sensing across wholesale, DTC stores, and digital channels, arguing that competitive edge lies not in forecast accuracy but 'speed-to-adjustment.' Nike's defining reframe: 'The supply chain becomes part of the brand promise'—elevating SCM from back-office operation to front-line competitive asset.">Logistics Viewpoints dissects Nike's strategy of synchronizing demand sensing across wholesale, DTC stores, and digital channels, arguing that competitive edge lies not in forecast accuracy but 'speed-to-adjustment.' Nike's defining reframe: 'The supply chain becomes part of the brand promise'—elevating SCM from back-office operation to front-line competitive asset.</div>
+        <h3><a href="https://www.theconveyor.co/p/how-nike-is-rebuilding-its-supply-chain" target="_blank" rel="noopener noreferrer">How Nike Is Rebuilding Its Supply Chain</a></h3>
+        <div class="card-source">The Conveyor / 英語</div>
+        <div class="card-summary" data-ja="Nikeが経験した深刻なサプライチェーン危機の全貌。97億ドルの過剰在庫蓄積・粗利率が46%から40.3%への急落・CEO交代という連鎖的失敗の根本原因は「ホールセールを廃止する前に代替予測インフラを整備できていなかった」ことにある。2025年12月、NikeはCTO廃止・サプライチェーンとオペレーションを一人のCOOに集約する組織改変を実施。「テクノロジーは戦略ではなく業務効率を支える道具」というパラダイムシフトを示す現代SCM変革の最重要反面教師事例。" data-en="Nike's supply chain crisis: $9.7B excess inventory, gross margins collapsing from 46% to 40.3%, and CEO departure—all stemming from eliminating wholesale before establishing replacement forecasting infrastructure. In December 2025, Nike restructured by consolidating supply chain, operations, planning, and technology under a single COO (eliminating the CTO role), signaling a pivot from 'tech as strategy' to 'tech as operational enabler.' The lesson: scaling DTC without replacing wholesale's demand intelligence is a fatal sequence error.">Nike's supply chain crisis: $9.7B excess inventory, gross margins collapsing from 46% to 40.3%, and CEO departure—all stemming from eliminating wholesale before establishing replacement forecasting infrastructure. In December 2025, Nike restructured by consolidating supply chain, operations, planning, and technology under a single COO (eliminating the CTO role), signaling a pivot from 'tech as strategy' to 'tech as operational enabler.' The lesson: scaling DTC without replacing wholesale's demand intelligence is a fatal sequence error.</div>
       </div>
 
       <div class="card">
         <span class="badge badge-case" data-ja="事例" data-en="Case Study">Case Study</span>
-        <h3><a href="https://www.flowlity.com/resources/camif-supply-chain-digital-transformation" target="_blank" rel="noopener noreferrer">Camif: Digital Supply Chain Transformation in Sustainable E-Commerce</a></h3>
-        <div class="card-source">Flowlity / 英語</div>
-        <div class="card-summary" data-ja="フランスのサステナブル家具ECブランドCamifが2020年の44%急成長をきっかけにスプレッドシート主体の計画体制を刷新した変革事例。供給部門長Pierre-Yves Marteauが「100%手作業に依存した計画プロセスは急成長に対応できなくなった」と語り、デジタル計画ツール導入で年間1,760時間削減・在庫切れ6ポイント低下・損失売上4万ユーロ回避・44%成長と2倉庫追加を既存人員で吸収。" data-en="When Camif's sales surged 44%, supply chain head Pierre-Yves Marteau states: 'The process, 100% manual, based on budgetary assumptions, historical sales and planner intuition, was no longer compatible with growth.' Digital planning tools delivered 1,760 work hours saved annually, 6-point stockout reduction, €40,000 in protected revenue, and 44% growth absorbed with zero headcount increase.">When Camif's sales surged 44%, supply chain head Pierre-Yves Marteau states: 'The process, 100% manual, based on budgetary assumptions, historical sales and planner intuition, was no longer compatible with growth.' Digital planning tools delivered 1,760 work hours saved annually, 6-point stockout reduction, €40,000 in protected revenue, and 44% growth absorbed with zero headcount increase.</div>
+        <h3><a href="https://sparkco.ai/blog/nikes-advanced-demand-sensing-beyond-excel-forecasts" target="_blank" rel="noopener noreferrer">Nike's Advanced Demand Sensing: Beyond Excel Forecasts</a></h3>
+        <div class="card-source">SparkCo / 英語</div>
+        <div class="card-summary" data-ja="2019年にCelect社を買収したNikeがAI需要センシングシステムを構築し、予測サイクルを「6ヶ月から30分」に短縮した経緯と成果を詳説。在庫コスト30%削減・売上20%向上・在庫ミスマッチ20%減少・欠品15%削減という具体的成果を達成。POS・SNSトレンド・天気・地域イベントを統合した「超ローカル需要予測」を実現。「予測精度が1%向上するだけで数百万ドルのコスト削減につながる」という事実と、97億ドルの過剰在庫危機を対比すると、AIセンシングを整備する前にDTCを拡張した戦略ミスの大きさが鮮明になる。" data-en="Nike's AI demand sensing system—built on its 2019 acquisition of Celect—compresses prediction cycles from six months to 30 minutes by integrating POS data, social media trends, weather, and local events for hyper-local demand predictions. Results: 30% inventory cost reduction, 20% sales increase, 20% less inventory misalignment, 15% fewer stockouts. The 12-month phased deployment (assessment → infrastructure → model → full deployment) provides a replicable blueprint for manufacturers replacing spreadsheet forecasting with AI-driven demand intelligence.">Nike's AI demand sensing system—built on its 2019 acquisition of Celect—compresses prediction cycles from six months to 30 minutes by integrating POS data, social media trends, weather, and local events for hyper-local demand predictions. Results: 30% inventory cost reduction, 20% sales increase, 20% less inventory misalignment, 15% fewer stockouts. The 12-month phased deployment (assessment → infrastructure → model → full deployment) provides a replicable blueprint for manufacturers replacing spreadsheet forecasting with AI-driven demand intelligence.</div>
       </div>
 
       <div class="card">
         <span class="badge badge-case" data-ja="事例" data-en="Case Study">Case Study</span>
-        <h3><a href="https://o9solutions.com/articles/toyota-digital-transformation" target="_blank" rel="noopener noreferrer">Toyota's Drive Towards Digital Transformation in Supply Chain Management</a></h3>
-        <div class="card-source">o9 Solutions / 英語</div>
-        <div class="card-summary" data-ja="トヨタがo9 Digital Brainプラットフォームを活用し半導体不足・供給途絶を契機に推進するSCMデジタル変革を解説。調達部門Andy Woehler氏が「サプライヤーパートナーは変革の成功に不可欠な役割を担う」と語り、95%超の部品がサプライヤーを経由するトヨタの供給構造において計画初期段階からサプライヤーを組み込む双方向連携戦略を公開。" data-en="Toyota's digital transformation via the o9 Digital Brain platform rebuilds supplier connectivity from the ground up. Andy Woehler: 'Our supplier partners play a critical role in the success,' noting that with 95%+ of component parts flowing through supplier networks, end-to-end visibility and bidirectional data sharing are Toyota's core hedge against supply shocks that exposed legacy planning models during the semiconductor crisis.">Toyota's digital transformation via the o9 Digital Brain platform rebuilds supplier connectivity from the ground up. Andy Woehler: 'Our supplier partners play a critical role in the success,' noting that with 95%+ of component parts flowing through supplier networks, end-to-end visibility and bidirectional data sharing are Toyota's core hedge against supply shocks that exposed legacy planning models during the semiconductor crisis.</div>
-      </div>
-
-      <div class="card">
-        <span class="badge badge-case" data-ja="事例" data-en="Case Study">Case Study</span>
-        <h3><a href="https://www.unilever.com/news/news-search/2026/wef-recognises-business-impact-of-unilevers-supply-chain-tech-investments/" target="_blank" rel="noopener noreferrer">WEF Recognises Impact of Unilever's Supply Chain Tech Investments</a></h3>
-        <div class="card-source">Unilever / 英語</div>
-        <div class="card-summary" data-ja="ユニリーバがWEF「Global Lighthouse Network」に新たに指定された取り組みを発表。31のデジタル化ユースケース（うち65%がGenAI活用）を稼働させ、中国・合肥拠点を工場直接配送のeB2Bフルフィルメントセンターとして改革。SCMデジタル変革が「テクノロジーの問題」ではなく「企業と社会をつなぐビジネスモデルの再設計」であることを示す典型例。" data-en="Unilever's WEF Global Lighthouse recognition spotlights its d-commerce transformation: 31 digitally enabled use cases—65% powered by GenAI—and a factory-to-consumer fulfillment model at its Hefei site. The company frames this not as technology adoption but as a reinvention of how the supply chain interfaces with consumers, earning WEF validation that AI investment has delivered simultaneous societal and business impact.">Unilever's WEF Global Lighthouse recognition spotlights its d-commerce transformation: 31 digitally enabled use cases—65% powered by GenAI—and a factory-to-consumer fulfillment model at its Hefei site. The company frames this not as technology adoption but as a reinvention of how the supply chain interfaces with consumers, earning WEF validation that AI investment has delivered simultaneous societal and business impact.</div>
+        <h3><a href="https://digitaldefynd.com/IQ/amazon-using-ai-case-study/" target="_blank" rel="noopener noreferrer">10 Ways Amazon Is Using AI — Supply Chain Case Study 2026</a></h3>
+        <div class="card-source">DigitalDefynd / 英語</div>
+        <div class="card-summary" data-ja="AmazonがAIを活用してサプライチェーン・顧客体験・開発効率を革新した15の事例を解説。推奨エンジンが売上の35%以上を占め、Kiva・Proteus・Robinロボットが処理時間20〜25%短縮・コスト最大30%削減を実現。開発者向けAIアシスタントCodeWhispererはタスク完了速度を最大27%向上。Amazon BedrockはFoundation-Model-as-a-Serviceとして複数AIモデルへの統一APIを提供し、AI駆動の予測モデルが在庫予測・動的在庫配置を最適化。サプライチェーンAI統合のベンチマーク事例として参照価値が高い。" data-en="Amazon's AI case study: the recommendation engine drives over 35% of total revenue, Kiva/Proteus/Robin warehouse robots reduced processing time by 20-25% while cutting costs by up to 30%, and CodeWhisperer boosts developer task completion by 27%. Amazon Bedrock's foundation-model-as-a-service provides unified API access to multiple AI models, enabling AI-powered demand prediction and dynamic inventory placement—representing the operational standard for what integrated AI transformation can achieve.">Amazon's AI case study: the recommendation engine drives over 35% of total revenue, Kiva/Proteus/Robin warehouse robots reduced processing time by 20-25% while cutting costs by up to 30%, and CodeWhisperer boosts developer task completion by 27%. Amazon Bedrock's foundation-model-as-a-service provides unified API access to multiple AI models, enabling AI-powered demand prediction and dynamic inventory placement—representing the operational standard for what integrated AI transformation can achieve.</div>
       </div>
 
       <div class="card">
         <span class="badge badge-person" data-ja="人物" data-en="Profile">Profile</span>
-        <h3><a href="https://article.murata.com/ja-jp/article/scm-goes-beyond-management-tools-to-become-the-foundation-of-corporate-strategy-1" target="_blank" rel="noopener noreferrer">サプライチェーンは管理ツールを超え、企業戦略の要になる。――先端技術が実現する次世代SCMで「戦略物流思考」を磨くには？（前編）</a></h3>
-        <div class="card-source">村田製作所 技術記事 / 日本語</div>
-        <div class="card-summary" data-ja="物流・SCMコンサルタントの草分け的存在、角井亮一（イー・ロジット代表取締役チーフコンサルタント）が「戦略物流思考」の概念を提唱したインタビュー記事。従来の「物流思考」（コスト削減・効率化）から「戦略物流思考」（物流を競争優位の源泉として設計）への転換が2026年に必要と主張。4Cフレームワーク（利便性・時間・手段の組み合わせ・コスト）でオムニチャネル時代のSCM再設計を論じる。" data-en="Ryoichi Kakui, founder of e-Logit and Japan's leading SCM consultant, argues Japanese companies must shift from 'logistics thinking' to 'strategic logistics thinking'—designing supply chains as a source of competitive advantage. His '4C Framework' (convenience, time, channel combination, and cost) provides a practitioner's blueprint for how Japanese manufacturers and retailers should redesign supply chains for the omnichannel era.">Ryoichi Kakui, founder of e-Logit and Japan's leading SCM consultant, argues Japanese companies must shift from 'logistics thinking' to 'strategic logistics thinking'—designing supply chains as a source of competitive advantage. His '4C Framework' (convenience, time, channel combination, and cost) provides a practitioner's blueprint for how Japanese manufacturers and retailers should redesign supply chains for the omnichannel era.</div>
+        <h3><a href="https://connect.panasonic.com/jp-ja/gemba/article/00252135" target="_blank" rel="noopener noreferrer">これからのサプライチェーンに必要な人材をどう育てるか――米ISM日本支部代表に学ぶSCMの海外事情</a></h3>
+        <div class="card-source">Panasonic Connect（GEMBA） / 日本語</div>
+        <div class="card-summary" data-ja="ISM（米サプライマネジメント協会）日本支部代表の上原修氏が日本のSCM人材育成の構造的問題を語ったインタビュー。最大の課題は「日本では調達部門をコストセンターと見なす文化が根強く、欧米のプロフィットセンター思想とのギャップがある」点。韓国ではCPSM資格取得が管理職登用の条件になり、台湾・中国も独自資格を整備している一方、日本では体系的なSCM教育機関が不足。5つの経営課題（事業継続・SDGs対応・国内回帰・内外作区分・戦略物流）を整理し、SCM変革を推進する経営者に重要な示唆を与える。" data-en="Osamu Uehara, Japan representative of ISM, identifies Japan's core SCM challenge as cultural: Japanese companies treat procurement as a cost center while Western firms view it as a profit center. South Korea requires the CPSM certification for managerial promotion; Japan lacks systematic SCM education and treats talent development as overhead rather than R&amp;D investment. Uehara frames five critical management imperatives—BCP, SDG compliance, domestic reshoring, make-or-buy decisions, and strategic logistics—as the competencies Japan's next generation of SCM leaders urgently needs.">Osamu Uehara, Japan representative of ISM, identifies Japan's core SCM challenge as cultural: Japanese companies treat procurement as a cost center while Western firms view it as a profit center. South Korea requires the CPSM certification for managerial promotion; Japan lacks systematic SCM education and treats talent development as overhead rather than R&amp;D investment. Uehara frames five critical management imperatives—BCP, SDG compliance, domestic reshoring, make-or-buy decisions, and strategic logistics—as the competencies Japan's next generation of SCM leaders urgently needs.</div>
       </div>
 
       <div class="card">
         <span class="badge badge-person" data-ja="人物" data-en="Profile">Profile</span>
-        <h3><a href="https://cee.mit.edu/3-questions-yossi-sheffi-on-ai-and-the-future-of-the-supply-chain/" target="_blank" rel="noopener noreferrer">3 Questions: Yossi Sheffi on AI and the Future of the Supply Chain</a></h3>
-        <div class="card-source">MIT Center for Engineering Education and Outreach / 英語</div>
-        <div class="card-summary" data-ja="MIT CTL所長Yossi SheffiがサプライチェーンとAIの未来を3つの問いで語ったインタビュー。「何かが手に入らないことを不満に思うべきではない。むしろ何かが手に入ることに驚くべきだ」という言葉で現代SCMの驚異的な複雑性を表現。「テクノロジーは人間に固有の資質を代替するのではなく補強する力だ」という核心言葉が示すように、AIと人間の役割分担を明確に論じている。" data-en="MIT CTL Director Yossi Sheffi opens with: 'You should never be upset when something is not available—you should be amazed that something is there.' His defining principle: 'Technology is an augmenting force for many uniquely human qualities, not a replacement force.' He flags a new risk: 'It's software which moves at the speed of light'—the velocity of this shift is qualitatively different from all prior technological revolutions.">MIT CTL Director Yossi Sheffi opens with: 'You should never be upset when something is not available—you should be amazed that something is there.' His defining principle: 'Technology is an augmenting force for many uniquely human qualities, not a replacement force.' He flags a new risk: 'It's software which moves at the speed of light'—the velocity of this shift is qualitatively different from all prior technological revolutions.</div>
+        <h3><a href="https://epthoughtleaders.com/ai-at-scale-transforming-microsofts-cloud-supply-chain-planning-2/" target="_blank" rel="noopener noreferrer">Joanna Kostecka (Microsoft VP) — AI Is No Longer Optional: Transforming Cloud Supply Chain Planning at Scale</a></h3>
+        <div class="card-source">Executive Platforms (NASCES25) / 英語</div>
+        <div class="card-summary" data-ja="MicrosoftのクラウドSCM計画VP、ジョアンナ・コステッカがNASCES25シンポジウムで語ったAIによるサプライチェーン計画の変革。核心メッセージは「AIはもはやオプションではない」「AIはツールではなく、計画・学習・適応・スケーリングにおけるコパイロットだ」という2点。Microsoftは2026年末までに100以上のAIエージェントを稼働させる計画を持ち、物流AIはすでに月数百時間の作業時間を削減。「プロセス簡素化→AI対応チーム構築→高インパクトAI展開」という段階的手法を推奨した。" data-en="Microsoft VP of Global Cloud Supply Chain Planning Joanna Kostecka at NASCES25: 'AI is no longer optional—it's a co-pilot, not a tool, for planning, learning, adapting, and scaling.' Microsoft targets 100+ AI agents operational by end of 2026, with logistics AI already saving hundreds of hours per month. The Work IQ / Foundry IQ / Fabric IQ intelligence layer enables AI agents to reason in alignment with real-world KPIs. Her recommended approach: simplify processes first, build AI-ready teams, then launch high-impact AI.">Microsoft VP of Global Cloud Supply Chain Planning Joanna Kostecka at NASCES25: 'AI is no longer optional—it's a co-pilot, not a tool, for planning, learning, adapting, and scaling.' Microsoft targets 100+ AI agents operational by end of 2026, with logistics AI already saving hundreds of hours per month. The Work IQ / Foundry IQ / Fabric IQ intelligence layer enables AI agents to reason in alignment with real-world KPIs. Her recommended approach: simplify processes first, build AI-ready teams, then launch high-impact AI.</div>
       </div>
 
     </div></div>
@@ -213,51 +199,44 @@
 
       <div class="card card-ai">
         <span class="badge badge-concept" data-ja="概論" data-en="Overview">Overview</span>
-        <h3><a href="https://www.macnica.co.jp/en/business/dx/columns/141026/" target="_blank" rel="noopener noreferrer">90%超の日本企業がDX推進を不十分と認識、鍵は「組織横断」</a></h3>
-        <div class="card-source">マクニカ / 日本語</div>
-        <div class="card-summary" data-ja="マクニカの日本企業DX実態調査。90%超の企業がDXを「不十分」と自己評価し、最大の壁は「部門縦割り・組織横断の壁」にあることを特定。成功企業の共通点は「経営直轄のDX組織」と「成果KPIの全社統一」であり、2026年の日本企業DXの本質的課題は技術ではなくガバナンスと文化の問題と論じる。" data-en="Macnica's survey finds 90%+ of Japanese enterprises acknowledge their DX efforts are insufficient, with 'cross-organizational silos' as the primary barrier. Companies succeeding share two traits: CEO-directly-managed DX organization and unified enterprise-wide outcome KPIs—confirming Japan's DX challenge in 2026 is fundamentally a governance and culture problem, not a technology gap.">Macnica's survey finds 90%+ of Japanese enterprises acknowledge their DX efforts are insufficient, with 'cross-organizational silos' as the primary barrier. Companies succeeding share two traits: CEO-directly-managed DX organization and unified enterprise-wide outcome KPIs—confirming Japan's DX challenge in 2026 is fundamentally a governance and culture problem, not a technology gap.</div>
+        <h3><a href="https://abovea.tech/japan-ai-search-statistics/" target="_blank" rel="noopener noreferrer">Japan AI Market 2026: 34.5% Enterprise Adoption, $5.5B Infrastructure Surge</a></h3>
+        <div class="card-source">Abovea / 英語</div>
+        <div class="card-summary" data-ja="2026年の日本AI市場統計。帝国データバンクの調査によれば「日本企業の34.5%が生成AIを活用しており、86.7%が業務改善を報告。一方50.4%が情報精度への懸念を持つ」。Microsoft 365 Copilotは日経225企業の94%で使用。IDCはAIインフラへの投資が「2026年には55億ドル超（前年比18%増）」と予測。47.5%のユーザーがAIレコメンデーション後に製品購入を経験しており、検索行動の構造的変化が始まっている。" data-en="Japan's AI market 2026: Teikoku Databank reports 34.5% of Japanese companies use generative AI with 86.7% reporting improvements, yet 50.4% remain concerned about accuracy—and Microsoft 365 Copilot has penetrated 94% of Nikkei 225 firms. IDC projects AI infrastructure spending will exceed $5.5B in 2026 (+18% YoY), while 47.5% of users report purchases after AI recommendations. The enterprise challenge: translating technical strength into locally-relevant content that performs across both traditional search and AI-driven discovery.">Japan's AI market 2026: Teikoku Databank reports 34.5% of Japanese companies use generative AI with 86.7% reporting improvements, yet 50.4% remain concerned about accuracy—and Microsoft 365 Copilot has penetrated 94% of Nikkei 225 firms. IDC projects AI infrastructure spending will exceed $5.5B in 2026 (+18% YoY), while 47.5% of users report purchases after AI recommendations. The enterprise challenge: translating technical strength into locally-relevant content that performs across both traditional search and AI-driven discovery.</div>
       </div>
 
       <div class="card card-ai">
         <span class="badge badge-concept" data-ja="概論" data-en="Overview">Overview</span>
-        <h3><a href="https://apptad.com/insights/from-genai-to-agentic-ai-what-changed-in-enterprise-ai-in-2026/" target="_blank" rel="noopener noreferrer">From GenAI to Agentic AI: What Changed in Enterprise AI in 2026</a></h3>
-        <div class="card-source">Apptad / 英語</div>
-        <div class="card-summary" data-ja="2026年に起きた企業AIの構造転換を「GenAIからエージェンティックAIへ」という視点で論じる。企業の97%がAIエージェントをデプロイしたが、GenAI戦略が「成熟」と答えた企業は1%、ROIを実感している企業は29%にとどまる。「AI勝者は最も高度なモデルを持つ企業ではなく、AIをオペレーションに速度と一貫性をもって統合できる企業だ」という核心的結論を提示する。" data-en="Apptad frames 2026 as the year AI structurally shifted from 'generate outputs' to 'deliver outcomes'—with 97% of enterprises deploying AI agents but only 1% describing GenAI strategy as mature and 29% reporting significant ROI. The central finding: winners will not be defined by the most advanced models but by those who can integrate AI into operations with 'speed and consistency.'">Apptad frames 2026 as the year AI structurally shifted from 'generate outputs' to 'deliver outcomes'—with 97% of enterprises deploying AI agents but only 1% describing GenAI strategy as mature and 29% reporting significant ROI. The central finding: winners will not be defined by the most advanced models but by those who can integrate AI into operations with 'speed and consistency.'</div>
+        <h3><a href="https://www.cio.com/article/4178006/state-of-the-cio-2026-cios-set-the-course-for-ai-roi.html" target="_blank" rel="noopener noreferrer">State of the CIO 2026: CIOs Set the Course for AI ROI</a></h3>
+        <div class="card-source">CIO Magazine / 英語</div>
+        <div class="card-summary" data-ja="CIO誌の2026年CIO実態調査。AIイニシアチブの成功率は「ビジネス目標を満たした・上回った」のはわずか19%。AI拡大の3大障壁は「ROI指標の未定義（32%）」「明確な企業AI戦略の欠如（31%）」「社内専門知識の不足（40%）」。KPIが整備済みの組織は47%。成功指標として業務効率（40%）・従業員生産性（34%）・コスト削減（30%）・収益成長（27%）の順となり、AI投資が効率化に留まっている段階であることを示す。" data-en="State of the CIO 2026: only 19% report AI initiatives meeting or exceeding business goals, with 40% citing lack of in-house expertise and 32% pointing to ill-defined ROI metrics as top barriers. Only 47% have formal success metrics, and AI investments still primarily optimize for operational efficiency (40%) and employee productivity (34%) rather than revenue growth (27%)—indicating most organizations remain in the efficiency phase, not transformation.">State of the CIO 2026: only 19% report AI initiatives meeting or exceeding business goals, with 40% citing lack of in-house expertise and 32% pointing to ill-defined ROI metrics as top barriers. Only 47% have formal success metrics, and AI investments still primarily optimize for operational efficiency (40%) and employee productivity (34%) rather than revenue growth (27%)—indicating most organizations remain in the efficiency phase, not transformation.</div>
       </div>
 
       <div class="card card-ai">
         <span class="badge badge-concept" data-ja="概論" data-en="Overview">Overview</span>
-        <h3><a href="https://www.techradar.com/pro/2026-is-the-year-ceos-must-rewire-the-c-suite-ibm-study-reveals-what-successful-leaders-are-actually-doing-with-ai-work-in-their-businesses" target="_blank" rel="noopener noreferrer">'2026 Is the Year CEOs Must Rewire the C-Suite': IBM Study Reveals What Leaders Are Doing</a></h3>
-        <div class="card-source">TechRadar (IBM研究引用) / 英語</div>
-        <div class="card-summary" data-ja="IBMが33カ国・21業界の2,000名のCEO調査（2026年2〜4月実施）の結果。CAIO配置企業が2025年の26%から2026年に76%へと急増。組織を5つの核心領域で再設計した企業はビジネス目標達成率が4倍に向上。「AIが変えるのは経営の速度と結果の重大性だ」（IBM副会長Gary Cohn）の言葉が示すように、2026年は組織構造の根本的な再設計が最重要テーマ。" data-en="IBM's survey of 2,000 CEOs finds CAIO appointments surged from 26% to 76% in a single year, and organizations that redesigned five core business areas are four times more likely to deliver on objectives. IBM Vice Chairman Gary Cohn: 'AI changes the speed of decisions and the magnitude of outcomes'—2026 is not about AI experimentation but organizational rewiring.">IBM's survey of 2,000 CEOs finds CAIO appointments surged from 26% to 76% in a single year, and organizations that redesigned five core business areas are four times more likely to deliver on objectives. IBM Vice Chairman Gary Cohn: 'AI changes the speed of decisions and the magnitude of outcomes'—2026 is not about AI experimentation but organizational rewiring.</div>
-      </div>
-
-      <div class="card card-ai">
-        <span class="badge badge-concept" data-ja="概論" data-en="Overview">Overview</span>
-        <h3><a href="https://www.sdcexec.com/software-technology/ai-ar/news/22965460/pricewaterhousecoopers-llp-pwc-pwc-data-reveals-growing-gap-between-ai-ambition-and-execution" target="_blank" rel="noopener noreferrer">PwC Data Reveals Growing Gap Between AI Ambition and Execution</a></h3>
-        <div class="card-source">Supply &amp; Demand Chain Executive (PwC調査) / 英語</div>
-        <div class="card-summary" data-ja="PwCが米企業のSCM・業務役員767名を調査。85%が「競合より先行」と自己評価する一方で89%が「技術投資が期待した成果を出していない」と認める逆説。トップパフォーマー企業（全体の4%）のみがAI全社展開・エージェント障壁なし・水平型組織・投資対効果達成を同時満たしている現実を示す。" data-en="PwC's survey of 767 executives surfaces a paradox: 85% believe they're ahead of competitors, yet 89% admit tech investments haven't fully delivered. Only 4% of companies qualify as top performers—fully embedding AI enterprise-wide, removing barriers to autonomous agents, operating with horizontal structures, and achieving actual ROI—with integration complexity, data quality, and user adoption as the three chronic blockers.">PwC's survey of 767 executives surfaces a paradox: 85% believe they're ahead of competitors, yet 89% admit tech investments haven't fully delivered. Only 4% of companies qualify as top performers—fully embedding AI enterprise-wide, removing barriers to autonomous agents, operating with horizontal structures, and achieving actual ROI—with integration complexity, data quality, and user adoption as the three chronic blockers.</div>
+        <h3><a href="https://www.deloitte.com/jp/ja/issues/generative-ai/state-of-ai-in-enterprise.html" target="_blank" rel="noopener noreferrer">State of AI in the Enterprise 2026: Deloitte Global Report</a></h3>
+        <div class="card-source">Deloitte / 英語</div>
+        <div class="card-summary" data-ja="Deloitteの2026年エンタープライズAI実態レポート。「74%の組織が将来AIを通じた収益増加を目指しているが、すでに実現できている組織はわずか20%」という深刻なギャップを示す。生産性・効率向上（66%）・洞察力と意思決定強化（53%）・コスト削減（40%）・顧客関係強化（38%）が報告される。大幅な変革に取り組む組織は34%、最適化に留まる組織は37%。「AIパイロットから全社変革への移行を阻む主因は技術ではなく、組織能力と変革管理の不足」という洞察が核心。" data-en="Deloitte's 2026 report exposes the gap: 74% of organizations want AI to drive revenue growth, but only 20% have achieved it—primarily capturing efficiency gains (66% report productivity improvements). Only 34% pursue major transformation while 37% merely optimize existing processes. Deloitte identifies skills shortages as the top barrier, reinforcing that the bottleneck to AI ROI is organizational capability and change management, not technology availability.">Deloitte's 2026 report exposes the gap: 74% of organizations want AI to drive revenue growth, but only 20% have achieved it—primarily capturing efficiency gains (66% report productivity improvements). Only 34% pursue major transformation while 37% merely optimize existing processes. Deloitte identifies skills shortages as the top barrier, reinforcing that the bottleneck to AI ROI is organizational capability and change management, not technology availability.</div>
       </div>
 
       <div class="card card-ai">
         <span class="badge badge-case" data-ja="事例" data-en="Case Study">Case Study</span>
-        <h3><a href="https://www.theworldfolio.com/interviews/how-fact-base-is-accelerating-manufacturing-dx-for-japans-smes-with-drawingcentered-cloud-erp/7391/" target="_blank" rel="noopener noreferrer">How Fact Base Is Accelerating Manufacturing DX for Japan's SMEs</a></h3>
-        <div class="card-source">The Worldfolio / 英語</div>
-        <div class="card-summary" data-ja="日本のスタートアップ「Fact Base」が中小製造業向けに開発した「図面中心クラウドERP」の事例インタビュー。設計図面・生産管理・受発注が別システムで断絶し人手転記が横行する日本製造業SMEの課題を、CAD図面をERP起点として設計・生産・在庫を統合することで解決。日本のDXには万能ツールではなく文脈に特化した解決策が必要という論点を実証している。" data-en="Fact Base's drawing-centered cloud ERP tackles Japan's SME manufacturing fragmentation—where design drawings, production management, and ordering systems operate in disconnected silos. By making the CAD drawing the central data object connecting design, production, and inventory, Fact Base delivers real-time operational visibility and defect rate reduction—proving Japan's manufacturing DX requires purpose-built, context-specific solutions.">Fact Base's drawing-centered cloud ERP tackles Japan's SME manufacturing fragmentation—where design drawings, production management, and ordering systems operate in disconnected silos. By making the CAD drawing the central data object connecting design, production, and inventory, Fact Base delivers real-time operational visibility and defect rate reduction—proving Japan's manufacturing DX requires purpose-built, context-specific solutions.</div>
+        <h3><a href="https://global.fujitsu/en-global/pr/news/2026/05/27-02" target="_blank" rel="noopener noreferrer">Fujitsu and OpenAI Partner to Propel AI Transformation in Japan</a></h3>
+        <div class="card-source">Fujitsu Global（プレスリリース） / 英語</div>
+        <div class="card-summary" data-ja="富士通とOpenAIが2026年5月27日に日本の企業AI変革加速に向けた協業を発表。ChatGPT EnterpriseとCodexを富士通のForward Deployed Engineer（FDE）モデルに統合し、製造・医療・医薬品・サイバーセキュリティを重点分野として展開。CEO時田隆仁は「OpenAIの最先端技術と富士通の深い産業・運用の専門知識の組み合わせが産業横断の価値を生む」と述べた。富士通の2026年3月期連結収益は3兆5,000億円（約230億ドル）で日本のデジタルサービス企業の首位を維持。" data-en="Fujitsu and OpenAI's May 27, 2026 collaboration to accelerate enterprise AI in Japan integrates ChatGPT Enterprise and Codex into Fujitsu's Forward Deployed Engineer model for manufacturing, healthcare, and cybersecurity. CEO Takahito Tokita: 'combining OpenAI's cutting-edge technologies with Fujitsu's deep industry and operational expertise to create value across entire industries.' With ¥3.5 trillion ($23B) FY2026 revenues, Fujitsu becomes the primary conduit for OpenAI's enterprise penetration in Japan's mission-critical infrastructure sectors.">Fujitsu and OpenAI's May 27, 2026 collaboration to accelerate enterprise AI in Japan integrates ChatGPT Enterprise and Codex into Fujitsu's Forward Deployed Engineer model for manufacturing, healthcare, and cybersecurity. CEO Takahito Tokita: 'combining OpenAI's cutting-edge technologies with Fujitsu's deep industry and operational expertise to create value across entire industries.' With ¥3.5 trillion ($23B) FY2026 revenues, Fujitsu becomes the primary conduit for OpenAI's enterprise penetration in Japan's mission-critical infrastructure sectors.</div>
       </div>
 
       <div class="card card-ai">
         <span class="badge badge-case" data-ja="事例" data-en="Case Study">Case Study</span>
-        <h3><a href="https://onereach.ai/blog/what-shapes-enterprise-ai-agents-in-the-future/" target="_blank" rel="noopener noreferrer">Enterprise AI Agents 2026: Top Use Cases, ROI &amp; Business Impact</a></h3>
-        <div class="card-source">OneReach.ai / 英語</div>
-        <div class="card-summary" data-ja="企業AIエージェント導入事例とROIを集計・分析した記事。ウォルマートが4,700店舗の実績データを取り込み人間の承認なしに自律的な補充決定を実施。エージェンティックAI導入ROIは平均171%（米国企業は192%）で従来の自動化の3倍超。AIエージェントは今やパイロット段階ではなく本番稼働インフラ。" data-en="OneReach's analysis highlights Walmart's supply chain AI as the benchmark case—ingesting data from 4,700 stores continuously with zero per-decision human approval loops. Agentic AI delivers average ROI of 171% (192% for US enterprises), outperforming traditional automation by 3x—demonstrating AI agents are now production-grade infrastructure delivering P&L impact, not pilot-stage experiments.">OneReach's analysis highlights Walmart's supply chain AI as the benchmark case—ingesting data from 4,700 stores continuously with zero per-decision human approval loops. Agentic AI delivers average ROI of 171% (192% for US enterprises), outperforming traditional automation by 3x—demonstrating AI agents are now production-grade infrastructure delivering P&L impact, not pilot-stage experiments.</div>
+        <h3><a href="https://www.techaheadcorp.com/blog/top-use-cases-of-agentic-ai-in-2026-across-industries/" target="_blank" rel="noopener noreferrer">Top Use Cases of Agentic AI in 2026: Industry-by-Industry Breakdown</a></h3>
+        <div class="card-source">TechAhead Corp / 英語</div>
+        <div class="card-summary" data-ja="2026年にAgenticAIが産業横断で実運用に移行した最新事例を業種別に解説。「65%の企業がAgenticAIでワークフローを自動化し、さらに33%の追加成長が見込まれる」。Walmartの「Trend-to-Product」システムがSNSトレンドを追跡→商品コンセプト生成→調達プロセスに自動フィードするマルチエージェントAIエンジンとして機能。Gartnerは「2026年末までにエンタープライズシステムの40%がタスク特化型AIエージェントを搭載する」と予測。92%のリーダーが2年以内に測定可能なROIを期待している。" data-en="Agentic AI is operational in 2026: 65% of companies have automated workflows and Gartner projects 40% of enterprise systems will feature task-specific AI agents by year-end. Walmart's 'Trend-to-Product' system—tracking social trends, generating product concepts, and feeding them into sourcing—illustrates AI orchestration at scale. Manufacturing benefits include predictive maintenance, real-time quality inspection, and production scheduling against live demand and capacity data. 92% of leaders expect measurable ROI within two years.">Agentic AI is operational in 2026: 65% of companies have automated workflows and Gartner projects 40% of enterprise systems will feature task-specific AI agents by year-end. Walmart's 'Trend-to-Product' system—tracking social trends, generating product concepts, and feeding them into sourcing—illustrates AI orchestration at scale. Manufacturing benefits include predictive maintenance, real-time quality inspection, and production scheduling against live demand and capacity data. 92% of leaders expect measurable ROI within two years.</div>
       </div>
 
       <div class="card card-ai">
         <span class="badge badge-case" data-ja="事例" data-en="Case Study">Case Study</span>
-        <h3><a href="https://digitaleconomy.stanford.edu/publication/enterprise-ai-playbook/" target="_blank" rel="noopener noreferrer">Enterprise AI Playbook: Lessons from 51 Successful Developments</a></h3>
-        <div class="card-source">Stanford Digital Economy Lab / 英語</div>
-        <div class="card-summary" data-ja="スタンフォード大学デジタルエコノミーラボがBrynjolfssonらのチームとともに51の企業AIプロジェクト成功事例を分析。成功の3要件は「AIをワークフローに埋め込む」「人間の意思決定をAIが補強する役割設計」「データ品質とプロセス再設計を先行させる」。AI勝者と敗者を分けるのは技術スペックではなく戦略的判断と組織的適応力。" data-en="Stanford's analysis of 51 successful enterprise AI deployments identifies three non-negotiable success factors: embedding AI into workflows rather than standalone tools, designing AI as human decision-augmentation, and prioritizing data quality and process redesign before technology rollout. What separates AI winners from losers is not model sophistication but strategic judgment about which processes to transform and organizational agility to adapt.">Stanford's analysis of 51 successful enterprise AI deployments identifies three non-negotiable success factors: embedding AI into workflows rather than standalone tools, designing AI as human decision-augmentation, and prioritizing data quality and process redesign before technology rollout. What separates AI winners from losers is not model sophistication but strategic judgment about which processes to transform and organizational agility to adapt.</div>
+        <h3><a href="https://devlabs.angelhack.com/blog/agentic-ai-enterprise-2026/" target="_blank" rel="noopener noreferrer">Agentic AI in Enterprise 2026: DBS $1B SGD, Klarna $60M Saved, GitHub 55% Faster</a></h3>
+        <div class="card-source">AngelHack DevLabs / 英語</div>
+        <div class="card-summary" data-ja="2026年のエンタープライズAgenticAI実装事例と成果指標。DBS銀行は2025年度にAgenticAI活用で10億シンガポールドル（約1,100億円）の経済価値を創出。KlarnaはAIエージェントが「32億件の顧客対応を98%は人間介入なしに平均48秒で解決」し年間6,000万ドルの削減を実現。GitHubのCopilotはタスク完了55%短縮・PRサイクル9.6日→2.4日に削減。GrabはライドシェアのAI配車自動化率90%を達成。ただしGartnerは「AgenticAIプロジェクトの40%以上が2027年までに失敗する」と警告。" data-en="Enterprise agentic AI results in 2026: DBS Bank generated ~$1B SGD in economic value, Klarna's AI handled 3.2 billion interactions at 98% human-free resolution (avg 48 seconds), saving $60M while cutting response time from 11 minutes to under 2 minutes. GitHub Copilot reduced task completion by 55% and PR cycles from 9.6 to 2.4 days; Grab automated 90% of rideshare dispatching. However, Gartner warns 40%+ of agentic AI projects will fail by 2027 with hallucination rates 0.7–52%.">Enterprise agentic AI results in 2026: DBS Bank generated ~$1B SGD in economic value, Klarna's AI handled 3.2 billion interactions at 98% human-free resolution (avg 48 seconds), saving $60M while cutting response time from 11 minutes to under 2 minutes. GitHub Copilot reduced task completion by 55% and PR cycles from 9.6 to 2.4 days; Grab automated 90% of rideshare dispatching. However, Gartner warns 40%+ of agentic AI projects will fail by 2027 with hallucination rates 0.7–52%.</div>
       </div>
 
     </div></div>
@@ -267,77 +246,91 @@
 
       <div class="card card-football">
         <span class="badge badge-concept" data-ja="概論" data-en="Overview">Overview</span>
-        <h3><a href="https://toyokeizai.net/articles/-/631953" target="_blank" rel="noopener noreferrer">やはり「サッカー型組織」が会社も強い！2大理由</a></h3>
-        <div class="card-source">東洋経済オンライン / 日本語</div>
-        <div class="card-summary" data-ja="急速に変化する経営環境において企業が「野球型組織（上司の指示待ち・固定役割）」から「サッカー型組織（自律的判断・流動的役割）」へ転換する必要性を2つの理由で論じる。意思決定スピードと環境適応力の2点からサッカーの組織論をビジネスリーダーシップに転用し、「社員一人ひとりが自律的に考え行動する力」が変化の時代の競争優位の源泉と主張する。" data-en="This Toyo Keizai piece argues Japanese companies must shift from 'baseball-style organizations' (fixed roles, manager-instructed action) to 'football-style organizations' (fluid roles, autonomous real-time judgment) for two reasons: football's decision-making cannot be centralized, and the absence of fixed positions enables situational adaptation. Both principles map directly onto 2026 organizational agility demands.">This Toyo Keizai piece argues Japanese companies must shift from 'baseball-style organizations' (fixed roles, manager-instructed action) to 'football-style organizations' (fluid roles, autonomous real-time judgment) for two reasons: football's decision-making cannot be centralized, and the absence of fixed positions enables situational adaptation. Both principles map directly onto 2026 organizational agility demands.</div>
+        <h3><a href="https://mundialanalytics.com/tactical-trends" target="_blank" rel="noopener noreferrer">World Cup 2026 Tactical Intelligence Profiles: Five Core Trends</a></h3>
+        <div class="card-source">Mundial Analytics / 英語</div>
+        <div class="card-summary" data-ja="2026年ワールドカップで予測される5つの戦術トレンドを分析。①コントロールされたプレッシング（継続高プレスは7試合の夏場開催では持続不可能）、②トランジション速度（奪取後の素早い攻撃）、③レスト・ディフェンス（攻撃時の守備構造維持）、④インバートしたフルバックによるセカンドボール制圧、⑤実用的・反復可能なセットプレー活用。「ポゼッション・コンパクト守備・素早いトランジションを構造を失わずに切り替えられるチームが勝つ」というメッセージは、組織変革における「基盤を維持しながら機動的に動く」という普遍的教訓を示す。" data-en="Mundial Analytics identifies five tactical imperatives for World Cup 2026: controlled pressing triggered strategically, transition speed over possession, rest defense against counters, inverted fullbacks controlling second balls, and practical set-piece routines—all shaped by the 48-team format requiring 7+ matches in summer heat. The core principle—switching between possession, compact defense, and quick transitions without losing structure—maps directly to organizational management, where adaptive capacity without losing operational coherence defines sustainable high performance.">Mundial Analytics identifies five tactical imperatives for World Cup 2026: controlled pressing triggered strategically, transition speed over possession, rest defense against counters, inverted fullbacks controlling second balls, and practical set-piece routines—all shaped by the 48-team format requiring 7+ matches in summer heat. The core principle—switching between possession, compact defense, and quick transitions without losing structure—maps directly to organizational management, where adaptive capacity without losing operational coherence defines sustainable high performance.</div>
       </div>
 
       <div class="card card-football">
         <span class="badge badge-concept" data-ja="概論" data-en="Overview">Overview</span>
-        <h3><a href="https://www.leaderonomics.com/articles/leadership/how-moyes-wenger-guardiola-shaped-arteta-arsenal" target="_blank" rel="noopener noreferrer">The Power of Many Mentors: How Moyes, Wenger, and Guardiola Forged Mikel Arteta's Arsenal Project</a></h3>
-        <div class="card-source">Leaderonomics / 英語</div>
-        <div class="card-summary" data-ja="アルテタのリーダーシップが3人の異なる師匠—モイーズ（守備的堅牢性）、ウェンガー（攻撃的流動性・文化的統率）、グアルディオラ（ポジショナルプレー）—を統合した「合成機械」であると論じる。「Great leaders are not photocopies. They are synthesis machines.」という核心言葉は、組織変革リーダーが多様な思想を消化し独自のアプローチを構築する普遍的教訓を示す。" data-en="Leaderonomics traces Arteta's transformation philosophy to the synthesis of three radically different mentors. The article's defining insight—'Great leaders are not photocopies. They are synthesis machines.'—applies directly to change management: the best organizational transformers are not ideology purists but adaptive synthesizers who absorb diverse frameworks and build something uniquely effective from the integration.">Leaderonomics traces Arteta's transformation philosophy to the synthesis of three radically different mentors. The article's defining insight—'Great leaders are not photocopies. They are synthesis machines.'—applies directly to change management: the best organizational transformers are not ideology purists but adaptive synthesizers who absorb diverse frameworks and build something uniquely effective from the integration.</div>
+        <h3><a href="https://johancruyffinstitute.com/en/blog-en/coaching-en/can-elite-sport-environments-be-psychologically-safe/" target="_blank" rel="noopener noreferrer">Can Elite Sport Environments Be Psychologically Safe?</a></h3>
+        <div class="card-source">Johan Cruyff Institute / 英語</div>
+        <div class="card-summary" data-ja="Googleのプロジェクト・アリストテレスとAmy Edmonsonの研究を基盤に、高圧・高競争のエリートスポーツ環境でも心理的安全性は「達成可能なだけでなく、高パフォーマンス維持に不可欠」と論じた論考。実装の7つの戦略を示すとともに、「1,000名以上のオフィスワーカー研究で、マネージャーに価値を認められていると感じることが、困難業務への対処力を最も強く予測した」という知見はスポーツを超えた組織全体に直接適用できる。" data-en="Johan Cruyff Institute argues psychological safety is 'not only achievable but essential for sustained elite performance' in high-pressure environments—citing Google's Project Aristotle. Seven implementation strategies (leader vulnerability modeling, clear values, structured debriefs, mistake-as-learning culture, mentorship, holistic development, mental skill training) are grounded in a study of 1,000+ office workers where feeling valued by managers was the strongest predictor of effective performance under difficulty.">Johan Cruyff Institute argues psychological safety is 'not only achievable but essential for sustained elite performance' in high-pressure environments—citing Google's Project Aristotle. Seven implementation strategies (leader vulnerability modeling, clear values, structured debriefs, mistake-as-learning culture, mentorship, holistic development, mental skill training) are grounded in a study of 1,000+ office workers where feeling valued by managers was the strongest predictor of effective performance under difficulty.</div>
+      </div>
+
+      <div class="card card-football">
+        <span class="badge badge-concept" data-ja="概論" data-en="Overview">Overview</span>
+        <h3><a href="https://wdsportz.com/the-ultimate-2026-guide-to-football-management/" target="_blank" rel="noopener noreferrer">The Ultimate 2026 Guide to Football Management: Tech, Tools, and Governance</a></h3>
+        <div class="card-source">WDSportz / 英語</div>
+        <div class="card-summary" data-ja="2026年のフットボール管理における「ツーアップ戦略」を提案。グラスルーツレベルでは「公式行政・コンプライアンス用途にはFA Matchdayアプリ」と「コミュニケーション・人的管理にはSpond・TeamStats・Tacicoなど専用ツール」の2システムを使い分けることで行政負担を最小化。統括団体レベルでは「Association Management・ガバナンス・高パフォーマンス管理」の3層構成が必要。ビジネスへの転用：役割ごとに最適ツールを設計し「管理業務から人への投資」にリソースを移すという原則は、DX推進の本質と完全に一致する。" data-en="The 2026 Football Management Guide advocates a 'two-up strategy': one system for official administration/compliance (FA Matchday's automatic synchronization, real-time eligibility tracking) and another for communication/human management (Spond, TeamStats, Tacico). The transferable business principle: aligning the right tool with the right role frees human attention from process overhead toward the mission—the same logic driving effective digital transformation.">The 2026 Football Management Guide advocates a 'two-up strategy': one system for official administration/compliance (FA Matchday's automatic synchronization, real-time eligibility tracking) and another for communication/human management (Spond, TeamStats, Tacico). The transferable business principle: aligning the right tool with the right role frees human attention from process overhead toward the mission—the same logic driving effective digital transformation.</div>
       </div>
 
       <div class="card card-football">
         <span class="badge badge-case" data-ja="事例" data-en="Case Study">Case Study</span>
-        <h3><a href="https://www.premierleague.com/en/news/4662274/how-mikel-arteta-changed-arsenal-culture-and-turned-them-into-champions" target="_blank" rel="noopener noreferrer">How Arteta Changed Arsenal's Culture and Turned Them into Champions</a></h3>
-        <div class="card-source">Premier League 公式サイト / 英語</div>
-        <div class="card-summary" data-ja="2019年12月就任のアルテタが22年間のプレミアリーグ無冠に終止符を打ちArsenal 2025/26シーズン王者へ導いた組織変革の全貌。「情熱・尊重・集合体へのコミット（"the we"）」の3つを全スタッフ・選手の採用基準に設定し、分散型リーダーシップ構造（Ødegaard＋Saka＋Rice等）で「全員が守備的責任を持つ組織」へと体質を根本的に変えた。" data-en="Arsenal's 2025/26 Premier League title—ending a 22-year drought—represents one of sport's most studied organizational transformations. Arteta: 'I wanted to understand deeply how people felt about working inside Arsenal, and I was not happy or impressed.' His framework—passion, respect, and 'the we'—became the hiring filter for every player and staff member, while distributed leadership replaced hero dependence.">Arsenal's 2025/26 Premier League title—ending a 22-year drought—represents one of sport's most studied organizational transformations. Arteta: 'I wanted to understand deeply how people felt about working inside Arsenal, and I was not happy or impressed.' His framework—passion, respect, and 'the we'—became the hiring filter for every player and staff member, while distributed leadership replaced hero dependence.</div>
+        <h3><a href="https://www.aljazeera.com/sports/2026/5/19/arsenals-arteta-claims-premier-league-to-step-from-guardiolas-shadow" target="_blank" rel="noopener noreferrer">Arsenal's Arteta Claims Premier League, Steps from Guardiola's Shadow</a></h3>
+        <div class="card-source">Al Jazeera / 英語</div>
+        <div class="card-summary" data-ja="アーセナルの22年ぶりプレミアリーグ優勝を報じた記事。就任2019年から師グアルディオラのアプローチをそのまま採用せず、独自のスタイルを確立したアルテタの軌跡を描く。アルテタは「彼（グアルディオラ）は選手としてもコーチとしても私にとってのインスピレーション。私に賭けることを決断してくれた人物だ」と師への敬意を示しながら、グアルディオラ流の支配型ポゼッションではなく「堅固な守備基盤とセットプレー強さ」を基礎に置いたチームを構築した。学んだことを超えて自分だけのものを作れる人間だけが師を超えられるという普遍的真理を体現する事例。" data-en="Arsenal's 22-year Premier League drought ends as Arteta builds an identity distinct from mentor Guardiola's: 'He's been an inspiration as a player and as a coach, and he's the person who decided to bet on me,' yet Arteta chose defensive solidity and set-piece strength over possession dominance—synthesizing Moyes's pragmatism with Guardiola's tactical intelligence. The organizational lesson: great leaders don't replicate mentors; they synthesize diverse influences into something authentically their own.">Arsenal's 22-year Premier League drought ends as Arteta builds an identity distinct from mentor Guardiola's: 'He's been an inspiration as a player and as a coach, and he's the person who decided to bet on me,' yet Arteta chose defensive solidity and set-piece strength over possession dominance—synthesizing Moyes's pragmatism with Guardiola's tactical intelligence. The organizational lesson: great leaders don't replicate mentors; they synthesize diverse influences into something authentically their own.</div>
       </div>
 
       <div class="card card-football">
         <span class="badge badge-case" data-ja="事例" data-en="Case Study">Case Study</span>
-        <h3><a href="https://www.meninblazers.com/men-in-blazers/running-the-game/running-the-game-sloan-sports-analytics-conference-2026" target="_blank" rel="noopener noreferrer">Brentford Owner on the Transfers They Missed and How Analytics Built a Premier League Contender</a></h3>
-        <div class="card-source">Men in Blazers / MIT Sloan 2026 / 英語</div>
-        <div class="card-summary" data-ja="MITスローン・スポーツアナリティクス会議2026でのBrentford FCオーナー Matthew Benhamへのインタビュー。「逃した選手」Eze・Marmoush・Oliseが後に国際的スターとなったことがデータモデルの精度を逆説的に証明。BrentfordとBrightonが最高ROIを記録し「分析で磨かれた意思決定規律が人材投資のROIを最大化する」という経営原則をサッカーが実証している。" data-en="At MIT Sloan 2026, Brentford owner Matthew Benham revealed 'nearly signed' players—Eze, Marmoush, Olise—who became international stars serve as retrospective proof of his analytics model's accuracy. Both Brentford and Brighton post the highest average ROI in the Premier League: data-driven recruitment discipline at minimal spend consistently identifies undervalued talent—a transferable lesson for any resource-constrained organization.">At MIT Sloan 2026, Brentford owner Matthew Benham revealed 'nearly signed' players—Eze, Marmoush, Olise—who became international stars serve as retrospective proof of his analytics model's accuracy. Both Brentford and Brighton post the highest average ROI in the Premier League: data-driven recruitment discipline at minimal spend consistently identifies undervalued talent—a transferable lesson for any resource-constrained organization.</div>
+        <h3><a href="https://www.zonalsports.com/analysis/arteta-arsenal-premier-league-champions-rebuild" target="_blank" rel="noopener noreferrer">From Trust the Process to Premier League Champions: How Arteta Rebuilt Arsenal in Six Ruthless Years</a></h3>
+        <div class="card-source">Zonal Sports / 英語</div>
+        <div class="card-summary" data-ja="アルテタがアーセナルを6年間で段階的に再建したプロセスを詳細分析。到着時から「機能を買う、選手を買うのではない」という補強哲学を徹底し、オーバメヤン・エジルを放出してシステム重視の文化を確立。結果は234日間のリーグ首位・19クリーンシート・セットプレーから35得点。商業収入26%増を先行させ「安定した経営体制で他クラブが監督交代で揺らぐ中で長期計画を貫徹した」構造が勝因。変革は「文化→守備→投資」の順序が正しく、同時多発的な行動では成功しない。" data-en="Arteta's six-year phased rebuild: first establishing culture (releasing Aubameyang and Özil, 'buy functions not players'), then acquiring Gabriel/Ben White/Rice, then committing £260M+ to complete the squad—delivering 234 days at league summit, 19 clean sheets, and 35 set-piece goals. Commercial revenue grew 26%, enabling stable management while competitors cycled through manager changes. The transferable lesson: transformation requires sequencing (culture → defense → investment), not simultaneous action on all fronts.">Arteta's six-year phased rebuild: first establishing culture (releasing Aubameyang and Özil, 'buy functions not players'), then acquiring Gabriel/Ben White/Rice, then committing £260M+ to complete the squad—delivering 234 days at league summit, 19 clean sheets, and 35 set-piece goals. Commercial revenue grew 26%, enabling stable management while competitors cycled through manager changes. The transferable lesson: transformation requires sequencing (culture → defense → investment), not simultaneous action on all fronts.</div>
       </div>
 
       <div class="card card-football">
         <span class="badge badge-case" data-ja="事例" data-en="Case Study">Case Study</span>
-        <h3><a href="https://readarsenal.com/2026/05/24/mikel-arteta-influence-beyond-arsenal-under-armour/" target="_blank" rel="noopener noreferrer">Mikel Arteta's Influence Goes Beyond Arsenal Success</a></h3>
-        <div class="card-source">Read Arsenal / 英語</div>
-        <div class="card-summary" data-ja="アルテタのリーダーシップと組織文化がArsenalの枠を超えてUnder Armourなどビジネス界にまで影響を与えていることを論じた記事。「高いスタンダードの日常化（normalizing high standards）」という3つの組織原則がスポーツ・ビジネス双方で通用する普遍的変革哲学として注目されている。細部（トンネルカバーの除去）への徹底的なこだわりが組織全体の「ディテールへの感度」を底上げした事例。" data-en="Arteta's organizational framework is being studied beyond sport—attracting attention from companies like Under Armour. His three transferable principles: 'normalizing high standards,' integrating individual accountability with collective success, and fusing coaching with management. Transformation began with micro-details—removing the tunnel cover so players hear crowd noise before kickoff—demonstrating how a leader's environmental design shapes collective standards from the ground up.">Arteta's organizational framework is being studied beyond sport—attracting attention from companies like Under Armour. His three transferable principles: 'normalizing high standards,' integrating individual accountability with collective success, and fusing coaching with management. Transformation began with micro-details—removing the tunnel cover so players hear crowd noise before kickoff—demonstrating how a leader's environmental design shapes collective standards from the ground up.</div>
+        <h3><a href="https://breakingthelines.com/tactical-analysis/how-hansi-flick-has-transformed-fc-barcelona/" target="_blank" rel="noopener noreferrer">How Hansi Flick Has Transformed FC Barcelona</a></h3>
+        <div class="card-source">Breaking The Lines / 英語</div>
+        <div class="card-summary" data-ja="ハンジ・フリックが2024〜25シーズンにバルセロナを劇的に変革した戦術的・組織的分析。欧州で最も多くオフサイドトラップを成功させたチームとしての高いディフェンシブライン確立、ペドリやカサドとのラインブレイキングパスで相手を素早く崩すミッドフィールドの進化、17歳ラミン・ヤマルをネイマール比較される欧州最高の若手ウィングとして開花させるベテランとユース融合。「バルセロナは単に再建しているのではなく、スピード・戦略的ポジショニング・戦術的精度の組み合わせによって進化している」という評価が示す変革事例。" data-en="Hansi Flick's Barcelona transformation synthesizes gegenpressing intensity with Barcelona's technical DNA: implementing Europe's most sophisticated offside traps, evolving midfield through Pedri and Casadó's line-breaking passes, and bridging 17-year-old Lamine Yamal to veteran Lewandowski. The central thesis—'under Flick, Barcelona isn't just rebuilding, they're evolving through speed, strategic positioning, and tactical precision'—illustrates that genuine transformation requires implanting new principles into existing strengths rather than replacing them wholesale.">Hansi Flick's Barcelona transformation synthesizes gegenpressing intensity with Barcelona's technical DNA: implementing Europe's most sophisticated offside traps, evolving midfield through Pedri and Casadó's line-breaking passes, and bridging 17-year-old Lamine Yamal to veteran Lewandowski. The central thesis—'under Flick, Barcelona isn't just rebuilding, they're evolving through speed, strategic positioning, and tactical precision'—illustrates that genuine transformation requires implanting new principles into existing strengths rather than replacing them wholesale.</div>
       </div>
 
     </div></div>
 
-    <!-- Eastern Philosophy -->
+    <!-- 東洋哲学 -->
     <div id="kyoto" class="section"><div class="cards">
 
       <div class="card card-kyoto">
         <span class="badge badge-concept" data-ja="概論" data-en="Overview">Overview</span>
-        <h3><a href="https://www.jp.kearney.com/%E9%A3%9B%E8%BA%8D%E7%9A%84%E6%88%90%E9%95%B7%E3%81%AB%E7%B9%8B%E3%81%8C%E3%82%8B-%E5%AE%88%E7%A0%B4%E9%9B%A2-%E3%81%AE%E5%AE%9F%E8%B7%B5" target="_blank" rel="noopener noreferrer">飛躍的成長に繋がる「守破離」の実践</a></h3>
-        <div class="card-source">Kearney Japan / 日本語</div>
-        <div class="card-summary" data-ja="KearneyがJapanese的概念「守破離」を組織変革の実践フレームワークとして論じた記事。多くの日本企業が「守」を飛ばして「破」「離」へ急ぐ失敗パターンを指摘し、「一見すると単調な基礎作業が後の創造的飛躍の土台になる」という逆説を強調。SCM・DX変革における現場定着の哲学的基盤として機能する。" data-en="Kearney Japan applies Shuhari to organizational change: Shu (master the form), Ha (adapt), Ri (transcend). The recurring failure: companies skip Shu and rush to Ri, producing superficial innovation without operational foundation. The core insight: 'seemingly mundane foundational work is the prerequisite for later creative breakthroughs'—directly applicable to SCM and DX transformations where organizations prematurely claim innovation before mastering basics.">Kearney Japan applies Shuhari to organizational change: Shu (master the form), Ha (adapt), Ri (transcend). The recurring failure: companies skip Shu and rush to Ri, producing superficial innovation without operational foundation. The core insight: 'seemingly mundane foundational work is the prerequisite for later creative breakthroughs'—directly applicable to SCM and DX transformations where organizations prematurely claim innovation before mastering basics.</div>
+        <h3><a href="https://blog.proactioninternational.com/en/toyota-kata-guide" target="_blank" rel="noopener noreferrer">Toyota Kata: A Complete Guide for Successful Organizational Implementation</a></h3>
+        <div class="card-source">ProAction International / 英語</div>
+        <div class="card-summary" data-ja="Mike Rotherが研究・体系化したトヨタ・カタを解説した実践ガイド。「型は実世界の経験とイノベーションを再現可能な形で凝縮した究極のマニュアル」という日本的概念の核心を受け継ぎ、改善カタ（4ステップの問題解決サイクル：目標条件の定義→現状把握→次の目標設定→実験）とコーチングカタ（5つの問いで答えを与えず自律的思考を育てる）の2つの型を体系化。「リーダーを監督から思考パートナーへ変え、チームを指示待ち受動型から自律的改善主体へ変える」という変革の本質を、反復と実験を通じた学習習慣の設計として再定義する。" data-en="Toyota Kata—systematized by Mike Rother—embeds continuous improvement as organizational reflex through two routines: the Improvement Kata (define target → grasp current state → set next milestone → experiment) and the Coaching Kata (five questions that build accountability without providing answers, transforming leaders from supervisors into thinking partners). The core argument: Lean fails as a toolset and succeeds as a behavioral pattern—with sustained gains emerging from habituation, not one-time initiative. Success requires consistent short-cycle practice, management commitment, and integration with Kanban, 5S, and Gemba Walk.">Toyota Kata—systematized by Mike Rother—embeds continuous improvement as organizational reflex through two routines: the Improvement Kata (define target → grasp current state → set next milestone → experiment) and the Coaching Kata (five questions that build accountability without providing answers, transforming leaders from supervisors into thinking partners). The core argument: Lean fails as a toolset and succeeds as a behavioral pattern—with sustained gains emerging from habituation, not one-time initiative. Success requires consistent short-cycle practice, management commitment, and integration with Kanban, 5S, and Gemba Walk.</div>
       </div>
 
       <div class="card card-kyoto">
         <span class="badge badge-concept" data-ja="概論" data-en="Overview">Overview</span>
-        <h3><a href="https://digitalenterprise.org/leadership/what-should-leaders-focus-on-lessons-learned-from-japanese-kata/" target="_blank" rel="noopener noreferrer">What Should Leaders Focus on? Lessons Learned from Japanese Kata</a></h3>
-        <div class="card-source">Digital Enterprise / 英語</div>
-        <div class="card-summary" data-ja="日本の武道・トヨタに由来する「型（Kata）」の概念をリーダーシップ実践の科学的フレームワークとして再解釈した記事。「人材とパフォーマンスの両方を均衡させたリーダー」は優れたリーダーとして評価される確率が66%に達する（人材のみ9%、成果のみ13%）。GoogleやWegmansの事例を引き「Lean Kata」を5段階コーチング問いとPDCAで実装する手法を提示する。" data-en="Drawing on Toyota's Kata, Digital Enterprise quantifies leadership impact: leaders who balance people development and performance outcomes are 66% more likely to be rated as great leaders versus 9–13% for those emphasizing either alone. Evidence from Google (20% time creating Gmail and Maps) and Wegmans ($50M employee development yielding $13B revenue) positions the Japanese Kata framework as a repeatable operating system for leaders seeking adaptability and results.">Drawing on Toyota's Kata, Digital Enterprise quantifies leadership impact: leaders who balance people development and performance outcomes are 66% more likely to be rated as great leaders versus 9–13% for those emphasizing either alone. Evidence from Google (20% time creating Gmail and Maps) and Wegmans ($50M employee development yielding $13B revenue) positions the Japanese Kata framework as a repeatable operating system for leaders seeking adaptability and results.</div>
+        <h3><a href="https://leadershipforumcommunity.org/resource/wabi-sabi-embracing-imperfection-and-impermanence/" target="_blank" rel="noopener noreferrer">Wabi-Sabi Leadership: Embracing Imperfection and Impermanence as Organizational Strength</a></h3>
+        <div class="card-source">Leadership Forum Community / 英語</div>
+        <div class="card-summary" data-ja="侘び寂び哲学をビジネスリーダーシップに適用した考察。完璧主義ではなく「自然な成長と改善プロセスを受け入れる姿勢」がリーダーに求められると論じる。「従業員の欠点を価値として認識し、各個人の独自性を尊重する」こと、「集団的幸福への深い献身に根ざした社会への広範な影響を重視する」組織文化の形成を求める。完璧な意思決定・予測・計画を前提とするSCMや経営変革において、「そのような完璧さは存在しない」という前提から動くリーダーが最もレジリエントな組織を作れるという逆説を体現する。" data-en="Wabi-sabi applied to leadership: embracing imperfection and impermanence as organizational principles produces greater resilience than perfectionism. Practical applications include recognizing employees' imperfections as value rather than liability and prioritizing collective well-being over pure performance metrics. For transformation leaders operating with assumptions of perfect forecasts and perfect plans, wabi-sabi offers the reframe: sustainable organizations are built by those who design for adaptation—accepting nothing lasts, nothing is complete, and nothing is perfect as the starting condition, not the failure state.">Wabi-sabi applied to leadership: embracing imperfection and impermanence as organizational principles produces greater resilience than perfectionism. Practical applications include recognizing employees' imperfections as value rather than liability and prioritizing collective well-being over pure performance metrics. For transformation leaders operating with assumptions of perfect forecasts and perfect plans, wabi-sabi offers the reframe: sustainable organizations are built by those who design for adaptation—accepting nothing lasts, nothing is complete, and nothing is perfect as the starting condition, not the failure state.</div>
       </div>
 
       <div class="card card-kyoto">
         <span class="badge badge-concept" data-ja="概論" data-en="Overview">Overview</span>
-        <h3><a href="https://innovationmanagement.se/2019/02/14/zen-philosophy-for-stretching-innovation-space-time/" target="_blank" rel="noopener noreferrer">Zen Philosophy for Stretching Innovation Space-Time</a></h3>
-        <div class="card-source">InnovationManagement.se / 英語</div>
-        <div class="card-summary" data-ja="禅の「不二論（non-duality）」哲学をイノベーションプロセスの設計に応用した考察記事。禅の「判断を保留する」態度がアイデア創出段階における「早期収束」の失敗を防ぐことを論じる。2026年の経営環境において「答えを持っていることを示す」圧力が創造的曖昧さを殺すという問題提起は普遍性を持つ。禅の「初心（shoshin）」概念が組織変革に必要な先入観排除の源泉として機能する。" data-en="The article applies Zen's non-duality principle to innovation process design, arguing that 'withholding premature judgment' prevents the organizational failure of converging on solutions before the problem space is fully explored. In 2026's business context, the Zen concept of Shoshin (Beginner's Mind)—shedding expert assumptions to see with fresh eyes—offers change leaders a practical antidote to premature closure that kills genuinely transformative ideas.">The article applies Zen's non-duality principle to innovation process design, arguing that 'withholding premature judgment' prevents the organizational failure of converging on solutions before the problem space is fully explored. In 2026's business context, the Zen concept of Shoshin (Beginner's Mind)—shedding expert assumptions to see with fresh eyes—offers change leaders a practical antidote to premature closure that kills genuinely transformative ideas.</div>
+        <h3><a href="https://medium.com/scrumptious-bytes-bureaucracy-ballet-agile-alchemy/wabi-sabi-and-kintsugi-the-beauty-of-imperfect-progress-6ce9c8231697" target="_blank" rel="noopener noreferrer">Wabi-Sabi and Kintsugi: The Beauty of Imperfect Progress in Agile Teams</a></h3>
+        <div class="card-source">Medium / 英語</div>
+        <div class="card-summary" data-ja="侘び寂びと金継ぎの哲学をアジャイル開発・チーム運営に適用した実践論。「Nothing lasts. Nothing is finished. Nothing is perfect.」という侘び寂びの3原則を組織設計の前提に置き、金継ぎ（壊れた陶器を金で修復し元より美しくする技法）を「失敗をより美しく変える修復思想」として展開。ビジネス実装は4つ：①不完全でもリリースする（MVP思想）②失敗を可視化し修復過程を通じて学ぶ③リーダーが人間らしさを率先して示す④継続的改善でv1.0から得た知見でv1.1を強化。SCM変革で「現行システムが完璧でないから始められない」という組織の停滞に対する哲学的解毒剤となる。" data-en="Wabi-sabi (Nothing lasts. Nothing is finished. Nothing is perfect.) and kintsugi (filling cracks with gold to make broken things more beautiful) applied to agile development and team leadership. The four business practices—shipping imperfect MVPs, making failure visible as learning, leaders modeling vulnerability first, using v1.0 lessons to strengthen v1.1—reframe failure as gold-inlay opportunity. For transformation leaders: 'authentic repair over perfect performance' builds genuine team trust; organizations that wait for perfect systems before transforming stay broken.">Wabi-sabi (Nothing lasts. Nothing is finished. Nothing is perfect.) and kintsugi (filling cracks with gold to make broken things more beautiful) applied to agile development and team leadership. The four business practices—shipping imperfect MVPs, making failure visible as learning, leaders modeling vulnerability first, using v1.0 lessons to strengthen v1.1—reframe failure as gold-inlay opportunity. For transformation leaders: 'authentic repair over perfect performance' builds genuine team trust; organizations that wait for perfect systems before transforming stay broken.</div>
       </div>
 
       <div class="card card-kyoto">
         <span class="badge badge-case" data-ja="事例" data-en="Case Study">Case Study</span>
-        <h3><a href="https://nihonmono.jp/en/article/31792/" target="_blank" rel="noopener noreferrer">Nakagawa Masashichi Shoten: A Leading Reformer with 300 Years of History</a></h3>
-        <div class="card-source">NIHONMONO / 英語</div>
-        <div class="card-summary" data-ja="1716年奈良創業・308年の歴史を持つ中川政七商店が「日本の工芸を活性化させる」という企業哲学のもと伝統工芸のビジネスモデル変革を主導している事例。2025年8月のB Corp認証取得と2026年1月開始の陶磁器回収・金継ぎ修復・再販売によるサーキュラープログラムが新展開。「伝統の保存は変革によって達成される（preservation through transformation）」という哲学がSCM・DX変革の長期視点と共鳴する。" data-en="Nakagawa Masashichi Shoten's 308-year survival is built on the paradox that 'preservation requires transformation.' 2026 milestones: B Corp certification and a circular craft program collecting ceramics, repairing via kintsugi, and reselling (with proceeds returning to artisans). The philosophy—'energize Japanese crafts' through sustainable reinvention—offers SCM and transformation leaders a long-view model for designing value chains that sustain rather than extract.">Nakagawa Masashichi Shoten's 308-year survival is built on the paradox that 'preservation requires transformation.' 2026 milestones: B Corp certification and a circular craft program collecting ceramics, repairing via kintsugi, and reselling (with proceeds returning to artisans). The philosophy—'energize Japanese crafts' through sustainable reinvention—offers SCM and transformation leaders a long-view model for designing value chains that sustain rather than extract.</div>
+        <h3><a href="https://www.nakagawa-masashichi.jp/shop/pages/c-kogei.aspx" target="_blank" rel="noopener noreferrer">中川政七商店「C KOGEI」：金継ぎも含む循環プログラムが示す、工芸の「しまいかた」哲学</a></h3>
+        <div class="card-source">中川政七商店（公式） / 日本語</div>
+        <div class="card-summary" data-ja="中川政七商店が2026年1月から展開する循環型工芸プログラム「C KOGEI（Craft, Care, Circulation）」を解説。「壊れたり使われなくなっても捨てるには惜しい」という工芸品への敬意を起点に、使用済みセラミックを4つの直営旗艦店で回収・修復（金継ぎ含む）・再販し、修復不能なものは粉砕→浄化→土へ還元して次の製品の原料に活用する循環ループを設計。回収参加者には10%割引クーポンを提供。収益の一部を工芸生産者・産地に還元する仕組みで「日本の工芸が百年先も続きますように」という使命に直結させた。2025年8月取得のBコープ認証（スコア84.1、中央値50.9を大幅上回る）と連動している。" data-en="Nakagawa Masashichi Shoten's 'C KOGEI' circular program (January 2026) collects used ceramics at four flagship stores, restores them—including kintsugi repair—and either resells or returns them to clay for new production, with 10% discount coupons incentivizing returns and proceeds flowing back to artisan communities. Built on the company's August 2025 B Corp certification (score 84.1 vs. median 50.9), C KOGEI articulates a coherent management philosophy: craft is not a consumable but a renewable ecosystem—and the company's role is steward of Japanese craftsmanship's hundred-year continuity.">Nakagawa Masashichi Shoten's 'C KOGEI' circular program (January 2026) collects used ceramics at four flagship stores, restores them—including kintsugi repair—and either resells or returns them to clay for new production, with 10% discount coupons incentivizing returns and proceeds flowing back to artisan communities. Built on the company's August 2025 B Corp certification (score 84.1 vs. median 50.9), C KOGEI articulates a coherent management philosophy: craft is not a consumable but a renewable ecosystem—and the company's role is steward of Japanese craftsmanship's hundred-year continuity.</div>
       </div>
 
       <div class="card card-kyoto">
         <span class="badge badge-case" data-ja="事例" data-en="Case Study">Case Study</span>
-        <h3><a href="https://www.studykyoto.jp/en/magazine/2024/10/15/kyoto-manufacturing-industry/" target="_blank" rel="noopener noreferrer">Inside Kyoto's Manufacturing Industry: Tradition Meets Innovation</a></h3>
-        <div class="card-source">Study Kyoto Magazine / 英語</div>
-        <div class="card-summary" data-ja="1,000年超の歴史を持つ京都の製造業が伝統と革新をいかに両立させてきたかを論じた記事。市が公式認定する伝統工芸品は74種類。西陣織が18世紀に西洋のジャカード織機を取り込み「職人技の本質を保ちながらより複雑な設計を実現」した事例は、革新への開放性が伝統の深化を生む典型。SCM・DX変革において「何を変え何を変えないか」を見極める経営哲学的基盤を提供する。" data-en="Kyoto's manufacturing heritage—74 officially designated traditional crafts spanning 1,000+ years—demonstrates an enduring principle: openness to external technology deepens rather than destroys tradition. Nishijin weaving absorbed the Western Jaccard loom in the 18th century while preserving artisan essence; Nintendo and Kyocera built global empires on Kyoto's precision manufacturing DNA. For SCM and DX leaders, Kyoto's lesson: transformation sustainability depends on accurately distinguishing what must change from what must remain invariant.">Kyoto's manufacturing heritage—74 officially designated traditional crafts spanning 1,000+ years—demonstrates an enduring principle: openness to external technology deepens rather than destroys tradition. Nishijin weaving absorbed the Western Jaccard loom in the 18th century while preserving artisan essence; Nintendo and Kyocera built global empires on Kyoto's precision manufacturing DNA. For SCM and DX leaders, Kyoto's lesson: transformation sustainability depends on accurately distinguishing what must change from what must remain invariant.</div>
+        <h3><a href="https://www.fashionsnap.com/article/2026-06-03/nakagawa-masashichi-shitsurindo/" target="_blank" rel="noopener noreferrer">中川政七商店が工芸メーカーに投資 1793年創業の漆琳堂と資本業務提携</a></h3>
+        <div class="card-source">FASHIONSNAP.COM / 日本語</div>
+        <div class="card-summary" data-ja="中川政七商店が2026年6月3日に発表した、1793年創業の漆琳堂（越前漆器）への資本業務提携を詳報。同社は2026年度から「工芸メーカーを対象とした成長投資」を新事業として開始し、その第1弾が漆琳堂への10%未満の出資。中川政七商店は初めて売上高100億円（103億2千万円）を突破しており、「商品開発力・販路・ブランド構築の知見を伝統工芸企業に提供する」ポートフォリオ拡大戦略に転換。2027年度中に東京・大阪での「漆琳堂」店舗を共同展開する計画。SCMの視点では川下（小売・ブランド）が川上（工芸生産者）に出資し生産体制拡張・人材採用・経営基盤強化を支援するバーティカル・インテグレーション型の供給基盤安定化戦略として読み取れる。" data-en="Nakagawa Masashichi Shoten (first-ever ¥10.3B revenue, 2026) invested in Shitsurindo—a lacquerware manufacturer founded in 1793—as the inaugural move of its new 'growth investment in craft makers' unit, planning joint Tokyo/Osaka store rollouts by fiscal 2027. The strategic logic is vertical integration: a downstream retailer/brand investing in upstream craft producers to stabilize supply, expand production capacity, and co-develop artisan brand value—mirroring supply chain partnership models from automotive and consumer goods applied to the fragile traditional craft ecosystem.">Nakagawa Masashichi Shoten (first-ever ¥10.3B revenue, 2026) invested in Shitsurindo—a lacquerware manufacturer founded in 1793—as the inaugural move of its new 'growth investment in craft makers' unit, planning joint Tokyo/Osaka store rollouts by fiscal 2027. The strategic logic is vertical integration: a downstream retailer/brand investing in upstream craft producers to stabilize supply, expand production capacity, and co-develop artisan brand value—mirroring supply chain partnership models from automotive and consumer goods applied to the fragile traditional craft ecosystem.</div>
+      </div>
+
+      <div class="card card-kyoto">
+        <span class="badge badge-case" data-ja="事例" data-en="Case Study">Case Study</span>
+        <h3><a href="https://dentsu-ho.com/en/articles/4928" target="_blank" rel="noopener noreferrer">Kyoto's GO ON: Deconstructing 1,000-Year Traditions to Fuel 21st-Century Innovation</a></h3>
+        <div class="card-source">電通報（英語版） / 英語</div>
+        <div class="card-summary" data-ja="京都の伝統工芸6社の後継者が2012年に立ち上げた「GO ON」運動を詳説。「工芸を保存するのではなく、工芸を解体して技術・素材・物語に分離し、現代産業と再結合させる」という革命的アプローチが核心。パナソニックとの「京都KADEN Lab」協業では茶器の原理を応用したコンパクトスピーカーや竹の組み技術を応用したLED照明のプロトタイプを制作。積水ハウスとはマンション全体に伝統工芸を取り込んだコラボも実施。SCMや組織変革でも「既存資産を新文脈で再活性化する」イノベーション思想として直接転用できる。" data-en="GO ON (2012) by six Kyoto craft successors practices radical innovation by deconstructing crafts into components—technique, materials, story—then recombining with modern industries: Panasonic's 'Kyoto KADEN Lab' produced a speaker applying tea-caddy principles and LED lighting using bamboo weaving; Sekisui House integrated traditional crafts throughout a condominium. The central principle—'reconnecting tradition's thousand-year will to contemporary challenges'—resolves successor shortages by creating global demand for reimagined goods. For transformation leaders, GO ON represents 'core competence reactivation': the answer to disruption is decomposing heritage into transferable essentials.">GO ON (2012) by six Kyoto craft successors practices radical innovation by deconstructing crafts into components—technique, materials, story—then recombining with modern industries: Panasonic's 'Kyoto KADEN Lab' produced a speaker applying tea-caddy principles and LED lighting using bamboo weaving; Sekisui House integrated traditional crafts throughout a condominium. The central principle—'reconnecting tradition's thousand-year will to contemporary challenges'—resolves successor shortages by creating global demand for reimagined goods. For transformation leaders, GO ON represents 'core competence reactivation': the answer to disruption is decomposing heritage into transferable essentials.</div>
       </div>
 
     </div></div>
@@ -346,116 +339,89 @@
     <div class="mobile-archive" id="mobile-archive">
       <ul id="mobile-date-list"></ul>
     </div>
-
   </div>
 </div>
 
 <script src="dates.js"></script>
 <script>
-  const TODAY = '2026-06-03';
+function initBilingual() {
+  const srcFixes = [
+    ['/ 日本語', '/ Japanese'],
+    ['/ 英語', '/ English'],
+    ['エムニ', 'Emuniinc Media'],
+    ['Panasonic Connect（GEMBA）', 'Panasonic Connect (GEMBA)'],
+    ['中川政七商店（公式）', 'Nakagawa Masashichi Shoten (Official)'],
+    ['富士通 Global（プレスリリース）', 'Fujitsu Global (Press Release)'],
+    ['電通報（英語版）', 'Dentsu-ho (English)'],
+  ];
+  document.querySelectorAll('.card-source').forEach(el => {
+    let en = el.textContent;
+    srcFixes.forEach(([j, e]) => { en = en.split(j).join(e); });
+    el.dataset.ja = el.textContent;
+    el.dataset.en = en;
+    el.textContent = en;
+  });
+  const titleMap = {
+    '2026年の日本製造業：地政学・AI・熟練工引退が生む5つの構造危機': 'Japan Manufacturing 2026: Five Structural Crises from Geopolitics, AI, and Retiring Skilled Workers',
+    'これからのサプライチェーンに必要な人材をどう育てるか――米ISM日本支部代表に学ぶSCMの海外事情': "How to Develop the SCM Talent Japanese Supply Chains Need — Lessons from ISM Japan Representative",
+    '中川政七商店「C KOGEI」：金継ぎも含む循環プログラムが示す、工芸の「しまいかた」哲学': "Nakagawa Masashichi's 'C KOGEI': The Circular Craft Program Redefining How Crafts Should Conclude",
+    '中川政七商店が工芸メーカーに投資 1793年創業の漆琳堂と資本業務提携': "Nakagawa Masashichi Invests in Craft Maker: Capital Partnership with Shitsurindo (Founded 1793)",
+  };
+  document.querySelectorAll('.card h3 a').forEach(el => {
+    const ja = el.textContent.trim();
+    if (titleMap[ja]) {
+      el.dataset.ja = ja;
+      el.dataset.en = titleMap[ja];
+      el.textContent = titleMap[ja];
+    }
+  });
+}
 
-  function buildDateList(ulId) {
-    const ul = document.getElementById(ulId);
-    if (!ul || typeof DAILY_DATES === 'undefined') return;
+function buildDateList() {
+  const today = '2026-06-04';
+  const lists = [document.getElementById('date-list'), document.getElementById('mobile-date-list')];
+  lists.forEach(list => {
+    if (!list) return;
+    list.innerHTML = '';
     DAILY_DATES.forEach(d => {
       const li = document.createElement('li');
       const a = document.createElement('a');
       a.href = d + '.html';
       a.textContent = d;
-      if (d === TODAY) a.className = 'today';
+      if (d === today) a.className = 'today';
       li.appendChild(a);
-      ul.appendChild(li);
+      list.appendChild(li);
     });
-  }
-
-  function show(id, btn) {
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    btn.classList.add('active');
-  }
-
-  function setLang(lang) {
-    document.querySelectorAll('[data-ja][data-en]').forEach(el => {
-      el.textContent = lang === 'ja' ? el.dataset.ja : el.dataset.en;
-    });
-    document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
-    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-    localStorage.setItem('lang', lang);
-  }
-
-  function toggleArchive() {
-    const arch = document.getElementById('mobile-archive');
-    arch.classList.toggle('open');
-  }
-
-  function initBilingual() {
-    const srcFixes = [
-      ['/ 日本語', '/ Japanese'],
-      ['/ 英語', '/ English'],
-      ['世界経済フォーラム（WEF）', 'World Economic Forum (WEF)'],
-      ['村田製作所 技術記事', 'Murata Manufacturing Article'],
-      ['マクニカ', 'Macnica'],
-      ['東洋経済オンライン', 'Toyo Keizai Online'],
-      ['Kearney Japan', 'Kearney Japan'],
-      ['Premier League 公式サイト', 'Premier League Official'],
-      ['NTT DATA', 'NTT DATA'],
-    ];
-    document.querySelectorAll('.card-source').forEach(el => {
-      let en = el.textContent;
-      srcFixes.forEach(([j, e]) => { en = en.split(j).join(e); });
-      el.dataset.ja = el.textContent;
-      el.dataset.en = en;
-      el.textContent = en;
-    });
-    const titleMap = {
-      'サプライチェーンの新たな時代を実現する方法':
-        'How We Can Best Enable the New Era of Supply Chains',
-      '在庫1割減、品切れ5割減、物流効率1割改善――ライオンのSCM改革への道':
-        '10% Inventory Cut, 50% Stockout Reduction: Lion Corporation\'s SCM Transformation',
-      'サプライチェーンは管理ツールを超え、企業戦略の要になる。――先端技術が実現する次世代SCMで「戦略物流思考」を磨くには？（前編）':
-        'Supply Chains Must Go Beyond Management Tools to Become the Core of Corporate Strategy',
-      '90%超の日本企業がDX推進を不十分と認識、鍵は「組織横断」':
-        '90%+ of Japanese Companies Acknowledge Their DX Is Insufficient — The Key Barrier Is Cross-Organizational Silos',
-      'やはり「サッカー型組織」が会社も強い！2大理由':
-        'Football-Style Organizations Are Stronger: 2 Key Reasons',
-      '飛躍的成長に繋がる「守破離」の実践':
-        'Shuhari in Practice: The Path to Breakthrough Growth',
-    };
-    document.querySelectorAll('.card h3 a').forEach(el => {
-      const ja = el.textContent.trim();
-      if (titleMap[ja]) {
-        el.dataset.ja = ja;
-        el.dataset.en = titleMap[ja];
-        el.textContent = titleMap[ja];
-      }
-    });
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    buildDateList('date-list');
-    buildDateList('mobile-date-list');
-    initBilingual();
-
-    // 最終更新日を表示
-    if (typeof DAILY_DATES !== 'undefined' && DAILY_DATES.length > 0) {
-      const latest = DAILY_DATES[0];
-      const [y, m, d] = latest.split('-');
-      const el = document.getElementById('last-updated');
-      if (el) {
-        const jaText = `最終更新：${y}年${parseInt(m)}月${parseInt(d)}日`;
-        const enText = `Last updated: ${y}/${m}/${d}`;
-        el.setAttribute('data-ja', jaText);
-        el.setAttribute('data-en', enText);
-        el.textContent = enText;
-      }
-    }
-    const lang = localStorage.getItem('lang') || 'en';
-    if (lang !== 'en') setLang(lang);
   });
+}
+
+function show(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+function setLang(lang) {
+  document.querySelectorAll('[data-ja][data-en]').forEach(el => {
+    el.textContent = lang === 'ja' ? el.dataset.ja : el.dataset.en;
+  });
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang !== 'ja');
+  try { localStorage.setItem('lang', lang); } catch(e) {}
+}
+
+function toggleArchive() {
+  const arch = document.getElementById('mobile-archive');
+  arch.classList.toggle('open');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  buildDateList();
+  initBilingual();
+  const lang = (() => { try { return localStorage.getItem('lang'); } catch(e) { return null; } })() || ((navigator.language || navigator.userLanguage || 'en').startsWith('ja') ? 'ja' : 'en');
+  if (lang !== 'en') setLang(lang);
+});
 </script>
-<footer style="background:#1e3a5f;color:#fff;text-align:center;padding:2rem 1rem;margin-top:2rem;">
-  <a href="/" style="display:inline-flex;align-items:center;gap:0.5rem;color:#fff;text-decoration:none;font-size:0.9rem;font-weight:700;opacity:0.9;border:1px solid rgba(255,255,255,0.5);padding:0.6rem 1.4rem;border-radius:4px;" data-ja="← トップページへ戻る" data-en="← Back to Top">← Back to Top</a>
-</footer>
 </body>
 </html>
