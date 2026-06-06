@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -79,11 +79,12 @@
     .main-content { position: relative; z-index: 10; background: var(--bg); }
     .tabs { position: static; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .card { background: var(--white); }
-    .archive-toggle { display: block; margin: 1rem 0; padding: 0.6rem 1.2rem; background: var(--indigo); color: #fff; border: none; border-radius: 4px; font-size: 0.85rem; font-weight: 700; cursor: pointer; width: 100%; }
-    .mobile-archive.open { display: block; background: var(--white); border: 1px solid var(--border); border-radius: 4px; padding: 1rem; margin-bottom: 1rem; }
+    .archive-toggle { display: block; margin: 0 0 0.75rem; padding: 0.65rem 1.2rem; background: var(--indigo); color: #fff; border: none; border-radius: 4px; font-size: 0.85rem; font-weight: 700; cursor: pointer; width: 100%; text-align: left; }
+    .mobile-archive.open { display: block; background: var(--white); border: 1px solid var(--border); border-radius: 4px; padding: 0.75rem 1rem; margin-bottom: 0.75rem; max-height: 240px; overflow-y: auto; -webkit-overflow-scrolling: touch; }
     .mobile-archive ul { list-style: none; }
-    .mobile-archive li { margin-bottom: 0.25rem; }
-    .mobile-archive a { font-size: 0.82rem; color: var(--muted); text-decoration: none; display: block; padding: 0.3rem 0; }
+    .mobile-archive li { margin-bottom: 0; }
+    .mobile-archive a { font-size: 0.84rem; color: var(--muted); text-decoration: none; display: block; padding: 0.6rem 0; border-bottom: 1px solid var(--border); }
+    .mobile-archive li:last-child a { border-bottom: none; }
     .mobile-archive a.today { color: var(--indigo); font-weight: 700; }
   }
 </style>
@@ -112,6 +113,10 @@
   </aside>
 
   <div class="main-content">
+    <button class="archive-toggle" id="archive-toggle" onclick="toggleArchive()" data-ja="📅 過去の記事" data-en="📅 Past Articles">📅 Past Articles</button>
+    <div class="mobile-archive" id="mobile-archive">
+      <ul id="mobile-date-list"></ul>
+    </div>
     <div class="tabs">
       <button class="tab active" onclick="show('scm',this)" data-ja="SCM（11）" data-en="SCM（11）">SCM（11）</button>
       <button class="tab tab-ai" onclick="show('ai',this)" data-ja="AI / DX（7）" data-en="AI / DX（7）">AI / DX（7）</button>
@@ -343,12 +348,7 @@
 
     </div></div>
 
-    <button class="archive-toggle" id="archive-toggle" onclick="toggleArchive()" data-ja="過去の記事" data-en="Past Articles">Past Articles</button>
-    <div class="mobile-archive" id="mobile-archive">
-      <ul id="mobile-date-list"></ul>
-    </div>
-
-  </div>
+</div>
 </div>
 
 <script src="dates.js"></script>
