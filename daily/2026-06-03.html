@@ -349,22 +349,34 @@
 </div><!-- .main-content -->
 </div><!-- .layout -->
 
+<script src="dates.js"></script>
 <script>
-const DATES = ["2026-06-03","2026-06-02","2026-06-01","2026-05-29","2026-05-28","2026-05-27","2026-05-26","2026-05-25","2026-05-22","2026-05-21","2026-05-20","2026-05-19","2026-05-18","2026-05-15","2026-05-14","2026-05-13","2026-05-12","2026-05-11","2026-05-10"];
-const TODAY = "2026-06-03";
-
 function buildDateList() {
+  if (typeof DAILY_DATES === 'undefined') return;
+  const page = location.pathname.split('/').pop() || 'index.html';
+  const activeDate = (page === 'index.html' || page === '') ? DAILY_DATES[0] : page.replace('.html', '');
   const ul = document.getElementById('date-list');
   const mul = document.getElementById('mobile-date-list');
-  DATES.forEach(d => {
-    const li = document.createElement('li');
-    const a = document.createElement('a');
-    a.href = d + '.html';
-    a.textContent = d;
-    if (d === TODAY) a.classList.add('today');
-    li.appendChild(a);
-    ul.appendChild(li.cloneNode(true));
-    if (mul) mul.appendChild(li);
+  DAILY_DATES.forEach(function(d) {
+    const isActive = d === activeDate;
+    if (ul) {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = '/daily/' + d + '.html';
+      a.textContent = d;
+      if (isActive) a.className = 'today';
+      li.appendChild(a);
+      ul.appendChild(li);
+    }
+    if (mul) {
+      const li2 = document.createElement('li');
+      const a2 = document.createElement('a');
+      a2.href = '/daily/' + d + '.html';
+      a2.textContent = d;
+      if (isActive) a2.className = 'today';
+      li2.appendChild(a2);
+      mul.appendChild(li2);
+    }
   });
 }
 
@@ -425,6 +437,8 @@ function setLang(lang) {
   });
   document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  var bl = document.getElementById('back-link');
+  if (bl) bl.href = lang === 'en' ? '/en/' : '/';
 }
 
 document.addEventListener('DOMContentLoaded', () => {
