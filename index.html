@@ -553,24 +553,16 @@
     </div>
   </section>
 
-  <!-- 言語バナー -->
-  <div id="lang-banner" style="display:none;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#fff;border:1px solid #e0e0e0;box-shadow:0 4px 20px rgba(0,0,0,0.12);padding:0.85rem 1.25rem;align-items:center;gap:1rem;font-size:0.85rem;color:#111;z-index:9999;white-space:nowrap;">
-    <span>🇺🇸 This site is also available in English.</span>
-    <a href="/en/" style="background:#1e3a5f;color:#fff;padding:0.4rem 1rem;font-size:0.8rem;font-weight:700;text-decoration:none;">View in English →</a>
-    <button onclick="closeLangBanner()" style="background:none;border:none;cursor:pointer;color:#999;font-size:1.1rem;padding:0 4px;">✕</button>
-  </div>
+  <!-- 言語自動リダイレクト（セッション初回のみ） -->
   <script>
     (function() {
-      if (sessionStorage.getItem('langBannerClosed')) return;
-      const lang = navigator.language || navigator.userLanguage || '';
-      if (!lang.toLowerCase().startsWith('ja')) {
-        document.getElementById('lang-banner').style.display = 'flex';
+      if (sessionStorage.getItem('lang-detected')) return;
+      sessionStorage.setItem('lang-detected', '1');
+      var lang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+      if (!lang.startsWith('ja')) {
+        location.replace('/en/');
       }
     })();
-    function closeLangBanner() {
-      document.getElementById('lang-banner').style.display = 'none';
-      sessionStorage.setItem('langBannerClosed', '1');
-    }
   </script>
 
   <script>

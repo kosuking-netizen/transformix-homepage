@@ -551,5 +551,17 @@
       <a href="/tokushoho.html" style="color:rgba(255,255,255,0.35);text-decoration:underline;">Specified Commercial Transactions</a>
     </p>
   </footer>
+
+  <!-- 言語自動リダイレクト（セッション初回のみ） -->
+  <script>
+    (function() {
+      if (sessionStorage.getItem('lang-detected')) return;
+      sessionStorage.setItem('lang-detected', '1');
+      var lang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+      if (lang.startsWith('ja')) {
+        location.replace('/');
+      }
+    })();
+  </script>
 </body>
 </html>
