@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -349,7 +349,7 @@
 </div><!-- .main-content -->
 </div><!-- .layout -->
 
-<script src="dates.js"></script>
+<script data-cfasync="false" src="dates.js"></script>
 <script>
 function buildDateList() {
   if (typeof DAILY_DATES === 'undefined') return;
@@ -441,12 +441,13 @@ function setLang(lang) {
   if (bl) bl.href = lang === 'en' ? '/en/' : '/';
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function _init() {
   buildDateList();
   initBilingual();
   const lang = localStorage.getItem('tx_lang') || 'en';
   if (lang !== 'en') setLang(lang);
-});
+}
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', _init); else _init();
 </script>
 </body>
 </html>

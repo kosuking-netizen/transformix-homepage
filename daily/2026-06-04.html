@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -357,7 +357,7 @@
   </div>
 </div>
 
-<script src="dates.js"></script>
+<script data-cfasync="false" src="dates.js"></script>
 <script>
 function initBilingual() {
   const srcFixes = [
@@ -432,12 +432,13 @@ function toggleArchive() {
   arch.classList.toggle('open');
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function _init() {
   buildDateList();
   initBilingual();
   const lang = (() => { try { return localStorage.getItem('lang'); } catch(e) { return null; } })() || (navigator.language || navigator.userLanguage || 'en').startsWith('ja') ? 'ja' : 'en';
   if (lang !== 'en') setLang(lang);
-});
+}
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', _init); else _init();
 </script>
 </body>
 </html>
