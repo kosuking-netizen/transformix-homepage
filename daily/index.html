@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -93,7 +93,7 @@
 <header>
   <div class="header-inner">
     <div class="header-left">
-      <div class="logo">Transformix</div>
+      <a id="back-link" href="/" style="font-size:0.8rem;opacity:0.85;color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:0.3rem;margin-bottom:0.5rem;padding:0.25rem 0.6rem;border:1px solid rgba(255,255,255,0.4);border-radius:3px;" data-ja="← トップページへ" data-en="← Back to Top">← Back to Top</a>
       <h1><span data-ja="インサイト" data-en="Insights">Insights</span></h1>
       <div style="font-size:0.78rem;opacity:0.7;margin-top:0.2rem;" data-ja="更新日：2026年6月5日" data-en="Updated: 2026-06-05">Updated: 2026-06-05</div>
     </div>
@@ -415,6 +415,8 @@ function setLang(lang) {
   });
   document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  var bl = document.getElementById('back-link');
+  if (bl) bl.href = lang === 'en' ? '/en/' : '/';
   localStorage.setItem('lang', lang);
 }
 
