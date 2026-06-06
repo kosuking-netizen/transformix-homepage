@@ -392,19 +392,27 @@ function initBilingual() {
 }
 
 function buildDateList() {
-  const list = document.getElementById('date-list');
-  const mobileList = document.getElementById('mobile-date-list');
-  if (!list || typeof DAILY_DATES === 'undefined') return;
-  DAILY_DATES.forEach(d => {
-    const li = document.createElement('li');
-    const a = document.createElement('a');
-    a.href = d + '.html';
-    a.textContent = d;
-    if (d === '2026-06-05') a.className = 'today';
-    li.appendChild(a);
-    list.appendChild(li);
+  if (typeof DAILY_DATES === 'undefined') return;
+  var list = document.getElementById('date-list');
+  var mobileList = document.getElementById('mobile-date-list');
+  var todayDate = DAILY_DATES[0];
+  DAILY_DATES.forEach(function(d) {
+    if (list) {
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.href = '/daily/' + d + '.html';
+      a.textContent = d;
+      if (d === todayDate) a.className = 'today';
+      li.appendChild(a);
+      list.appendChild(li);
+    }
     if (mobileList) {
-      const li2 = li.cloneNode(true);
+      var li2 = document.createElement('li');
+      var a2 = document.createElement('a');
+      a2.href = '/daily/' + d + '.html';
+      a2.textContent = d;
+      if (d === todayDate) a2.className = 'today';
+      li2.appendChild(a2);
       mobileList.appendChild(li2);
     }
   });

@@ -402,7 +402,7 @@ function buildDateList() {
     DAILY_DATES.forEach(d => {
       const li = document.createElement('li');
       const a = document.createElement('a');
-      a.href = d + '.html';
+      a.href = '/daily/' + d + '.html';
       a.textContent = d;
       if (d === today) a.className = 'today';
       li.appendChild(a);
