@@ -376,11 +376,11 @@ function initBilingual() {
 }
 
 function buildDateList() {
-  if (typeof DAILY_DATES === 'undefined') return;
+  if (typeof window.DAILY_DATES === 'undefined') return;
   var list = document.getElementById('date-list');
   var mobileList = document.getElementById('mobile-date-list');
-  var todayDate = DAILY_DATES[0];
-  DAILY_DATES.forEach(function(d) {
+  var todayDate = window.DAILY_DATES[0];
+  window.DAILY_DATES.forEach(function(d) {
     if (list) {
       var li = document.createElement('li');
       var a = document.createElement('a');
@@ -426,6 +426,7 @@ function toggleArchive() {
 }
 
 function _init() {
+  if (typeof window.DAILY_DATES === 'undefined') { setTimeout(_init, 100); return; }
   buildDateList();
   initBilingual();
   const lang = localStorage.getItem('lang') || 'en';

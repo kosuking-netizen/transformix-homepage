@@ -294,19 +294,20 @@
 
   // 言語自動設定：URLパラメータ優先、次にsessionStorage
   function _init() {
+    if (typeof window.DAILY_DATES === 'undefined') { setTimeout(_init, 100); return; }
     const page = location.pathname.split('/').pop() || 'index.html';
-    const activeDate = (page === 'index.html' || page === '') ? DAILY_DATES[0] : page.replace('.html', '');
+    const activeDate = (page === 'index.html' || page === '') ? window.DAILY_DATES[0] : page.replace('.html', '');
     const ul = document.getElementById('date-list');
-    if (ul && typeof DAILY_DATES !== 'undefined') {
-      ul.innerHTML = DAILY_DATES.map(function(d) {
+    if (ul && typeof window.DAILY_DATES !== 'undefined') {
+      ul.innerHTML = window.DAILY_DATES.map(function(d) {
         const isActive = d === activeDate;
         const label = isActive ? d + ' <span data-ja="（表示中）" data-en="(Viewing)">（表示中）</span>' : d;
         return '<li><a href="/daily/' + d + '.html"' + (isActive ? ' class="today"' : '') + '>' + label + '</a></li>';
       }).join('');
     }
     const mobileUl = document.getElementById('mobile-date-list');
-    if (mobileUl && typeof DAILY_DATES !== 'undefined') {
-      mobileUl.innerHTML = DAILY_DATES.map(function(d) {
+    if (mobileUl && typeof window.DAILY_DATES !== 'undefined') {
+      mobileUl.innerHTML = window.DAILY_DATES.map(function(d) {
         const isActive = d === activeDate;
         return '<li><a href="/daily/' + d + '.html"' + (isActive ? ' class="today"' : '') + '>' + d + '</a></li>';
       }).join('');

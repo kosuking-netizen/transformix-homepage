@@ -354,10 +354,10 @@
 function buildDateList() {
   if (typeof DAILY_DATES === 'undefined') return;
   const page = location.pathname.split('/').pop() || 'index.html';
-  const activeDate = (page === 'index.html' || page === '') ? DAILY_DATES[0] : page.replace('.html', '');
+  const activeDate = (page === 'index.html' || page === '') ? window.DAILY_DATES[0] : page.replace('.html', '');
   const ul = document.getElementById('date-list');
   const mul = document.getElementById('mobile-date-list');
-  DAILY_DATES.forEach(function(d) {
+  window.DAILY_DATES.forEach(function(d) {
     const isActive = d === activeDate;
     if (ul) {
       const li = document.createElement('li');
@@ -442,6 +442,7 @@ function setLang(lang) {
 }
 
 function _init() {
+  if (typeof window.DAILY_DATES === 'undefined') { setTimeout(_init, 100); return; }
   buildDateList();
   initBilingual();
   const lang = localStorage.getItem('tx_lang') || 'en';

@@ -399,7 +399,7 @@ function buildDateList() {
   lists.forEach(list => {
     if (!list) return;
     list.innerHTML = '';
-    DAILY_DATES.forEach(d => {
+    window.DAILY_DATES.forEach(d => {
       const li = document.createElement('li');
       const a = document.createElement('a');
       a.href = '/daily/' + d + '.html';
@@ -433,6 +433,7 @@ function toggleArchive() {
 }
 
 function _init() {
+  if (typeof window.DAILY_DATES === 'undefined') { setTimeout(_init, 100); return; }
   buildDateList();
   initBilingual();
   const lang = (() => { try { return localStorage.getItem('lang'); } catch(e) { return null; } })() || (navigator.language || navigator.userLanguage || 'en').startsWith('ja') ? 'ja' : 'en';

@@ -356,7 +356,7 @@
   function buildDateList(ulId) {
     const ul = document.getElementById(ulId);
     if (!ul || typeof DAILY_DATES === 'undefined') return;
-    DAILY_DATES.forEach(d => {
+    window.DAILY_DATES.forEach(d => {
       const li = document.createElement('li');
       const a = document.createElement('a');
       a.href = '/daily/' + d + '.html';
