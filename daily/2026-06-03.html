@@ -349,7 +349,7 @@
 </div><!-- .main-content -->
 </div><!-- .layout -->
 
-<script>
+<script type="module">
 window.DAILY_DATES=["2026-06-05","2026-06-04","2026-06-03","2026-06-02","2026-06-01","2026-05-29","2026-05-28","2026-05-27","2026-05-26","2026-05-25","2026-05-22","2026-05-21","2026-05-20","2026-05-19","2026-05-18","2026-05-15","2026-05-14","2026-05-13","2026-05-12","2026-05-11","2026-05-10"];
 function buildDateList() {
   if (typeof DAILY_DATES === 'undefined') return;
@@ -449,6 +449,7 @@ function _init() {
   if (lang !== 'en') setLang(lang);
 }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', _init); else _init();
+window.show=show;window.setLang=setLang;window.toggleArchive=toggleArchive;
 </script>
 </body>
 </html>
