@@ -20,60 +20,7 @@
 <meta property="og:site_name" content="Transformix">
 <meta name="twitter:card" content="summary">
 <link rel="canonical" href="https://transformix.jp/daily/2026-05-11.html">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --indigo: #1e3a5f; --indigo-light: #eef2f8;
-    --text: #111; --muted: #555; --border: #e0e0e0;
-    --bg: #f7f8fa; --white: #fff;
-    --ai: #2d6a4f; --football: #7b3f00; --kyoto: #6b3fa0;
-  }
-  body { font-family: 'Helvetica Neue','Hiragino Sans','Yu Gothic',sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
-  header { background: var(--indigo); color: #fff; padding: 1.75rem 2.5rem; }
-  .header-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
-  .header-left .logo { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.6; margin-bottom: 0.4rem; }
-  .header-left h1 { font-size: 1.35rem; font-weight: 800; }
-  .header-right { display: flex; align-items: center; gap: 0.75rem; }
-  .lang-toggle { display: flex; background: rgba(255,255,255,0.15); border-radius: 2rem; overflow: hidden; }
-  .lang-toggle button { background: none; border: none; color: rgba(255,255,255,0.6); font-size: 0.8rem; font-weight: 700; padding: 0.35rem 0.9rem; cursor: pointer; transition: all 0.2s; }
-  .lang-toggle button.active { background: #fff; color: var(--indigo); border-radius: 2rem; }
-
-  .layout { max-width: 1200px; margin: 0 auto; padding: 2rem 2.5rem; display: grid; grid-template-columns: 190px 1fr; gap: 2rem; }
-  @media (max-width: 768px) { .layout { grid-template-columns: 1fr; padding: 1rem; } .sidebar { position: sticky; top: 0; z-index: 5; background: var(--bg); } .main-content { position: relative; z-index: 10; background: var(--bg); } .tabs { position: static; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; } .card { background: var(--white); } }
-
-  .sidebar { position: sticky; top: 1rem; align-self: start; }
-  .sidebar-title { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
-  .date-list { list-style: none; }
-  .date-list li { margin-bottom: 0.2rem; }
-  .date-list a { display: block; padding: 0.45rem 0.75rem; font-size: 0.82rem; color: var(--muted); border-radius: 4px; text-decoration: none; transition: all 0.15s; border-left: 3px solid transparent; }
-  .date-list a:hover { background: var(--white); color: var(--text); border-left-color: var(--indigo); }
-  .date-list a.today { background: var(--indigo-light); color: var(--indigo); font-weight: 700; border-left-color: var(--indigo); }
-
-  .main-content { min-width: 0; }
-  .tabs { background: var(--white); border: 1px solid var(--border); border-bottom: none; display: flex; border-radius: 4px 4px 0 0; flex-wrap: wrap; position: sticky; top: 0; z-index: 10; }
-  .tab { padding: 0.8rem 1.2rem; font-size: 0.85rem; font-weight: 600; cursor: pointer; border-bottom: 3px solid transparent; color: var(--muted); transition: all 0.2s; background: none; border-top: none; border-left: none; border-right: none; }
-  .tab:hover { color: var(--text); background: var(--bg); }
-  .tab.active { color: var(--indigo); border-bottom-color: var(--indigo); }
-  .tab.tab-ai.active { color: var(--ai); border-bottom-color: var(--ai); }
-  .tab.tab-football.active { color: var(--football); border-bottom-color: var(--football); }
-  .tab.tab-kyoto.active { color: var(--kyoto); border-bottom-color: var(--kyoto); }
-
-  .section { display: none; }
-  .section.active { display: block; }
-  .cards { display: grid; gap: 0.65rem; }
-  .card { background: var(--white); border: 1px solid var(--border); padding: 1.1rem 1.4rem; border-radius: 4px; border-left: 4px solid var(--indigo); }
-  .card-ai { border-left-color: var(--ai); }
-  .card-football { border-left-color: var(--football); }
-  .card-kyoto { border-left-color: var(--kyoto); }
-  .card h3 { font-size: 0.92rem; font-weight: 700; margin-bottom: 0.35rem; line-height: 1.4; }
-  .card h3 a { color: var(--indigo); text-decoration: none; }
-  .card h3 a:hover { text-decoration: underline; }
-  .card-ai h3 a { color: var(--ai); }
-  .card-football h3 a { color: var(--football); }
-  .card-kyoto h3 a { color: var(--kyoto); }
-  .card-source { font-size: 0.73rem; color: var(--muted); margin-bottom: 0.5rem; }
-  .card-summary { font-size: 0.862rem; line-height: 1.75; }
-</style>
+<link rel="stylesheet" href="/css/daily.css">
 </head>
 <body>
 <header>
@@ -287,56 +234,6 @@
   </div>
 </div>
 
-<script type="module">
-window.DAILY_DATES=["2026-06-05","2026-06-04","2026-06-03","2026-06-02","2026-06-01","2026-05-29","2026-05-28","2026-05-27","2026-05-26","2026-05-25","2026-05-22","2026-05-21","2026-05-20","2026-05-19","2026-05-18","2026-05-15","2026-05-14","2026-05-13","2026-05-12","2026-05-11","2026-05-10"];
-  function show(id, btn) {
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    btn.classList.add('active');
-  }
-
-  function setLang(lang) {
-    document.querySelectorAll('[data-ja]').forEach(el => {
-      el.textContent = el.dataset[lang];
-    });
-    document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
-    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-    document.documentElement.lang = lang;
-    document.getElementById('back-link').href = lang === 'en' ? '/en/' : '/';
-    sessionStorage.setItem('txLang', lang);
-  }
-
-  function _init() {
-    if (typeof window.DAILY_DATES === 'undefined') { setTimeout(_init, 100); return; }
-    const page = location.pathname.split('/').pop() || 'index.html';
-    const activeDate = (page === 'index.html' || page === '') ? window.DAILY_DATES[0] : page.replace('.html', '');
-    const ul = document.getElementById('date-list');
-    if (ul && typeof window.DAILY_DATES !== 'undefined') {
-      ul.innerHTML = window.DAILY_DATES.map(function(d) {
-        const isActive = d === activeDate;
-        const label = isActive ? d + ' <span data-ja="（表示中）" data-en="(Viewing)">（表示中）</span>' : d;
-        return '<li><a href="/daily/' + d + '.html"' + (isActive ? ' class="today"' : '') + '>' + label + '</a></li>';
-      }).join('');
-    }
-    const mobileUl = document.getElementById('mobile-date-list');
-    if (mobileUl && typeof window.DAILY_DATES !== 'undefined') {
-      mobileUl.innerHTML = window.DAILY_DATES.map(function(d) {
-        const isActive = d === activeDate;
-        return '<li><a href="/daily/' + d + '.html"' + (isActive ? ' class="today"' : '') + '>' + d + '</a></li>';
-      }).join('');
-    }
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('lang') === 'en') {
-      setLang('en');
-      sessionStorage.setItem('txLang', 'en');
-    } else if (sessionStorage.getItem('txLang') === 'en') {
-      setLang('en');
-    }
-  }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', _init); else _init();
-window.show=show;window.setLang=setLang;window.toggleArchive=toggleArchive;
-</script>
 <footer style="background:#1e3a5f;color:#fff;text-align:center;padding:2rem 1rem;margin-top:2rem;">
   <a id="footer-back-link" href="/" style="display:inline-flex;align-items:center;gap:0.5rem;color:#fff;text-decoration:none;font-size:0.9rem;font-weight:700;opacity:0.9;border:1px solid rgba(255,255,255,0.5);padding:0.6rem 1.4rem;border-radius:4px;" data-ja="← トップページへ戻る" data-en="← Back to Top">← Back to Top</a>
 </footer>
