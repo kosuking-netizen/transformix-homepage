@@ -550,6 +550,18 @@
     </div>
   </section>
 
+  <!-- 言語自動リダイレクト：英語ブラウザのみ /en/ へ（/en/ 側からの逆リダイレクトは無し） -->
+  <script>
+    (function() {
+      if (sessionStorage.getItem('lang-detected')) return;
+      sessionStorage.setItem('lang-detected', '1');
+      var lang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+      if (!lang.startsWith('ja')) {
+        location.replace('/en/');
+      }
+    })();
+  </script>
+
   <script>
     function toggleMenu() {
       document.getElementById('hamburger').classList.toggle('open');
