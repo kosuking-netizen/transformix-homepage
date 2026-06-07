@@ -98,15 +98,15 @@
   </aside>
 
   <div class="main-content">
-    <button class="archive-toggle" id="archive-toggle" onclick="toggleArchive()" data-ja="📅 過去の記事" data-en="📅 Past Articles">📅 Past Articles</button>
+    <button class="archive-toggle" id="archive-toggle" onclick="document.getElementById(&#39;mobile-archive&#39;).classList.toggle(&#39;open&#39;)" data-ja="📅 過去の記事" data-en="📅 Past Articles">📅 Past Articles</button>
     <div class="mobile-archive" id="mobile-archive">
       <ul id="mobile-date-list"><li><a href="/daily/2026-06-05.html">2026-06-05</a></li><li><a href="/daily/2026-06-04.html">2026-06-04</a></li><li><a href="/daily/2026-06-03.html">2026-06-03</a></li><li><a href="/daily/2026-06-02.html">2026-06-02</a></li><li><a href="/daily/2026-06-01.html">2026-06-01</a></li><li><a href="/daily/2026-05-29.html">2026-05-29</a></li><li><a href="/daily/2026-05-28.html">2026-05-28</a></li><li><a href="/daily/2026-05-27.html">2026-05-27</a></li><li><a href="/daily/2026-05-26.html">2026-05-26</a></li><li><a href="/daily/2026-05-25.html">2026-05-25</a></li><li><a href="/daily/2026-05-22.html">2026-05-22</a></li><li><a href="/daily/2026-05-21.html">2026-05-21</a></li><li><a href="/daily/2026-05-20.html">2026-05-20</a></li><li><a href="/daily/2026-05-19.html">2026-05-19</a></li><li><a href="/daily/2026-05-18.html">2026-05-18</a></li><li><a href="/daily/2026-05-15.html">2026-05-15</a></li><li><a href="/daily/2026-05-14.html">2026-05-14</a></li><li><a href="/daily/2026-05-13.html">2026-05-13</a></li><li><a href="/daily/2026-05-12.html">2026-05-12</a></li><li><a href="/daily/2026-05-11.html" class="today">2026-05-11</a></li><li><a href="/daily/2026-05-10.html">2026-05-10</a></li></ul>
     </div>
     <div class="tabs">
-      <button class="tab active" onclick="show('scm',this)">SCM（12）</button>
-      <button class="tab tab-ai" onclick="show('ai',this)">AI / DX（6）</button>
-      <button class="tab tab-football" onclick="show('football',this)">Football（4）</button>
-      <button class="tab tab-kyoto" onclick="show('kyoto',this)"><span data-ja="京都・仏教・瞑想（4）" data-en="Kyoto・Zen（4）">京都・仏教・瞑想（4）</span></button>
+      <button class="tab active" onclick="document.querySelectorAll(&#39;.section&#39;).forEach(function(s){s.classList.remove(&#39;active&#39;)});document.querySelectorAll(&#39;.tab&#39;).forEach(function(t){t.classList.remove(&#39;active&#39;)});document.getElementById(&#39;scm&#39;).classList.add(&#39;active&#39;);this.classList.add(&#39;active&#39;)">SCM（12）</button>
+      <button class="tab tab-ai" onclick="document.querySelectorAll(&#39;.section&#39;).forEach(function(s){s.classList.remove(&#39;active&#39;)});document.querySelectorAll(&#39;.tab&#39;).forEach(function(t){t.classList.remove(&#39;active&#39;)});document.getElementById(&#39;ai&#39;).classList.add(&#39;active&#39;);this.classList.add(&#39;active&#39;)">AI / DX（6）</button>
+      <button class="tab tab-football" onclick="document.querySelectorAll(&#39;.section&#39;).forEach(function(s){s.classList.remove(&#39;active&#39;)});document.querySelectorAll(&#39;.tab&#39;).forEach(function(t){t.classList.remove(&#39;active&#39;)});document.getElementById(&#39;football&#39;).classList.add(&#39;active&#39;);this.classList.add(&#39;active&#39;)">Football（4）</button>
+      <button class="tab tab-kyoto" onclick="document.querySelectorAll(&#39;.section&#39;).forEach(function(s){s.classList.remove(&#39;active&#39;)});document.querySelectorAll(&#39;.tab&#39;).forEach(function(t){t.classList.remove(&#39;active&#39;)});document.getElementById(&#39;kyoto&#39;).classList.add(&#39;active&#39;);this.classList.add(&#39;active&#39;)"><span data-ja="京都・仏教・瞑想（4）" data-en="Kyoto・Zen（4）">京都・仏教・瞑想（4）</span></button>
     </div>
 
     <!-- SCM -->
