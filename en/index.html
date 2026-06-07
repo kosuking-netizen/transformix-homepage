@@ -548,20 +548,9 @@
     <p style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.5rem 1rem;align-items:center;">
       <span>&copy; 2026 Transformix. All rights reserved.</span>
       <a href="/en/privacy.html" style="color:rgba(255,255,255,0.35);text-decoration:underline;">Privacy Policy</a>
-      <a href="/tokushoho.html" style="color:rgba(255,255,255,0.35);text-decoration:underline;" hreflang="ja">特定商取引法に基づく表記</a>
+      <a href="/tokushoho.html" style="color:rgba(255,255,255,0.35);text-decoration:underline;" hreflang="ja">Specified Commercial Transactions Act</a>
     </p>
   </footer>
 
-  <!-- 言語自動リダイレクト（セッション初回のみ） -->
-  <script>
-    (function() {
-      if (sessionStorage.getItem('lang-detected')) return;
-      sessionStorage.setItem('lang-detected', '1');
-      var lang = (navigator.language || navigator.userLanguage || '').toLowerCase();
-      if (lang.startsWith('ja')) {
-        location.replace('/');
-      }
-    })();
-  </script>
 </body>
 </html>
