@@ -99,8 +99,8 @@
     </div>
     <div class="header-right">
       <div class="lang-toggle">
-        <button id="btn-ja" onclick="setLang('ja')">JP</button>
-        <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+        <button id="btn-ja" onclick="var L=&#39;ja&#39;;document.querySelectorAll(&#39;[data-ja][data-en]&#39;).forEach(function(e){e.textContent=e.getAttribute(&#39;data-&#39;+L)});document.getElementById(&#39;btn-ja&#39;).classList.toggle(&#39;active&#39;,L===&#39;ja&#39;);document.getElementById(&#39;btn-en&#39;).classList.toggle(&#39;active&#39;,L===&#39;en&#39;);var b=document.getElementById(&#39;back-link&#39;);if(b)b.setAttribute(&#39;href&#39;,L===&#39;en&#39;?&#39;/en/&#39;:&#39;/&#39;)">JP</button>
+        <button id="btn-en" class="active" onclick="var L=&#39;en&#39;;document.querySelectorAll(&#39;[data-ja][data-en]&#39;).forEach(function(e){e.textContent=e.getAttribute(&#39;data-&#39;+L)});document.getElementById(&#39;btn-ja&#39;).classList.toggle(&#39;active&#39;,L===&#39;ja&#39;);document.getElementById(&#39;btn-en&#39;).classList.toggle(&#39;active&#39;,L===&#39;en&#39;);var b=document.getElementById(&#39;back-link&#39;);if(b)b.setAttribute(&#39;href&#39;,L===&#39;en&#39;?&#39;/en/&#39;:&#39;/&#39;)">EN</button>
       </div>
     </div>
   </div>
