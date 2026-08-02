@@ -499,7 +499,7 @@
           <textarea name="message" required rows="5" style="width:100%;padding:0.75rem 1rem;border:1px solid var(--border);font-size:1rem;font-family:inherit;outline:none;resize:vertical;" placeholder="Tell us what's going on"></textarea>
         </div>
         <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1.25rem;">We'll get back to you within 2 business days. For details on how we handle your information, see our <a href="/en/privacy.html" style="color:var(--indigo);text-decoration:underline;">Privacy Policy</a>.</p>
-        <div class="cf-turnstile" data-sitekey="0x4AAAAAADOsGsJALOi69vw5" data-error-callback="tsFail" style="margin-bottom:1.25rem;"></div>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAADOsGsJALOi69vw5" data-error-callback="tsFail" data-callback="tsOk" style="margin-bottom:1.25rem;"></div>
         <p id="ts-fallback" style="display:none;font-size:0.85rem;color:var(--muted);margin-bottom:1.25rem;">The security check could not be loaded. Please temporarily disable ad-blocking extensions and reload the page, or contact us directly at <a href="mailto:info@transformix.jp" style="color:var(--indigo);text-decoration:underline;">info@transformix.jp</a>.</p>
         <p id="form-error" style="display:none;font-size:0.85rem;color:#c00;margin-bottom:1rem;">Submission failed. Please try again later.</p>
         <button type="submit" id="form-submit" class="btn" style="border:none;cursor:pointer;font-family:inherit;">Start the Conversation</button>
@@ -508,6 +508,9 @@
       <script>
         function tsFail() {
           document.getElementById('ts-fallback').style.display = 'block';
+        }
+        function tsOk() {
+          document.getElementById('ts-fallback').style.display = 'none';
         }
         setTimeout(function() {
           if (typeof window.turnstile === 'undefined') tsFail();
