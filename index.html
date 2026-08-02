@@ -516,34 +516,53 @@
           <textarea name="message" required rows="5" style="width:100%;padding:0.75rem 1rem;border:1px solid var(--border);font-size:1rem;font-family:inherit;outline:none;resize:vertical;" placeholder="ご相談内容をご記入ください"></textarea>
         </div>
         <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1.25rem;">送信後、2営業日以内にご連絡します。※個人情報の取り扱いについては<a href="/privacy.html" style="color:var(--indigo);text-decoration:underline;">プライバシーポリシー</a>をご覧ください。</p>
-        <div class="cf-turnstile" data-sitekey="0x4AAAAAADOsGsJALOi69vw5" style="margin-bottom:1.25rem;"></div>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAADOsGsJALOi69vw5" data-error-callback="tsFail" style="margin-bottom:1.25rem;"></div>
+        <p id="ts-fallback" style="display:none;font-size:0.85rem;color:var(--muted);margin-bottom:1.25rem;">セキュリティチェックを読み込めませんでした。広告ブロック等の拡張機能を一時的にオフにしてページを再読み込みいただくか、<a href="mailto:info@transformix.jp" style="color:var(--indigo);text-decoration:underline;">info@transformix.jp</a> まで直接ご連絡ください。</p>
         <p id="form-error" style="display:none;font-size:0.85rem;color:#c00;margin-bottom:1rem;">送信に失敗しました。時間をおいて再度お試しください。</p>
         <button type="submit" id="form-submit" class="btn" style="border:none;cursor:pointer;font-family:inherit;">送信する</button>
       </form>
-      <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+      <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer onerror="tsFail()"></script>
       <script>
+        function tsFail() {
+          document.getElementById('ts-fallback').style.display = 'block';
+        }
+        setTimeout(function() {
+          if (typeof window.turnstile === 'undefined') tsFail();
+        }, 8000);
         document.getElementById('contact-form').addEventListener('submit', async function(e) {
           e.preventDefault();
           var btn = document.getElementById('form-submit');
+          var errEl = document.getElementById('form-error');
+          errEl.style.display = 'none';
+          var fd = new FormData(this);
+          if (!fd.get('cf-turnstile-response')) {
+            if (typeof window.turnstile === 'undefined') tsFail();
+            errEl.textContent = 'セキュリティチェックが完了していません。フォーム下部のチェックが完了してから、もう一度お試しください。表示されない場合は info@transformix.jp まで直接ご連絡ください。';
+            errEl.style.display = 'block';
+            return;
+          }
           btn.disabled = true;
           btn.textContent = '送信中…';
-          document.getElementById('form-error').style.display = 'none';
           try {
             var res = await fetch('https://formspree.io/f/maqvapde', {
               method: 'POST',
-              body: new FormData(this),
+              body: fd,
               headers: { 'Accept': 'application/json' }
             });
             if (res.ok) {
               window.location.href = '/thanks.html';
             } else {
               var data = await res.json().catch(function(){ return {}; });
-              throw new Error('HTTP ' + res.status + ': ' + (data.error || JSON.stringify(data)));
+              var msg = data.error || ('HTTP ' + res.status);
+              if (/turnstile|captcha/i.test(msg)) {
+                msg = 'セキュリティチェックの確認に失敗しました。チェックをやり直してから、もう一度送信してください。';
+              }
+              throw new Error(msg);
             }
           } catch(err) {
-            var errEl = document.getElementById('form-error');
-            errEl.textContent = '送信に失敗しました。エラー: ' + (err.message || err);
+            errEl.textContent = '送信に失敗しました。' + (err.message || err) + ' 解決しない場合は info@transformix.jp まで直接ご連絡ください。';
             errEl.style.display = 'block';
+            if (window.turnstile) { try { turnstile.reset(); } catch(_) {} }
             btn.disabled = false;
             btn.textContent = '送信する';
           }
