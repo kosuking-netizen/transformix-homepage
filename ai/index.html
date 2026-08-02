@@ -91,8 +91,8 @@
     #cta h2 { margin-bottom:1.2rem; }
     #cta .lead { margin-bottom:3rem; }
 
-    footer { border-top:1px solid var(--border); padding:2.5rem; text-align:center; font-size:0.8rem; color:var(--soft); }
-    footer a { text-decoration:underline; }
+    footer { background:var(--text); color:rgba(255,255,255,0.35); text-align:center; padding:2.5rem; font-size:0.8rem; }
+    footer a { color:rgba(255,255,255,0.35); text-decoration:underline; }
 
     @media (max-width:600px) {
       nav { padding:0 1.5rem; }
@@ -105,7 +105,7 @@
 
 <header>
   <nav>
-    <a class="logo" href="https://transformix.jp/">Transformix</a>
+    <a class="logo" href="https://transformix.jp/">Transformix<span style="color:var(--accent);">.</span></a>
     <a class="nav-back" href="https://transformix.jp/">会社サイトへ</a>
   </nav>
 </header>
@@ -195,7 +195,11 @@
 </section>
 
 <footer>
-  <p>© Transformix合同会社　<a href="https://transformix.jp/">transformix.jp</a></p>
+  <p style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.5rem 1rem;align-items:center;">
+    <span>&copy; 2026 Transformix. All rights reserved.</span>
+    <a href="https://transformix.jp/privacy.html">個人情報保護方針</a>
+    <a href="https://transformix.jp/tokushoho.html">特定商取引法に基づく表記</a>
+  </p>
 </footer>
 
 </body>
