@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 正式公開時にnoindexを外す -->
+  <meta name="robots" content="noindex">
+  <title>AI経営体感プログラム — Transformix</title>
+  <meta name="description" content="教わるより、見るほうが早い。AIで経営が回っている実物を90分で体感し、あなた自身の環境を持ち帰る。忙しい経営者のための、講義のないAIプログラム。">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+2:wght@400;700;800&display=swap&font-display=swap" rel="stylesheet" crossorigin="anonymous">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #faf9f7;
+      --text: #111111;
+      --muted: #222222;
+      --soft: #555555;
+      --border: #e0e0e0;
+      --light: #f7f7f7;
+      --indigo: #1e3a5f;
+      --indigo-light: #eef2f8;
+      --warm: #faf9f7;
+      --accent: #e05a4e;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'M PLUS 2','Helvetica Neue','Hiragino Sans','Yu Gothic',sans-serif; color: var(--text); background: var(--bg); line-height: 1.7; }
+    a { color: inherit; text-decoration: none; }
+
+    /* NAV */
+    header { position: fixed; top:0; left:0; right:0; background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); z-index:100; }
+    nav { max-width:1100px; margin:0 auto; padding:0 2.5rem; height:68px; display:flex; align-items:center; }
+    .logo { font-size:1.25rem; font-weight:800; letter-spacing:0.01em; color:var(--indigo); margin-right:auto; white-space:nowrap; }
+    .nav-back { font-size:0.85rem; color:var(--muted); transition:color 0.2s; }
+    .nav-back:hover { color:var(--text); }
+
+    /* HERO */
+    #hero { min-height:88vh; display:flex; align-items:center; justify-content:center; padding:10rem 2.5rem 5rem; background:var(--warm); text-align:center; }
+    .hero-inner { max-width:720px; }
+    .hero-eyebrow { font-size:0.9rem; font-weight:700; letter-spacing:0.18em; color:var(--indigo); margin-bottom:1.5rem; }
+    .hero-inner h1 { font-size:clamp(2.2rem,5vw,3.6rem); font-weight:800; line-height:1.2; letter-spacing:-0.02em; margin-bottom:1.5rem; }
+    .hero-inner p { font-size:1.05rem; color:var(--muted); margin-bottom:3rem; line-height:1.95; }
+    .btn { display:inline-block; background:var(--indigo); color:#fff; padding:1rem 2.5rem; font-size:0.9rem; font-weight:600; letter-spacing:0.04em; transition:opacity 0.2s; }
+    .btn:hover { opacity:0.75; }
+    .btn-note { display:block; margin-top:1rem; font-size:0.8rem; color:var(--soft); }
+
+    /* SECTIONS */
+    section { padding:6rem 2.5rem; }
+    .inner { max-width:840px; margin:0 auto; }
+    .section-label { font-size:0.8rem; font-weight:700; letter-spacing:0.18em; color:var(--accent); margin-bottom:1.2rem; }
+    h2 { font-size:clamp(1.5rem,3vw,2.1rem); font-weight:800; line-height:1.4; letter-spacing:-0.01em; margin-bottom:1.8rem; }
+    .lead { font-size:1rem; color:var(--muted); line-height:2.05; }
+    .lead + .lead { margin-top:1.4rem; }
+
+    /* QUESTION */
+    #question { background:var(--indigo); color:#fff; text-align:center; }
+    #question .inner { max-width:720px; }
+    #question h2 { color:#fff; }
+    #question .lead { color:rgba(255,255,255,0.82); }
+    .fact { margin-top:3rem; padding-top:2.2rem; border-top:1px solid rgba(255,255,255,0.2); font-size:0.9rem; color:rgba(255,255,255,0.65); line-height:1.9; }
+    .fact strong { color:#fff; font-weight:700; }
+
+    /* ANSWER */
+    #answer { text-align:center; }
+    #answer .inner { max-width:720px; }
+
+    /* FLOW */
+    #flow { background:var(--light); }
+    .steps { display:grid; gap:1.5rem; margin-top:3rem; }
+    .step { background:#fff; border:1px solid var(--border); padding:2.5rem; display:flex; gap:2rem; align-items:flex-start; }
+    .step-num { font-size:0.8rem; font-weight:700; letter-spacing:0.15em; color:var(--accent); white-space:nowrap; padding-top:0.35rem; }
+    .step h3 { font-size:1.2rem; font-weight:800; margin-bottom:0.8rem; }
+    .step p { font-size:0.95rem; color:var(--muted); line-height:1.95; }
+    .step p + p { margin-top:0.8rem; }
+    .step-sub { font-size:0.85rem; color:var(--soft); }
+
+    /* BEYOND */
+    #beyond .inner { max-width:720px; text-align:center; }
+
+    /* GUIDE */
+    #guide { background:var(--indigo-light); }
+    .guide-card { display:flex; gap:2.5rem; align-items:flex-start; flex-wrap:wrap; }
+    .guide-text { flex:1; min-width:280px; }
+    .guide-name { font-size:1.4rem; font-weight:800; margin-bottom:0.3rem; }
+    .guide-title { font-size:0.85rem; color:var(--soft); margin-bottom:1.5rem; }
+    .guide-text p { font-size:0.95rem; color:var(--muted); line-height:2; }
+    .guide-text p + p { margin-top:1rem; }
+    .guide-cred { margin-top:1.5rem; font-size:0.8rem; color:var(--soft); line-height:1.9; }
+
+    /* CTA */
+    #cta { text-align:center; padding:7rem 2.5rem; }
+    #cta h2 { margin-bottom:1.2rem; }
+    #cta .lead { margin-bottom:3rem; }
+
+    footer { border-top:1px solid var(--border); padding:2.5rem; text-align:center; font-size:0.8rem; color:var(--soft); }
+    footer a { text-decoration:underline; }
+
+    @media (max-width:600px) {
+      nav { padding:0 1.5rem; }
+      section { padding:4.5rem 1.5rem; }
+      .step { flex-direction:column; gap:1rem; padding:1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="logo" href="https://transformix.jp/">Transformix</a>
+    <a class="nav-back" href="https://transformix.jp/">会社サイトへ</a>
+  </nav>
+</header>
+
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">経営者のためのAI体感プログラム</div>
+    <h1>教わるより、<br>見るほうが早い。</h1>
+    <p>AIで経営が回っている実物を、90分で体感する。<br>忙しい経営者のための、講義のないAIプログラム。</p>
+    <a class="btn" href="#cta">90分、見るだけで構いません。</a>
+  </div>
+</section>
+
+<section id="question">
+  <div class="inner">
+    <div class="section-label" style="color:rgba(255,255,255,0.6)">QUESTION</div>
+    <h2>AIが重要なことは、<br>もう分かっている。</h2>
+    <p class="lead">報告も受けている。記事も読んでいる。<br>それでも——自分の言葉で語れると、言い切れるだろうか。</p>
+    <div class="fact">経営幹部の<strong>約2割</strong>は、すでにAIを毎日使い始めている（日経調査）。<br>差がつくのは知識ではなく、触れた時間。</div>
+  </div>
+</section>
+
+<section id="answer">
+  <div class="inner">
+    <div class="section-label">ANSWER</div>
+    <h2>講義はしません。<br>実物を見せます。</h2>
+    <p class="lead">Transformixの経営は、戦略の立案も、言葉づくりも、数字の管理も、日々の意思決定も、AIとともに回っています。</p>
+    <p class="lead">お見せするのは、つくりもののデモ画面ではなく、実際に一つの会社を動かしている環境。ツールの使い方ではなく、経営の景色として体感してください。</p>
+  </div>
+</section>
+
+<section id="flow">
+  <div class="inner">
+    <div class="section-label">PROGRAM</div>
+    <h2>見て、持ち帰る。二部構成。</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">第一部</div>
+        <div>
+          <h3>体感 — 90分</h3>
+          <p>経営がAIで回っている景色をライブで見る。戦略の壁打ち、文書の生成、情報収集、経理の自動化。専属の参謀チームに仕事を頼み、待つあいだに別の相談を進める——その感覚を、目の前で。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">第二部</div>
+        <div>
+          <h3>構築 — あなたの環境をつくる</h3>
+          <p>あなた自身のAI環境をつくり、お渡しします。お手持ちのPCに、その日のうちに。翌日から、あなたの実務で使える状態で。</p>
+          <p class="step-sub">個人の知的生産環境としてお渡しするため、会社のシステムには触れません。稟議も、情報システム部門への申請も不要です。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="beyond">
+  <div class="inner">
+    <div class="section-label">BEYOND</div>
+    <h2>環境の上に何を乗せるかは、<br>あなたの経営課題次第。</h2>
+    <p class="lead">AIの活用を習慣に変える伴走から、経営テーマそのものに踏み込む対話、そして会社への正式導入まで。段階に応じたプログラムを用意しています。入口はAI。その先は、経営の話です。</p>
+  </div>
+</section>
+
+<section id="guide">
+  <div class="inner">
+    <div class="section-label">GUIDE</div>
+    <h2>案内するのは、AIの専門家ではなく、<br>AIで経営している当事者。</h2>
+    <div class="guide-card">
+      <div class="guide-text">
+        <div class="guide-name">井沢 晃将</div>
+        <div class="guide-title">Transformix合同会社 代表</div>
+        <p>グローバル製造業で経営変革・サプライチェーン改革を率いてきた実務家。自らの会社の経営をAIで動かしながら、その方法と景色を経営者に開いています。</p>
+        <p>「描くより動かす」が信条。教えるのではなく、証明する——このプログラムも、その延長にあります。</p>
+        <div class="guide-cred">早稲田大学ビジネススクール修了（MBA）／Prosci® Certified Change Practitioner／日経BP主催フォーラムほか登壇多数</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="inner">
+    <h2>まず、見に来てください。</h2>
+    <p class="lead">資料もスライドも用意しません。動いている実物だけがあります。</p>
+    <a class="btn" href="https://transformix.jp/#contact">90分、見るだけで構いません。</a>
+    <span class="btn-note">お問い合わせフォームからご連絡ください</span>
+  </div>
+</section>
+
+<footer>
+  <p>© Transformix合同会社　<a href="https://transformix.jp/">transformix.jp</a></p>
+</footer>
+
+</body>
+</html>
