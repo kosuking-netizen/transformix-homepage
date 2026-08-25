@@ -115,7 +115,7 @@ function main() {
     tabButton('scm', { ja: `SCM（${counts.scm}）`, en: `SCM (${counts.scm})` }, true),
     tabButton('ai', { ja: `AI / DX（${counts.ai}）`, en: `AI / DX (${counts.ai})` }, false),
     tabButton('football', { ja: `Football（${counts.football}）`, en: `Football (${counts.football})` }, false),
-    tabButton('kyoto', { ja: `東洋哲学（${counts.kyoto}）`, en: `E. Philosophy (${counts.kyoto})` }, false),
+    tabButton('kyoto', { ja: `哲学と組織（${counts.kyoto}）`, en: `Philosophy & Org (${counts.kyoto})` }, false),
   ].join('\n');
 
   function render({ titleSuffix, descSuffix, ogPath, headerDateLine, dateListId }) {
@@ -195,7 +195,7 @@ ${sectionsHtml}
 
   const dailyHtml = render({
     titleSuffix: `Transformix Insights ${date} — SCM・AI/DX・Football記事まとめ`,
-    descSuffix: `${dateJa}のSCM計画・AI/DX経営・Football×ビジネス・東洋哲学の注目記事をTransformixが厳選してまとめました。`,
+    descSuffix: `${dateJa}のSCM計画・AI/DX経営・Football×ビジネス・哲学と組織の注目記事をTransformixが厳選してまとめました。`,
     ogPath: `${date}.html`,
     headerDateLine: { ja: dateJa, en: date },
   });
@@ -206,8 +206,8 @@ ${sectionsHtml}
 
   if (withIndex) {
     const indexHtml = render({
-      titleSuffix: 'Transformix Insights — SCM・AI/DX・Football・東洋哲学の最新記事',
-      descSuffix: 'SCM計画・AI/DX経営・Football×ビジネス・東洋哲学の最新の注目記事をTransformixが厳選してまとめました。',
+      titleSuffix: 'Transformix Insights — SCM・AI/DX・Football・哲学と組織の最新記事',
+      descSuffix: 'SCM計画・AI/DX経営・Football×ビジネス・哲学と組織の最新の注目記事をTransformixが厳選してまとめました。',
       ogPath: '',
       headerDateLine: { ja: `更新日：${dateJa}`, en: `Updated: ${date}` },
     });

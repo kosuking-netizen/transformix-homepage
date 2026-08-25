@@ -49,5 +49,5 @@ function getTitle(html) {
 
 function getDesc(html) {
   const m = html.match(/<meta name="description" content="([^"]*)"/);
-  return m ? m[1] : 'Transformixが厳選したSCM・AI/DX・Football・東洋哲学の注目記事まとめ。';
+  return m ? m[1] : 'Transformixが厳選したSCM・AI/DX・Football・哲学と組織の注目記事まとめ。';
 }
