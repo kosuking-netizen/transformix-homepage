@@ -212,9 +212,10 @@
     /* MISSION */
     #mission { background:var(--indigo) !important; color:#fff; }
     .mv-reason { font-size:0.9rem; color:rgba(255,255,255,0.5); margin-bottom:2.5rem; letter-spacing:0.05em; }
-    .mv-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; }
+    .mv-grid { display:grid; grid-template-columns:1fr; gap:3rem; max-width:46rem; }
     .mv-label { font-size:0.65rem; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:1rem; }
     .mv-text { font-size:1.5rem; font-weight:700; line-height:1.6; }
+    .mv-sub { font-size:0.95rem; font-weight:400; line-height:1.9; color:rgba(255,255,255,0.58); margin-top:0.9rem; }
 
     /* ABOUT */
     .about-table { width:100%; border-collapse:collapse; }
@@ -288,8 +289,9 @@
       /* ヒーローサブコピー：モバイルでバランス調整 */
       .hero-inner p { font-size:1rem; letter-spacing:-0.03em; }
 
-      /* Mission/Vision 文字サイズアップ */
-      .mv-text { font-size:1.6rem; }
+      /* Mission/Vision 文字サイズ */
+      .mv-text { font-size:1.35rem; }
+      .mv-sub { font-size:0.9rem; line-height:1.85; }
     }
 
     @media (max-width:480px) {
@@ -330,8 +332,9 @@
       .profile-meta-label { min-width:unset; font-size:0.78rem; letter-spacing:0.03em; color:var(--muted); font-weight:700; white-space:nowrap; }
       .profile-section-title { margin-bottom:0.5rem; }
 
-      /* Mission/Vision 1行に収める */
-      .mv-text { font-size: clamp(1rem, 4.8vw, 1.3rem); white-space: nowrap; }
+      /* Mission/Vision */
+      .mv-text { font-size: clamp(1.05rem, 5vw, 1.25rem); line-height:1.65; white-space: normal; }
+      .mv-sub { font-size:0.82rem; line-height:1.8; margin-top:0.75rem; }
 
       /* 送信ボタン：通常サイズ */
       #contact .btn { display:inline-block; width:auto; }
@@ -389,7 +392,7 @@
       <p class="mv-reason">——Transformixがここにある理由。</p>
       <div class="mv-grid">
         <div><div class="mv-label">Mission</div><p class="mv-text">迷いを力に、変革を現実に。</p></div>
-        <div><div class="mv-label">Vision</div><p class="mv-text">人が創造的に、楽しく働く世界を。</p></div>
+        <div><div class="mv-label">Vision</div><p class="mv-text">サプライチェーンが経営を動かすことを、<br class="br-pc">日本の製造業の当たり前にする。</p><p class="mv-sub">——その先に描くのは、人が創造的に、楽しく働く世界です。</p></div>
       </div>
     </div>
   </section>
