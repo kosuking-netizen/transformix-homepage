@@ -28,9 +28,16 @@ const BADGE = {
   person: { ja: '人物', en: 'Profile', cls: 'badge-person' },
 };
 
+// 人物カードの専門領域表示（2026-09-29〜 人物は独立カテゴリ。field: scm | ai）
+const FIELD_LABEL = {
+  scm: { ja: 'SCM', en: 'SCM' },
+  ai: { ja: 'AI・DX', en: 'AI/DX' },
+};
+
 const SECTION_META = {
   scm: { id: 'scm', cardClass: '' },
   ai: { id: 'ai', cardClass: ' card-ai' },
+  person: { id: 'person', cardClass: ' card-person' },
   football: { id: 'football', cardClass: ' card-football' },
   kyoto: { id: 'kyoto', cardClass: ' card-kyoto' },
 };
@@ -70,8 +77,12 @@ function renderCard(article, cardClass) {
     ? `${article.sourceEn} / Japanese`
     : `${article.source} / English`;
 
+  const field = article.badge === 'person' ? FIELD_LABEL[article.field] : null;
+  const badgeJa = field ? `${badge.ja}｜${field.ja}` : badge.ja;
+  const badgeEn = field ? `${badge.en} | ${field.en}` : badge.en;
+
   return `      <div class="card${cardClass}">
-        <span class="badge ${badge.cls}" data-ja="${badge.ja}" data-en="${badge.en}">${badge.ja}</span>
+        <span class="badge ${badge.cls}" data-ja="${badgeJa}" data-en="${badgeEn}">${badgeJa}</span>
         <h3>${titleHtml}</h3>
         <div class="card-source" data-ja="${escAttr(sourceJa)}" data-en="${escAttr(sourceEn)}">${escText(sourceJa)}</div>
         <div class="card-summary" data-ja="${escAttr(article.summaryJa)}" data-en="${escAttr(article.summaryEn)}">${escText(article.summaryJa)}</div>
@@ -80,7 +91,7 @@ function renderCard(article, cardClass) {
 
 function renderSection(key, articles) {
   const meta = SECTION_META[key];
-  const cards = articles.map(a => renderCard(a, meta.cardClass)).join('\n\n');
+  const cards = (articles || []).map(a => renderCard(a, meta.cardClass)).join('\n\n');
   return `    <div id="${meta.id}" class="section${key === 'scm' ? ' active' : ''}"><div class="cards">
 
 ${cards}
@@ -90,7 +101,7 @@ ${cards}
 
 function tabButton(key, label, isFirst) {
   const meta = SECTION_META[key];
-  const tabClass = isFirst ? 'tab active' : `tab tab-${key === 'football' ? 'football' : key === 'kyoto' ? 'kyoto' : key}`;
+  const tabClass = isFirst ? 'tab active' : `tab tab-${key}`;
   const onclick = `document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active')});document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});document.getElementById('${meta.id}').classList.add('active');this.classList.add('active')`;
   return `      <button class="${tabClass}" onclick="${onclick.replace(/'/g, '&#39;')}" data-ja="${escAttr(label.ja)}" data-en="${escAttr(label.en)}">${escText(label.ja)}</button>`;
 }
@@ -110,13 +121,19 @@ function main() {
   const dateJa = `${date.slice(0, 4)}年${parseInt(date.slice(5, 7), 10)}月${parseInt(date.slice(8, 10), 10)}日`;
 
   // 各セクションを一度だけレンダリングして組み立て直す（buildPage内の二重処理を避ける）
-  const sectionsHtml = ['scm', 'ai', 'football', 'kyoto'].map(key => renderSection(key, sections[key])).join('\n\n');
-  const tabs = [
-    tabButton('scm', { ja: `SCM（${counts.scm}）`, en: `SCM (${counts.scm})` }, true),
-    tabButton('ai', { ja: `AI / DX（${counts.ai}）`, en: `AI / DX (${counts.ai})` }, false),
-    tabButton('football', { ja: `Football（${counts.football}）`, en: `Football (${counts.football})` }, false),
-    tabButton('kyoto', { ja: `哲学と組織（${counts.kyoto}）`, en: `Philosophy & Org (${counts.kyoto})` }, false),
-  ].join('\n');
+  // 人物（person）は2026-09-29に独立カテゴリ化。それ以前のJSONには無いので、あるときだけタブを出す
+  const hasPerson = Array.isArray(sections.person) && sections.person.length > 0;
+  const keys = ['scm', 'ai', ...(hasPerson ? ['person'] : []), 'football', 'kyoto'];
+  const n = key => (counts && counts[key] != null ? counts[key] : (sections[key] || []).length);
+  const TAB_LABEL = {
+    scm: { ja: `SCM（${n('scm')}）`, en: `SCM (${n('scm')})` },
+    ai: { ja: `AI / DX（${n('ai')}）`, en: `AI / DX (${n('ai')})` },
+    person: { ja: `人物（${n('person')}）`, en: `People (${n('person')})` },
+    football: { ja: `Football（${n('football')}）`, en: `Football (${n('football')})` },
+    kyoto: { ja: `哲学と組織（${n('kyoto')}）`, en: `Philosophy & Org (${n('kyoto')})` },
+  };
+  const sectionsHtml = keys.map(key => renderSection(key, sections[key])).join('\n\n');
+  const tabs = keys.map((key, i) => tabButton(key, TAB_LABEL[key], i === 0)).join('\n');
 
   function render({ titleSuffix, descSuffix, ogPath, headerDateLine, dateListId }) {
     const langToggleOnclick = (lang) =>
