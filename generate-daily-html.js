@@ -37,6 +37,7 @@ const FIELD_LABEL = {
 const SECTION_META = {
   scm: { id: 'scm', cardClass: '' },
   ai: { id: 'ai', cardClass: ' card-ai' },
+  pe: { id: 'pe', cardClass: ' card-pe' },
   person: { id: 'person', cardClass: ' card-person' },
   football: { id: 'football', cardClass: ' card-football' },
   kyoto: { id: 'kyoto', cardClass: ' card-kyoto' },
@@ -123,11 +124,14 @@ function main() {
   // 各セクションを一度だけレンダリングして組み立て直す（buildPage内の二重処理を避ける）
   // 人物（person）は2026-09-29に独立カテゴリ化。それ以前のJSONには無いので、あるときだけタブを出す
   const hasPerson = Array.isArray(sections.person) && sections.person.length > 0;
-  const keys = ['scm', 'ai', ...(hasPerson ? ['person'] : []), 'football', 'kyoto'];
+  // PE×経営改革（pe）は2026-11-03に追加。それ以前のJSONには無いので、あるときだけタブを出す
+  const hasPe = Array.isArray(sections.pe) && sections.pe.length > 0;
+  const keys = ['scm', 'ai', ...(hasPe ? ['pe'] : []), ...(hasPerson ? ['person'] : []), 'football', 'kyoto'];
   const n = key => (counts && counts[key] != null ? counts[key] : (sections[key] || []).length);
   const TAB_LABEL = {
     scm: { ja: `SCM（${n('scm')}）`, en: `SCM (${n('scm')})` },
     ai: { ja: `AI / DX（${n('ai')}）`, en: `AI / DX (${n('ai')})` },
+    pe: { ja: `PE×経営改革（${n('pe')}）`, en: `PE & Transformation (${n('pe')})` },
     person: { ja: `人物（${n('person')}）`, en: `People (${n('person')})` },
     football: { ja: `Football（${n('football')}）`, en: `Football (${n('football')})` },
     kyoto: { ja: `哲学と組織（${n('kyoto')}）`, en: `Philosophy & Org (${n('kyoto')})` },
@@ -213,7 +217,7 @@ ${sectionsHtml}
 
   const dailyHtml = render({
     titleSuffix: `Transformix Insights ${date} — SCM・AI/DX・Football記事まとめ`,
-    descSuffix: `${dateJa}のSCM計画・AI/DX経営・Football×ビジネス・哲学と組織の注目記事をTransformixが厳選してまとめました。`,
+    descSuffix: `${dateJa}のSCM計画・AI/DX経営・PE×経営改革・Football×ビジネス・哲学と組織の注目記事をTransformixが厳選してまとめました。`,
     ogPath: `${date}.html`,
     headerDateLine: { ja: dateJa, en: date },
   });
@@ -225,7 +229,7 @@ ${sectionsHtml}
   if (withIndex) {
     const indexHtml = render({
       titleSuffix: 'Transformix Insights — SCM・AI/DX・Football・哲学と組織の最新記事',
-      descSuffix: 'SCM計画・AI/DX経営・Football×ビジネス・哲学と組織の最新の注目記事をTransformixが厳選してまとめました。',
+      descSuffix: 'SCM計画・AI/DX経営・PE×経営改革・Football×ビジネス・哲学と組織の最新の注目記事をTransformixが厳選してまとめました。',
       ogPath: '',
       headerDateLine: { ja: `更新日：${dateJa}`, en: `Updated: ${date}` },
     });
